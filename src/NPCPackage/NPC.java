@@ -1,3 +1,4 @@
+package NPCPackage;
 import java.util.ArrayList;
 
 public class NPC 

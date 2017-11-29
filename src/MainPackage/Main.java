@@ -1,3 +1,4 @@
+package MainPackage;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -12,11 +13,19 @@ import org.json.simple.JSONArray;
 import org.json.simple.parser.ParseException;
 import org.json.simple.parser.JSONParser;
 
+import NPCPackage.Genders;
+import NPCPackage.NPC;
+import NPCPackage.NameController;
+import NPCPackage.Races;
+import NPCPackage.TraitController;
+
 import javax.swing.*;
 import javax.swing.border.Border;
 
 public class Main extends JFrame 
 {
+	
+//NPC Generation
 JLabel genderLabel;
 JLabel raceLabel;
 JLabel resultLabel;
@@ -24,12 +33,22 @@ JComboBox<String> selectGenderBox;
 String[] genders = {"Random","Male","Female"};
 JComboBox<String> selectRaceBox;
 String[] races = {"Random","Human", "Orc", "Half-Orc", "Elf", "Half-Elf"};
-JScrollPane scrollpane;
-JTextArea resultField;
-JButton generate;
+JScrollPane npcScrollPane;
+JTextArea npcResultField;
+JButton npcGenerate;
+
+//Shop Generation
+JLabel shopLabel;
+JComboBox<String> selectShopType;
+String[] shopTypes = {"Blacksmith", "Tavern", "Restaurant", "Inn", "Magic Shop", "Jeweler", "General Store", "Tailors", "Bookseller", "Butchers", "Masons", "Carpenters", "Tanners"};
+JLabel shopResult;
+JTextArea shopResultField;
+JScrollPane shopScrollPane;
+JButton shopGenerate;
 
 static NameController nameController;
 static TraitController traitController;
+
 public static void main(String[]args) throws FileNotFoundException, IOException, ParseException 
 {
 	//Make place to do stuff.
@@ -45,34 +64,59 @@ public Main() throws FileNotFoundException, IOException, ParseException
 	traitController = new TraitController();
 	traitController.parseJSON();	
 	JPanel windowPanel = new JPanel();
-	
-	JPanel mainPanel = new JPanel();
-	Border mainBorder = BorderFactory.createTitledBorder("Name Generator");
-		mainPanel.setBorder(mainBorder);
+		
+	//NPC pane
+	JPanel npcPanel = new JPanel();
+	Border npcBorder = BorderFactory.createTitledBorder("NPC Generator");
+		npcPanel.setBorder(npcBorder);
 	genderLabel = new JLabel("Gender:");
 	selectGenderBox = new JComboBox<String>(genders);
 	raceLabel = new JLabel("Race:");
 	selectRaceBox = new JComboBox<String>(races);
 	resultLabel = new JLabel("Result:");
-	resultField = new JTextArea(10, 10);
-	scrollpane = new JScrollPane(resultField);
-	generate = new JButton("Generate");
+	npcResultField = new JTextArea(10, 10);
+	npcScrollPane = new JScrollPane(npcResultField);
+	npcGenerate = new JButton("Generate");
 	GenerateButtonHandler generateButtonHandler = new GenerateButtonHandler();
-	generate.addActionListener(generateButtonHandler);
+	npcGenerate.addActionListener(generateButtonHandler);
 	
-	mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.PAGE_AXIS));
+	npcPanel.setLayout(new BoxLayout(npcPanel, BoxLayout.PAGE_AXIS));
+	npcPanel.add(genderLabel);
+	npcPanel.add(selectGenderBox);
+	npcPanel.add(raceLabel);
+	npcPanel.add(selectRaceBox);
+	npcPanel.add(resultLabel);
+	npcPanel.add(npcScrollPane);
+	npcPanel.add(npcGenerate);
+	npcPanel.setPreferredSize(new Dimension(350,350));
 	
-	mainPanel.add(genderLabel);
-	mainPanel.add(selectGenderBox);
-	mainPanel.add(raceLabel);
-	mainPanel.add(selectRaceBox);
-	mainPanel.add(resultLabel);
-	mainPanel.add(scrollpane);
-	mainPanel.add(generate);
-	mainPanel.setPreferredSize(new Dimension(350,350));
-	windowPanel.add(mainPanel);
-	
-	this.setSize(400,400);
+	//SHOP STUFF
+	JPanel shopPanel = new JPanel();
+	Border shopBorder = BorderFactory.createTitledBorder("Shop Generator");
+		npcPanel.setBorder(shopBorder);
+	shopLabel = new JLabel("Shop Type:");
+	selectShopType = new JComboBox<String>(shopTypes);
+	shopResult = new JLabel("Result:");
+	shopResultField = new JTextArea(10, 10);
+	shopScrollPane = new JScrollPane(shopResultField);
+	shopGenerate = new JButton("Generate");
+
+	shopPanel.setLayout(new BoxLayout(shopPanel, BoxLayout.PAGE_AXIS));
+	shopPanel.add(shopLabel);
+	shopPanel.add(selectShopType);
+	shopPanel.add(shopResult);
+	shopPanel.add(shopScrollPane);
+	shopPanel.add(shopGenerate);
+	shopPanel.setPreferredSize(new Dimension(350,350));
+
+	//WINDOW STUFF
+	JTabbedPane tabbedPane = new JTabbedPane(); 
+	windowPanel.add(tabbedPane);
+	tabbedPane.setVisible(true);
+	tabbedPane.addTab("NPC Generator", npcPanel);
+	tabbedPane.addTab("Shop Generator", shopPanel);
+
+	this.setSize(400,500);
 	this.setTitle("Name Generator");
 	this.setResizable(true);
 	this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -143,9 +187,7 @@ public class GenerateButtonHandler implements ActionListener
 		}
 		break;
 	}
-
-	resultField.setText(npc.generate(currentRace, currentGender));
-
+	npcResultField.setText(npc.generate(currentRace, currentGender));
 	}
 }
 

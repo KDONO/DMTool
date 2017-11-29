@@ -1,3 +1,4 @@
+package NPCPackage;
 
 public enum Genders 
 {
