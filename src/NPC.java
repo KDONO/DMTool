@@ -27,8 +27,7 @@ public String generate(Races race, Genders gender)
 
 	ArrayList<String> traits = traitController.generateTraits();
 	
-	String output = (race+" "+gender+"\n"
-			+ name+"\n"
+	String output = (name+" ("+race+" "+gender+")\n"
 			+ traits.get(0) + "\n"
 			+ traits.get(1) + "\n"
 			+ traits.get(2) + "\n"
