@@ -1,0 +1,17 @@
+{
+"Names":["Belmont","Chamberlain","Lambert","Baderon", "Boyle", "Fawkes", "Flambard", "Grimdbald", "Habreham", "Halstein", "Khellius", "Kurtz", "Lefwyne", "Lodwicke", "Lowell", "Radcliffe", "Randwulf", "Redwall", "Templetonne", 
+		"Thrydwulf", "Valentyne", "Wadard", "Wineburg", "Krauser", "Zerig", "Alainne", "Admiranda", "Charmaine", "Celestria", "Brangwine", "Crestian",  "Dorcas", "Florens", "Leofwynn", "Maerwynn", "Harcourt", "Yanova", "Grymbalde",
+		"Baelus", "Valefor", "Barbatos", "Labolas", "Beleth", "Eligos", "Naberius", "Gremory", "Archedios", "Bacchus", "Dwyvaer", "Molossos", "Rhadamanthys", "Theophane", "Osmaer", "Cheyne",
+		"Oakehurst", "Faylare", "Beresford", "Derrington", "Dencourt", "Baldwin", "Stokerton", "Aynesworth","Zulgeteb", "Wudugod", "Kurmbag", "Weghad", "Woghulghat", "Arok", "Argigoth", "Eichelberbog", "Zaghig", "Tot", "Mazhug", 
+		"Ulmrougha", "Zupaugh", "Spathu", "Omogulg","Dubok", "Bogugh", "Bahgigath", "Nughilug", "Zurbag", "Bugdurash", "Rogmesh", "Porgarag", "Loravyre", "Traphyra", "Sadithas", "Umerel", "Vensalor", "Iarrieth", "Sylviere", "Illyandriel", 
+		"Iarnieros", "Glynlynn", "Valfaren", "Vawenys", "Thepeiros", "Yllaphine","Ylladros", "Yllandriel", "Yllensalor", "Faeleth", "Romys", "Faven", "Loramys", "Glyndark", "Adhorn", "Fargwyn", "Aevaris", "Ravejeon", "Keyrel", "Persandoral", "Erzeiros", "Balbanise", "Ulamyar", "Yllafir"],
+
+"Adjectives:"["Busy","Angry", "Black", "Gruesome", "Violet", "Deranged", "Merciful", "Lucky", "Quaint", "Quick", "Sudden", "Skinny", "Dire",
+		"Fantastic", "Jaded", "Gold", "Sleeping", "Outrageous", "Burnt", "Elated", "Blue", "Virtuous", "Red", "Common", "Mad",
+		"Young", "Zestful", "Keen", "Needy"],
+
+
+"Noun:"["Dragon","Blossom", "Bear", "Snapdragon", "Goat", "Chainmail", "Tiger", "Well", "Pumpkin", "Octopus", "Cavern", "Flower", "Jester",
+	"Wineskin", "Amulet", "Seaman", "Harpy", "Imp", "Jackal", "Raven", "Angel", "Warrior", "Robber", "Talisman", "Sword", "Spear",
+	"Dagger", "Shield", "Heart", "Paladin", "Knight", "Phoenix", "Ogre", "Troll"]
+}

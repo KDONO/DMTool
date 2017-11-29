@@ -3,13 +3,11 @@ import java.util.ArrayList;
 
 public class NPC 
 {
-NameController nameController;	
-TraitController traitController;
+NPCManager npcManager;	
 
-public NPC(NameController nameController, TraitController traitController )
+public NPC(NPCManager nameController)
 {
-this.nameController = nameController;
-this.traitController = traitController;
+this.npcManager = nameController;
 }
 
 public String generate(Races race, Genders gender)
@@ -19,14 +17,14 @@ public String generate(Races race, Genders gender)
 	switch(gender)
 	{
 		case MALE:
-			name = nameController.generateMaleName(race);
+			name = npcManager.generateMaleName(race);
 		break;
 		case FEMALE:
-			name = nameController.generateFemaleName(race);
+			name = npcManager.generateFemaleName(race);
 		break;
 	}
 
-	ArrayList<String> traits = traitController.generateTraits();
+	ArrayList<String> traits = npcManager.generateTraits();
 	
 	String output = (name+" ("+race+" "+gender+")\n"
 			+ traits.get(0) + "\n"

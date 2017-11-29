@@ -15,9 +15,8 @@ import org.json.simple.parser.JSONParser;
 
 import NPCPackage.Genders;
 import NPCPackage.NPC;
-import NPCPackage.NameController;
+import NPCPackage.NPCManager;
 import NPCPackage.Races;
-import NPCPackage.TraitController;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -46,8 +45,7 @@ JTextArea shopResultField;
 JScrollPane shopScrollPane;
 JButton shopGenerate;
 
-static NameController nameController;
-static TraitController traitController;
+static NPCManager npcManager;
 
 public static void main(String[]args) throws FileNotFoundException, IOException, ParseException 
 {
@@ -59,10 +57,8 @@ public static void main(String[]args) throws FileNotFoundException, IOException,
 public Main() throws FileNotFoundException, IOException, ParseException
 {
 	//Parse the JSONs
-	nameController = new NameController();
-	nameController.parseJSON();
-	traitController = new TraitController();
-	traitController.parseJSON();	
+	npcManager = new NPCManager();
+	npcManager.parseJSON();
 	JPanel windowPanel = new JPanel();
 		
 	//NPC pane
@@ -133,7 +129,7 @@ public class GenerateButtonHandler implements ActionListener
 	Races currentRace = Races.RANDOM;
 	Genders currentGender = Genders.RANDOM;
 	
-	NPC npc = new NPC(nameController, traitController);
+	NPC npc = new NPC(npcManager);
 
 	switch(selectRaceBox.getSelectedItem().toString())
 		{
