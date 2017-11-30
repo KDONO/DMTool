@@ -112,7 +112,7 @@ public void parseJSON() throws FileNotFoundException, IOException, ParseExceptio
     
     try
     {
-    JSONObject data = (JSONObject) parser.parse(new FileReader("ShopNames.txt"));
+    JSONObject data = (JSONObject) parser.parse(new FileReader("data/ShopNames.txt"));
 
     //Grab the Arrays from the JObject as JArrays
     JSONArray JSONNames  = (JSONArray) data.get("Names");

@@ -216,8 +216,8 @@ public class NPCManager
 	    
 	    try
 	    {
-	    JSONObject nameData = (JSONObject) parser.parse(new FileReader("Names.txt"));
-	    JSONObject traitData = (JSONObject) parser.parse(new FileReader("Traits.txt"));
+	    JSONObject nameData = (JSONObject) parser.parse(new FileReader("data/Names.txt"));
+	    JSONObject traitData = (JSONObject) parser.parse(new FileReader("data/Traits.txt"));
 
 	    //Grab the Arrays from the JObject as JArrays
 	    //Names
