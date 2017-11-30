@@ -34,7 +34,37 @@ public class NPCManager
 	ArrayList<String> Bond = new ArrayList<String>();
 	ArrayList<String> Flaw = new ArrayList<String>();
 	
-	public String generateMaleName(Races race)
+	public String generate(Races race, Genders gender)
+	{
+		String name = "";
+		
+		switch(gender)
+		{
+			case MALE:
+				name = generateMaleName(race);
+			break;
+			case FEMALE:
+				name = generateFemaleName(race);
+			break;
+		}
+
+		ArrayList<String> traits = generateTraits();
+		
+		String output = (name+" ("+race+" "+gender+")\n"
+				+ traits.get(0) + "\n"
+				+ traits.get(1) + "\n"
+				+ traits.get(2) + "\n"
+				+ traits.get(3) + "\n"
+				+ traits.get(4) + "\n"
+				+ traits.get(5) + "\n"
+				+ traits.get(6) + "\n"
+				+ traits.get(7)) ; 
+				
+//		System.out.println(output);
+		return output;
+	}
+
+	private String generateMaleName(Races race)
 	{
 		String output = "";
 		switch(race)
@@ -99,7 +129,7 @@ public class NPCManager
 		return output;
 	}
 
-	public String generateFemaleName(Races race)
+	private String generateFemaleName(Races race)
 	{
 		String output = "";
 		switch(race)
@@ -164,7 +194,7 @@ public class NPCManager
 		return output;
 	}
 	
-	public ArrayList<String> generateTraits()
+	private ArrayList<String> generateTraits()
 	{
 		ArrayList<String> output = new ArrayList<String>();		
 		output.add("Appearance: "+Appearance.get((int) Math.floor((Math.random() * Appearance.size()))));

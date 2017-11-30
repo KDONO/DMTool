@@ -13,10 +13,8 @@ import org.json.simple.JSONArray;
 import org.json.simple.parser.ParseException;
 import org.json.simple.parser.JSONParser;
 
-import NPCPackage.Genders;
-import NPCPackage.NPC;
-import NPCPackage.NPCManager;
-import NPCPackage.Races;
+import NPCPackage.*;
+import ShopPackage.*;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -39,13 +37,14 @@ JButton npcGenerate;
 //Shop Generation
 JLabel shopLabel;
 JComboBox<String> selectShopType;
-String[] shopTypes = {"Blacksmith", "Tavern", "Restaurant", "Inn", "Magic Shop", "Jeweler", "General Store", "Tailors", "Bookseller", "Butchers", "Masons", "Carpenters", "Tanners"};
+String[] shopTypes = {"Blacksmith", "Inn", "Magic Shop", "Jeweler", "General Store", "Bookseller"};
 JLabel shopResult;
 JTextArea shopResultField;
 JScrollPane shopScrollPane;
 JButton shopGenerate;
 
 static NPCManager npcManager;
+static ShopManager shopManager;
 
 public static void main(String[]args) throws FileNotFoundException, IOException, ParseException 
 {
@@ -59,6 +58,9 @@ public Main() throws FileNotFoundException, IOException, ParseException
 	//Parse the JSONs
 	npcManager = new NPCManager();
 	npcManager.parseJSON();
+	shopManager = new ShopManager();
+	shopManager.parseJSON();
+	
 	JPanel windowPanel = new JPanel();
 		
 	//NPC pane
@@ -73,8 +75,8 @@ public Main() throws FileNotFoundException, IOException, ParseException
 	npcResultField = new JTextArea(10, 10);
 	npcScrollPane = new JScrollPane(npcResultField);
 	npcGenerate = new JButton("Generate");
-	GenerateButtonHandler generateButtonHandler = new GenerateButtonHandler();
-	npcGenerate.addActionListener(generateButtonHandler);
+	NpcGenerateButtonHandler npcGenerateButtonHandler = new NpcGenerateButtonHandler();
+	npcGenerate.addActionListener(npcGenerateButtonHandler);
 	
 	npcPanel.setLayout(new BoxLayout(npcPanel, BoxLayout.PAGE_AXIS));
 	npcPanel.add(genderLabel);
@@ -96,6 +98,8 @@ public Main() throws FileNotFoundException, IOException, ParseException
 	shopResultField = new JTextArea(10, 10);
 	shopScrollPane = new JScrollPane(shopResultField);
 	shopGenerate = new JButton("Generate");
+	ShopGenerateButtonHandler shopGenerateButtonHandler = new ShopGenerateButtonHandler();
+	shopGenerate.addActionListener(shopGenerateButtonHandler);
 
 	shopPanel.setLayout(new BoxLayout(shopPanel, BoxLayout.PAGE_AXIS));
 	shopPanel.add(shopLabel);
@@ -112,25 +116,21 @@ public Main() throws FileNotFoundException, IOException, ParseException
 	tabbedPane.addTab("NPC Generator", npcPanel);
 	tabbedPane.addTab("Shop Generator", shopPanel);
 
-	this.setSize(400,500);
+	this.setSize(400,450);
 	this.setTitle("Name Generator");
 	this.setResizable(true);
 	this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 	this.add(windowPanel);
 	this.setVisible(true);
-	
-	System.out.println("Test \n Also test");
 }
 
-public class GenerateButtonHandler implements ActionListener
+public class NpcGenerateButtonHandler implements ActionListener
 {
 	public void actionPerformed(ActionEvent e) 
 	{	
 	Races currentRace = Races.RANDOM;
 	Genders currentGender = Genders.RANDOM;
 	
-	NPC npc = new NPC(npcManager);
-
 	switch(selectRaceBox.getSelectedItem().toString())
 		{
 		case "Human":
@@ -183,7 +183,38 @@ public class GenerateButtonHandler implements ActionListener
 		}
 		break;
 	}
-	npcResultField.setText(npc.generate(currentRace, currentGender));
+	npcResultField.setText(npcManager.generate(currentRace, currentGender));
+	}
+}
+
+public class ShopGenerateButtonHandler implements ActionListener
+{
+	public void actionPerformed(ActionEvent e) 
+	{	
+		ShopTypes currentShop = ShopTypes.INN;
+		
+		switch(selectShopType.getSelectedItem().toString())
+		{
+		case "Inn":
+			currentShop = ShopTypes.INN;
+			break;
+		case "Blacksmith":
+			currentShop = ShopTypes.BLACKSMITH;
+			break;
+		case "Magic Shop":
+			currentShop = ShopTypes.MAGICSHOP;
+			break;
+		case "Jeweler":
+			currentShop = ShopTypes.JEWELER;
+			break;
+		case "General Store":
+			currentShop = ShopTypes.GENERALSTORE;
+			break;
+		case "Bookseller":
+			currentShop = ShopTypes.BOOKSELLER;
+			break;
+		}
+		shopResultField.setText(shopManager.generate(currentShop));
 	}
 }
 

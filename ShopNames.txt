@@ -6,12 +6,25 @@
 		"Ulmrougha", "Zupaugh", "Spathu", "Omogulg","Dubok", "Bogugh", "Bahgigath", "Nughilug", "Zurbag", "Bugdurash", "Rogmesh", "Porgarag", "Loravyre", "Traphyra", "Sadithas", "Umerel", "Vensalor", "Iarrieth", "Sylviere", "Illyandriel", 
 		"Iarnieros", "Glynlynn", "Valfaren", "Vawenys", "Thepeiros", "Yllaphine","Ylladros", "Yllandriel", "Yllensalor", "Faeleth", "Romys", "Faven", "Loramys", "Glyndark", "Adhorn", "Fargwyn", "Aevaris", "Ravejeon", "Keyrel", "Persandoral", "Erzeiros", "Balbanise", "Ulamyar", "Yllafir"],
 
-"Adjectives:"["Busy","Angry", "Black", "Gruesome", "Violet", "Deranged", "Merciful", "Lucky", "Quaint", "Quick", "Sudden", "Skinny", "Dire",
+"Adjectives":["Busy","Angry", "Black", "Gruesome", "Violet", "Deranged", "Merciful", "Lucky", "Quaint", "Quick", "Sudden", "Skinny", "Dire",
 		"Fantastic", "Jaded", "Gold", "Sleeping", "Outrageous", "Burnt", "Elated", "Blue", "Virtuous", "Red", "Common", "Mad",
 		"Young", "Zestful", "Keen", "Needy"],
 
 
-"Noun:"["Dragon","Blossom", "Bear", "Snapdragon", "Goat", "Chainmail", "Tiger", "Well", "Pumpkin", "Octopus", "Cavern", "Flower", "Jester",
+"Nouns":["Dragon","Blossom", "Bear", "Snapdragon", "Goat", "Chainmail", "Tiger", "Well", "Pumpkin", "Octopus", "Cavern", "Flower", "Jester",
 	"Wineskin", "Amulet", "Seaman", "Harpy", "Imp", "Jackal", "Raven", "Angel", "Warrior", "Robber", "Talisman", "Sword", "Spear",
-	"Dagger", "Shield", "Heart", "Paladin", "Knight", "Phoenix", "Ogre", "Troll"]
+	"Dagger", "Shield", "Heart", "Paladin", "Knight", "Phoenix", "Ogre", "Troll"],
+	
+"Inns":["Inn", "Tavern", "Pub", "Keep", "Lodge", "Saloon", "Lounge", "Roadhouse", "Alehouse", "Taproom", "Brewery"],
+
+"Blacksmiths":["Smith", "Blacksmith", "Metals", "Mettlery", "Forge", "Irons", "Ironworks", "Steelworks"],
+
+"Magicshops":["Magic Shop", "Wizardworks", "Supplies", "Shop", "Codex", "Academia", "Alchemics","Alchemyworks", "Cauldron", "Supplies", "Magic Supplies"],
+
+"Jewelers":["Jewels", "Gems", "Jewelry", "Goldsmith", "Gemsmith", "Silversmith", "Goldworks", "Silverworks"],
+
+"Generalstores":["General", "Shop", "Market", "Emporium", "Outlet", "Stand", "Supplies"],
+
+"Booksellers":["Libary", "Books", "Study", "Book Store", "Shelf"]
+	
 }
