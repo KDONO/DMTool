@@ -1,0 +1,43 @@
+{
+"Blacksmith":
+	{
+	"Armor":
+		{
+		"Studded Leather":
+			{"name":"Studded Leather",
+			"cost":"45",
+			"value":"gp",
+			"limited":false,
+			"rural":false,
+			"urban":false,
+			"premium":true},
+		"Chain Shirt":
+			{"name":"Chain Shirt",
+			"cost":"50",
+			"value":"gp",
+			"limited":true,
+			"rural":true,
+			"urban":true,
+			"premium":true},
+		"Scale Mail":
+			{"name":"Scale Mail",
+			"cost":"50",
+			"value":"gp",
+			"limited":false,
+			"rural":false,
+			"urban":true,
+			"premium":true}
+		},
+	"Weapons":
+		{
+		"Dagger":
+			{"name":"Dagger",
+			"cost":"2",
+			"value":"gp",
+			"limited":true,
+			"rural":true,
+			"urban":true,
+			"premium":true}
+		}
+	}
+}

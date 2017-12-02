@@ -1,6 +1,6 @@
-package NPCPackage;
+package npcPackage;
 
-public enum Races 
+public enum RaceEnum 
 {
 	HUMAN, ORC, ELF, HALFELF, HALFORC, RANDOM
 }

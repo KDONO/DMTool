@@ -1,4 +1,4 @@
-package MainPackage;
+package mainPackage;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -13,8 +13,8 @@ import org.json.simple.JSONArray;
 import org.json.simple.parser.ParseException;
 import org.json.simple.parser.JSONParser;
 
-import NPCPackage.*;
-import ShopPackage.*;
+import npcPackage.*;
+import shopPackage.*;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -37,7 +37,7 @@ JButton npcGenerate;
 //Shop Generation
 JLabel shopLabel;
 JComboBox<String> selectShopType;
-String[] shopTypes = {"Blacksmith", "Inn", "Magic Shop", "Jeweler", "General Store", "Bookseller"};
+String[] shopTypes = {"Blacksmith", "Inn", "Bowyer", "Leatherworker", "Temple", "Tailor", "Potions", "Magic Shop", "Jeweler", "General Store", "Bookseller"};
 JLabel shopResult;
 JTextArea shopResultField;
 JScrollPane shopScrollPane;
@@ -128,39 +128,39 @@ public class NpcGenerateButtonHandler implements ActionListener
 {
 	public void actionPerformed(ActionEvent e) 
 	{	
-	Races currentRace = Races.RANDOM;
-	Genders currentGender = Genders.RANDOM;
+	RaceEnum currentRace = RaceEnum.RANDOM;
+	GenderEnum currentGender = GenderEnum.RANDOM;
 	
 	switch(selectRaceBox.getSelectedItem().toString())
 		{
 		case "Human":
-			currentRace = Races.HUMAN;
+			currentRace = RaceEnum.HUMAN;
 		break;
 		case "Elf":
-			currentRace = Races.ELF;
+			currentRace = RaceEnum.ELF;
 		break;
 		case "Half-Elf":
-			currentRace = Races.HALFELF;
+			currentRace = RaceEnum.HALFELF;
 		break;
 		case "Orc":
-			currentRace = Races.ORC;
+			currentRace = RaceEnum.ORC;
 		break;
 		case "Half-Orc":
-			currentRace = Races.HALFORC;
+			currentRace = RaceEnum.HALFORC;
 		break;
 		case "Random":
 		{
 			int randomNum = 1 + (int)(Math.random() * 5);
 			if(randomNum == 1)
-				currentRace = Races.HUMAN;
+				currentRace = RaceEnum.HUMAN;
 			if(randomNum == 2)
-				currentRace = Races.ELF;
+				currentRace = RaceEnum.ELF;
 			if(randomNum == 3)
-				currentRace = Races.HALFELF;
+				currentRace = RaceEnum.HALFELF;
 			if(randomNum == 4)
-				currentRace = Races.ORC;
+				currentRace = RaceEnum.ORC;
 			if(randomNum == 5)
-				currentRace = Races.HALFORC;
+				currentRace = RaceEnum.HALFORC;
 		}
 		break;
 		}
@@ -168,18 +168,18 @@ public class NpcGenerateButtonHandler implements ActionListener
 	switch(selectGenderBox.getSelectedItem().toString())
 	{
 		case "Male":
-			currentGender = Genders.MALE;
+			currentGender = GenderEnum.MALE;
 		break;
 		case "Female":
-			currentGender = Genders.FEMALE;
+			currentGender = GenderEnum.FEMALE;
 		break;
 		case "Random":
 		{
 			int randomNum = 1 + (int)(Math.random() * 2);
 			if(randomNum == 1)
-				currentGender = Genders.MALE;
+				currentGender = GenderEnum.MALE;
 			if(randomNum == 2)
-				currentGender = Genders.FEMALE;
+				currentGender = GenderEnum.FEMALE;
 		}
 		break;
 	}
@@ -191,27 +191,42 @@ public class ShopGenerateButtonHandler implements ActionListener
 {
 	public void actionPerformed(ActionEvent e) 
 	{	
-		ShopTypes currentShop = ShopTypes.INN;
+		ShopTypeEnum currentShop = ShopTypeEnum.INN;
 		
 		switch(selectShopType.getSelectedItem().toString())
 		{
 		case "Inn":
-			currentShop = ShopTypes.INN;
+			currentShop = ShopTypeEnum.INN;
 			break;
 		case "Blacksmith":
-			currentShop = ShopTypes.BLACKSMITH;
+			currentShop = ShopTypeEnum.BLACKSMITH;
+			break;
+		case "Bowyer":
+			currentShop = ShopTypeEnum.BOWYER;
+			break;
+		case "Leatherworker":
+			currentShop = ShopTypeEnum.LEATHERWORKER;
+			break;
+		case "Temple":
+			currentShop = ShopTypeEnum.TEMPLE;
+			break;
+		case "Tailor":
+			currentShop = ShopTypeEnum.TAILOR;
+			break;
+		case "Potions":
+			currentShop = ShopTypeEnum.POTIONS;
 			break;
 		case "Magic Shop":
-			currentShop = ShopTypes.MAGICSHOP;
+			currentShop = ShopTypeEnum.MAGICSHOP;
 			break;
 		case "Jeweler":
-			currentShop = ShopTypes.JEWELER;
+			currentShop = ShopTypeEnum.JEWELER;
 			break;
 		case "General Store":
-			currentShop = ShopTypes.GENERALSTORE;
+			currentShop = ShopTypeEnum.GENERALSTORE;
 			break;
 		case "Bookseller":
-			currentShop = ShopTypes.BOOKSELLER;
+			currentShop = ShopTypeEnum.BOOKSELLER;
 			break;
 		}
 		shopResultField.setText(shopManager.generate(currentShop));
