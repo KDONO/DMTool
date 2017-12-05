@@ -8,7 +8,7 @@
 
 "Adjectives":["Busy","Angry", "Black", "Gruesome", "Violet", "Deranged", "Merciful", "Lucky", "Quaint", "Quick", "Sudden", "Skinny", "Dire",
 		"Fantastic", "Jaded", "Gold", "Sleeping", "Outrageous", "Burnt", "Elated", "Blue", "Virtuous", "Red", "Common", "Mad",
-		"Young", "Zestful", "Keen", "Needy"],
+		"Young", "Zestful", "Keen", "Needy", "Holy", "Righteous", "Divine"],
 
 
 "Nouns":["Dragon","Blossom", "Bear", "Snapdragon", "Goat", "Chainmail", "Tiger", "Well", "Pumpkin", "Octopus", "Cavern", "Flower", "Jester",
@@ -17,9 +17,19 @@
 	
 "Inns":["Inn", "Tavern", "Pub", "Keep", "Lodge", "Saloon", "Lounge", "Roadhouse", "Alehouse", "Taproom", "Brewery"],
 
-"Blacksmiths":["Smith", "Blacksmith", "Metals", "Mettlery", "Forge", "Irons", "Ironworks", "Steelworks"],
+"Blacksmiths":["Smith", "Blacksmith", "Metals", "Forge", "Irons", "Ironworks", "Steelworks", "Armory"],
 
-"Magicshops":["Magic Shop", "Wizardworks", "Supplies", "Shop", "Codex", "Academia", "Alchemics","Alchemyworks", "Cauldron", "Supplies", "Magic Supplies"],
+"Bowyer":["Fletcher", "Bowyer", "Hunting Essentials", "Fletchery"], 
+
+"Leatherworker":["Leathers", "Hide Shop", "Leatherworks", "Leathersmith"],
+
+"Temple":["Temple Shop", "Supplies", "Temple", "Faith Store"],
+
+"Tailor":["Tailor", "Textiles", "Cloths"],
+
+"Potions":["Potion Shop", "Alchemical Supplies", "Alchemics", "Alchemyworks", "Potions", "Cauldron"],
+
+"Magicshops":["Magic Shop", "Wizardworks", "Arcana", "Arcanaworks", "Supplies", "Shop", "Codex", "Academia", "Magic Supplies"],
 
 "Jewelers":["Jewels", "Gems", "Jewelry", "Goldsmith", "Gemsmith", "Silversmith", "Goldworks", "Silverworks"],
 
