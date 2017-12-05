@@ -37,7 +37,10 @@ JButton npcGenerate;
 //Shop Generation
 JLabel shopLabel;
 JComboBox<String> selectShopType;
+JLabel avenueLabel;
+JComboBox<String> selectAvenueType;
 String[] shopTypes = {"Blacksmith", "Inn", "Bowyer", "Leatherworker", "Temple", "Tailor", "Potions", "Magic Shop", "Jeweler", "General Store", "Bookseller"};
+String[] avenueTypes = {"Base","Rural","Urban","Premium"};
 JLabel shopResult;
 JTextArea shopResultField;
 JScrollPane shopScrollPane;
@@ -94,6 +97,8 @@ public Main() throws FileNotFoundException, IOException, ParseException
 		npcPanel.setBorder(shopBorder);
 	shopLabel = new JLabel("Shop Type:");
 	selectShopType = new JComboBox<String>(shopTypes);
+	avenueLabel = new JLabel("Avenue Type:");
+	selectAvenueType = new JComboBox<String>(avenueTypes);
 	shopResult = new JLabel("Result:");
 	shopResultField = new JTextArea(10, 10);
 	shopScrollPane = new JScrollPane(shopResultField);
@@ -104,6 +109,8 @@ public Main() throws FileNotFoundException, IOException, ParseException
 	shopPanel.setLayout(new BoxLayout(shopPanel, BoxLayout.PAGE_AXIS));
 	shopPanel.add(shopLabel);
 	shopPanel.add(selectShopType);
+	shopPanel.add(avenueLabel);
+	shopPanel.add(selectAvenueType);
 	shopPanel.add(shopResult);
 	shopPanel.add(shopScrollPane);
 	shopPanel.add(shopGenerate);
@@ -192,7 +199,24 @@ public class ShopGenerateButtonHandler implements ActionListener
 	public void actionPerformed(ActionEvent e) 
 	{	
 		ShopTypeEnum currentShop = ShopTypeEnum.INN;
-		
+		AvenueEnum currentAvenue= AvenueEnum.BASE;
+
+		switch(selectAvenueType.getSelectedItem().toString())
+		{
+		case "Base":
+			currentAvenue = AvenueEnum.BASE;
+			break;
+		case "Rural":
+			currentAvenue = AvenueEnum.RURAL;
+			break;
+		case "Urban":
+			currentAvenue = AvenueEnum.URBAN;
+			break;
+		case "Premium":
+			currentAvenue = AvenueEnum.PREMIUM;
+			break;
+		}
+
 		switch(selectShopType.getSelectedItem().toString())
 		{
 		case "Inn":
@@ -229,7 +253,7 @@ public class ShopGenerateButtonHandler implements ActionListener
 			currentShop = ShopTypeEnum.BOOKSELLER;
 			break;
 		}
-		shopResultField.setText(shopManager.generate(currentShop));
+		shopResultField.setText(shopManager.generateShop(currentShop, currentAvenue));
 	}
 }
 

@@ -58,7 +58,7 @@ public class ItemManager
 	JSONArray PremiumMagic;
 
 //Returns an arraylist of possible inventory based on the avenue
-public ArrayList<String> getInventory(ShopTypeEnum Shop, AvenueEnum Ave)
+public ArrayList<String> getInventory(ShopTypeEnum shop, AvenueEnum ave)
 {
 	ArrayList<String> output = new ArrayList<String>();
 
@@ -67,8 +67,18 @@ public ArrayList<String> getInventory(ShopTypeEnum Shop, AvenueEnum Ave)
 	JSONArray urbanInventory = null;
 	JSONArray premiumInventory = null;
 
-	switch(Shop)
+	switch(shop)
 	{
+	case INN:
+	{
+		output = null;
+	}
+	case BOOKSELLER:
+	{
+		output = null;
+	}
+
+	break;
 	case BLACKSMITH:
 	{
 		baseInventory = BaseBlacksmith;
@@ -145,7 +155,7 @@ public ArrayList<String> getInventory(ShopTypeEnum Shop, AvenueEnum Ave)
 
 	}
 	
-	switch(Ave)
+	switch(ave)
 	{
 		case BASE:
 		{

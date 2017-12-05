@@ -20,6 +20,7 @@ JSONArray Adjectives;
 JSONArray Nouns;
 
 JSONArray Inns;
+JSONArray Booksellers;
 JSONArray Blacksmiths;
 JSONArray Bowyer;
 JSONArray Leatherworker;
@@ -29,9 +30,61 @@ JSONArray Potions;
 JSONArray Magicshops;
 JSONArray Jewelers;
 JSONArray Generalstores;
-JSONArray Booksellers;
 
-public String generate(ShopTypeEnum shopType)
+static ItemManager itemManager = new ItemManager();
+
+public String generateShop(ShopTypeEnum shopType, AvenueEnum avenue)
+{
+	String output = (generateName(shopType)+" \n"
+			+"-Inventory-\n");
+	
+	ArrayList<String> inventory =  itemManager.getInventory(shopType, avenue);
+	ArrayList<String> outputinv = new ArrayList<String>();
+	
+	if(inventory != null)
+	{
+		switch(avenue)
+		{
+		case BASE:
+		{
+		int randomNum = 1 + (int)(Math.random() * 5);
+		for(int i = 0; i<randomNum;i++)
+			outputinv.add(inventory.get((int) Math.floor((Math.random() * inventory.size()))));
+		}
+		break;
+		case RURAL:
+		{
+			int randomNum = 1 + (int)(Math.random() * 15);
+			for(int i = 0; i<randomNum;i++)
+				outputinv.add(inventory.get((int) Math.floor((Math.random() * inventory.size()))));
+		}
+		break;
+		case URBAN:
+		{
+			int randomNum = 1 + (int)(Math.random() * 20);
+			for(int i = 0; i<randomNum;i++)
+				outputinv.add(inventory.get((int) Math.floor((Math.random() * inventory.size()))));
+		}
+		break;
+		case PREMIUM:
+		{
+			int randomNum = 1 + (int)(Math.random() * 25);
+			for(int i = 0; i<randomNum;i++)
+				outputinv.add(inventory.get((int) Math.floor((Math.random() * inventory.size()))));
+		}
+		break;
+		}
+		
+		for(int i = 0; i<outputinv.size();i++)
+		{
+			output = output.concat(outputinv.get(i)+"\n");
+		}
+	}
+	
+	return output;
+}
+
+public String generateName(ShopTypeEnum shopType)
 {
 	String output = "";
 	
@@ -128,6 +181,9 @@ private String getShop(ShopTypeEnum shopType)
 //JSON parser
 public void parseJSON() throws FileNotFoundException, IOException, ParseException 
 {
+	// Parse Items First
+	itemManager.parseJSON();
+
 	//Get the JSON file as one JObject
     JSONParser parser = new JSONParser();
     
