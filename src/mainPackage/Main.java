@@ -29,7 +29,7 @@ JLabel resultLabel;
 JComboBox<String> selectGenderBox;
 String[] genders = {"Random","Male","Female"};
 JComboBox<String> selectRaceBox;
-String[] races = {"Random","Human", "Orc", "Half-Orc", "Elf", "Half-Elf"};
+String[] races = {"Random","Human", "Elf", "Dwarf", "Gnome", "Halfling", "Orc", "Dragonborn","Tiefling"};
 JScrollPane npcScrollPane;
 JTextArea npcResultField;
 JButton npcGenerate;
@@ -146,28 +146,43 @@ public class NpcGenerateButtonHandler implements ActionListener
 		case "Elf":
 			currentRace = RaceEnum.ELF;
 		break;
-		case "Half-Elf":
-			currentRace = RaceEnum.HALFELF;
-		break;
 		case "Orc":
 			currentRace = RaceEnum.ORC;
 		break;
-		case "Half-Orc":
-			currentRace = RaceEnum.HALFORC;
+		case "Dwarf":
+			currentRace = RaceEnum.DWARF;
+		break;
+		case "Gnome":
+			currentRace = RaceEnum.GNOME;
+		break;
+		case "Halfling":
+			currentRace = RaceEnum.HALFLING;
+		break;
+		case "Dragonborn":
+			currentRace = RaceEnum.DRAGONBORN;
+		break;
+		case "Tiefling":
+			currentRace = RaceEnum.TIEFLING;
 		break;
 		case "Random":
 		{
-			int randomNum = 1 + (int)(Math.random() * 5);
+			int randomNum = 1 + (int)(Math.random() * 8);
 			if(randomNum == 1)
 				currentRace = RaceEnum.HUMAN;
 			if(randomNum == 2)
 				currentRace = RaceEnum.ELF;
 			if(randomNum == 3)
-				currentRace = RaceEnum.HALFELF;
-			if(randomNum == 4)
 				currentRace = RaceEnum.ORC;
+			if(randomNum == 4)
+				currentRace = RaceEnum.DWARF;
 			if(randomNum == 5)
-				currentRace = RaceEnum.HALFORC;
+				currentRace = RaceEnum.HALFLING;
+			if(randomNum == 6)
+				currentRace = RaceEnum.GNOME;
+			if(randomNum == 7)
+				currentRace = RaceEnum.TIEFLING;
+			if(randomNum == 8)
+				currentRace = RaceEnum.DRAGONBORN;
 		}
 		break;
 		}

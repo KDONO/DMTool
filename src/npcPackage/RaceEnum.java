@@ -2,5 +2,5 @@ package npcPackage;
 
 public enum RaceEnum 
 {
-	HUMAN, ORC, ELF, HALFELF, HALFORC, RANDOM
+	HUMAN, ORC, ELF, DWARF, GNOME, HALFLING, DRAGONBORN, TIEFLING, RANDOM
 }

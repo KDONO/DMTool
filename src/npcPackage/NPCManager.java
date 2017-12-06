@@ -14,16 +14,38 @@ import org.json.simple.parser.ParseException;
 public class NPCManager 
 {
 	//Names
-    JSONArray MaleNames;
-    JSONArray FemaleNames;
-    JSONArray Surnames; 
-    JSONArray OrcMaleNames;
-    JSONArray OrcFemaleNames;
-    JSONArray OrcSurnames;
-    JSONArray ElfMaleNames; 
-    JSONArray ElfFemaleNames;
-    JSONArray ElfSurnames;
+    JSONArray MHumanNames;
+    JSONArray FHumanNames;
+    JSONArray SHumanNames; 
     
+    JSONArray MDwarfNames; 
+    JSONArray FDwarfNames;
+    JSONArray SDwarfNames;
+    
+    JSONArray MGnomeNames; 
+    JSONArray FGnomeNames;
+    JSONArray SGnomeNames;
+    
+    JSONArray MHalflingNames; 
+    JSONArray FHalflingNames;
+    JSONArray SHalflingNames;
+    
+    JSONArray MOrcNames;
+    JSONArray FOrcNames;
+    JSONArray SOrcNames;
+    
+    JSONArray MElfNames; 
+    JSONArray FElfNames;
+    JSONArray SElfNames;    
+    
+    JSONArray MTieflingNames; 
+    JSONArray FTieflingNames;
+    JSONArray VTieflingNames;
+    
+    JSONArray MDragonbornNames; 
+    JSONArray FDragonbornNames;
+    JSONArray SDragonbornNames;
+
     //Traits
     JSONArray Appearance;
     JSONArray Ability;
@@ -71,57 +93,57 @@ public class NPCManager
 		{
 			case HUMAN:
 			{
-			String name = MaleNames.get((int) Math.floor((Math.random() * MaleNames.size()))) 
-					+ " " + MaleNames.get((int) Math.floor((Math.random() * MaleNames.size()))) 
-					+ " " + Surnames.get((int) Math.floor((Math.random() * Surnames.size()))); 
+			String name = MHumanNames.get((int) Math.floor((Math.random() * MHumanNames.size()))) 
+					+ " " + SHumanNames.get((int) Math.floor((Math.random() * SHumanNames.size()))); 
 			output = name;
 			}
 			break;
 			case ORC:
 			{
-			String name = OrcMaleNames.get((int) Math.floor((Math.random() * OrcMaleNames.size()))) 
-					+ " " + OrcMaleNames.get((int) Math.floor((Math.random() * OrcMaleNames.size()))) 
-					+ " " + OrcSurnames.get((int) Math.floor((Math.random() * OrcSurnames.size()))); 	
+			String name = MOrcNames.get((int) Math.floor((Math.random() * MOrcNames.size()))) 
+					+ " " + SOrcNames.get((int) Math.floor((Math.random() * SOrcNames.size()))); 	
 			output = name;
 			}
 			break;
 			case ELF:
 			{
-			String name = ElfMaleNames.get((int) Math.floor((Math.random() * ElfMaleNames.size()))) 
-					+ " " + ElfMaleNames.get((int) Math.floor((Math.random() * ElfMaleNames.size()))) 
-					+ " " + ElfSurnames.get((int) Math.floor((Math.random() * ElfSurnames.size()))); 	
+			String name = MElfNames.get((int) Math.floor((Math.random() * MElfNames.size()))) 
+					+ " " + SElfNames.get((int) Math.floor((Math.random() * SElfNames.size()))); 	
 			output = name;
 			}
 			break;
-			case HALFORC:
+			case DWARF:
 			{
-			ArrayList<String> firstname = new ArrayList<>(MaleNames.size() + OrcMaleNames.size());
-			firstname.addAll(MaleNames);
-			firstname.addAll(OrcMaleNames);
-			
-			ArrayList<String> lastname = new ArrayList<>(Surnames.size() + OrcSurnames.size());
-			lastname.addAll(Surnames);
-			lastname.addAll(OrcSurnames);
-
-			String name = firstname.get((int) Math.floor((Math.random() * firstname.size()))) 
-					+ " " + firstname.get((int) Math.floor((Math.random() * firstname.size()))) 
-					+ " " + lastname.get((int) Math.floor((Math.random() * lastname.size()))); 	
+			String name = MDwarfNames.get((int) Math.floor((Math.random() * MDwarfNames.size()))) 
+					+ " " + SDwarfNames.get((int) Math.floor((Math.random() * SDwarfNames.size()))); 	
 			output = name;
 			}
 			break;
-			case HALFELF:
+			case GNOME:
 			{
-			ArrayList<String> firstname = new ArrayList<>(MaleNames.size() + ElfMaleNames.size());
-			firstname.addAll(MaleNames);
-			firstname.addAll(ElfMaleNames);
-			
-			ArrayList<String> lastname = new ArrayList<>(Surnames.size() + ElfSurnames.size());
-			lastname.addAll(Surnames);
-			lastname.addAll(ElfSurnames);
-
-			String name = firstname.get((int) Math.floor((Math.random() * firstname.size()))) 
-					+ " " + firstname.get((int) Math.floor((Math.random() * firstname.size()))) 
-					+ " " + lastname.get((int) Math.floor((Math.random() * lastname.size()))); 	
+			String name = MGnomeNames.get((int) Math.floor((Math.random() * MGnomeNames.size()))) 
+					+ " " + SGnomeNames.get((int) Math.floor((Math.random() * SGnomeNames.size()))); 	
+			output = name;
+			}
+			break;
+			case HALFLING:
+			{
+			String name = MHalflingNames.get((int) Math.floor((Math.random() * MHalflingNames.size()))) 
+					+ " " + SHalflingNames.get((int) Math.floor((Math.random() * SHalflingNames.size()))); 	
+			output = name;
+			}
+			break;
+			case DRAGONBORN:
+			{
+			String name = MDragonbornNames.get((int) Math.floor((Math.random() * MDragonbornNames.size()))) 
+					+ " " + SDragonbornNames.get((int) Math.floor((Math.random() * SDragonbornNames.size()))); 	
+			output = name;
+			}
+			break;
+			case TIEFLING:
+			{
+			String name = "\""+VTieflingNames.get((int) Math.floor((Math.random() * VTieflingNames.size()))) 
+					+ "\" " + MTieflingNames.get((int) Math.floor((Math.random() * MTieflingNames.size()))); 	
 			output = name;
 			}
 			break;
@@ -136,60 +158,61 @@ public class NPCManager
 		{
 			case HUMAN:
 			{
-			String name = FemaleNames.get((int) Math.floor((Math.random() * FemaleNames.size()))) 
-					+ " " + FemaleNames.get((int) Math.floor((Math.random() * FemaleNames.size()))) 
-					+ " " + Surnames.get((int) Math.floor((Math.random() * Surnames.size()))); 
+			String name = FHumanNames.get((int) Math.floor((Math.random() * FHumanNames.size()))) 
+					+ " " + SHumanNames.get((int) Math.floor((Math.random() * SHumanNames.size()))); 
 			output = name;
 			}
 			break;
 			case ORC:
 			{
-			String name = OrcFemaleNames.get((int) Math.floor((Math.random() * OrcFemaleNames.size()))) 
-					+ " " + OrcFemaleNames.get((int) Math.floor((Math.random() * OrcFemaleNames.size()))) 
-					+ " " + OrcSurnames.get((int) Math.floor((Math.random() * OrcSurnames.size()))); 	
+			String name = FOrcNames.get((int) Math.floor((Math.random() * FOrcNames.size()))) 
+					+ " " + SOrcNames.get((int) Math.floor((Math.random() * SOrcNames.size()))); 	
 			output = name;
 			}
 			break;
 			case ELF:
 			{
-			String name = ElfFemaleNames.get((int) Math.floor((Math.random() * ElfFemaleNames.size()))) 
-					+ " " + ElfFemaleNames.get((int) Math.floor((Math.random() * ElfFemaleNames.size()))) 
-					+ " " + ElfSurnames.get((int) Math.floor((Math.random() * ElfSurnames.size()))); 	
+			String name = FElfNames.get((int) Math.floor((Math.random() * FElfNames.size()))) 
+					+ " " + SElfNames.get((int) Math.floor((Math.random() * SElfNames.size()))); 	
 			output = name;
 			}
 			break;
-			case HALFORC:
+			case DWARF:
 			{
-			ArrayList<String> firstname = new ArrayList<>(FemaleNames.size() + OrcFemaleNames.size());
-			firstname.addAll(FemaleNames);
-			firstname.addAll(OrcFemaleNames);
-			
-			ArrayList<String> lastname = new ArrayList<>(Surnames.size() + OrcSurnames.size());
-			lastname.addAll(Surnames);
-			lastname.addAll(OrcSurnames);
-
-			String name = firstname.get((int) Math.floor((Math.random() * firstname.size()))) 
-					+ " " + firstname.get((int) Math.floor((Math.random() * firstname.size()))) 
-					+ " " + lastname.get((int) Math.floor((Math.random() * lastname.size()))); 	
+			String name = FDwarfNames.get((int) Math.floor((Math.random() * FDwarfNames.size()))) 
+					+ " " + SDwarfNames.get((int) Math.floor((Math.random() * SDwarfNames.size()))); 	
 			output = name;
 			}
 			break;
-			case HALFELF:
+			case GNOME:
 			{
-			ArrayList<String> firstname = new ArrayList<>(FemaleNames.size() + ElfFemaleNames.size());
-			firstname.addAll(FemaleNames);
-			firstname.addAll(ElfFemaleNames);
-			
-			ArrayList<String> lastname = new ArrayList<>(Surnames.size() + ElfSurnames.size());
-			lastname.addAll(Surnames);
-			lastname.addAll(ElfSurnames);
-
-			String name = firstname.get((int) Math.floor((Math.random() * firstname.size()))) 
-					+ " " + firstname.get((int) Math.floor((Math.random() * firstname.size()))) 
-					+ " " + lastname.get((int) Math.floor((Math.random() * lastname.size()))); 	
+			String name = FGnomeNames.get((int) Math.floor((Math.random() * FGnomeNames.size()))) 
+					+ " " + SGnomeNames.get((int) Math.floor((Math.random() * SGnomeNames.size()))); 	
 			output = name;
 			}
 			break;
+			case HALFLING:
+			{
+			String name = FHalflingNames.get((int) Math.floor((Math.random() * FHalflingNames.size()))) 
+					+ " " + SHalflingNames.get((int) Math.floor((Math.random() * SHalflingNames.size()))); 	
+			output = name;
+			}
+			break;
+			case DRAGONBORN:
+			{
+			String name = FDragonbornNames.get((int) Math.floor((Math.random() * FDragonbornNames.size()))) 
+					+ " " + SDragonbornNames.get((int) Math.floor((Math.random() * SDragonbornNames.size()))); 	
+			output = name;
+			}
+			break;
+			case TIEFLING:
+			{
+			String name = "\""+VTieflingNames.get((int) Math.floor((Math.random() * VTieflingNames.size()))) 
+					+ "\" " + FTieflingNames.get((int) Math.floor((Math.random() * FTieflingNames.size()))); 	
+			output = name;
+			}
+			break;
+
 		}
 		return output;
 	}
@@ -221,16 +244,39 @@ public class NPCManager
 
 	    //Grab the Arrays from the JObject as JArrays
 	    //Names
-	    MaleNames = (JSONArray) nameData.get("MaleNames");
-	    FemaleNames = (JSONArray) nameData.get("FemaleNames");
-	    Surnames = (JSONArray) nameData.get("Surnames");
-	    OrcMaleNames = (JSONArray) nameData.get("OrcMaleNames");
-	    OrcFemaleNames = (JSONArray) nameData.get("OrcFemaleNames");
-	    OrcSurnames = (JSONArray) nameData.get("OrcSurnames");	    
-	    ElfMaleNames = (JSONArray) nameData.get("ElfMaleNames");
-	    ElfFemaleNames = (JSONArray) nameData.get("ElfFemaleNames");
-	    ElfSurnames = (JSONArray) nameData.get("ElfSurnames");
+	    MHumanNames = (JSONArray) nameData.get("MHuman");
+	    FHumanNames = (JSONArray) nameData.get("FHuman");
+	    SHumanNames = (JSONArray) nameData.get("SHuman");	  
 	    
+	    MOrcNames = (JSONArray) nameData.get("MOrc");
+	    FOrcNames = (JSONArray) nameData.get("FOrc");
+	    SOrcNames = (JSONArray) nameData.get("SOrc");	
+	    
+	    MElfNames = (JSONArray) nameData.get("MElf");
+	    FElfNames = (JSONArray) nameData.get("FElf");
+	    SElfNames = (JSONArray) nameData.get("SElf");	
+	    
+	    MDwarfNames = (JSONArray) nameData.get("MDwarf");
+	    FDwarfNames = (JSONArray) nameData.get("FDwarf");
+	    SDwarfNames = (JSONArray) nameData.get("SDwarf");
+	    
+	    MGnomeNames = (JSONArray) nameData.get("MGnome");
+	    FGnomeNames = (JSONArray) nameData.get("FGnome");
+	    SGnomeNames = (JSONArray) nameData.get("SGnome");
+	    
+	    MHalflingNames = (JSONArray) nameData.get("MHalfling");
+	    FHalflingNames = (JSONArray) nameData.get("FHalfling");
+	    SHalflingNames = (JSONArray) nameData.get("SHalfling");	 
+	    
+	    MTieflingNames = (JSONArray) nameData.get("MTiefling");
+	    FTieflingNames = (JSONArray) nameData.get("FTiefling");
+	    VTieflingNames = (JSONArray) nameData.get("VTiefling");	    
+	    
+	    MDragonbornNames = (JSONArray) nameData.get("MDragonborn");
+	    FDragonbornNames = (JSONArray) nameData.get("FDragonborn");
+	    SDragonbornNames = (JSONArray) nameData.get("SDragonborn");	    
+
+
 	    //Traits
 	    Appearance = (JSONArray) traitData.get("Appearance");
 	    Ability = (JSONArray) traitData.get("Ability");
