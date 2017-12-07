@@ -23,10 +23,8 @@ public class Test
 {
 public static void main(String args[]) throws FileNotFoundException, IOException, ParseException
 {
-ItemManager IM = new ItemManager();
-
-IM.parseJSON();
-
+ShopManager shop = new ShopManager();
+shop.parseJSON();
 }
 
 }

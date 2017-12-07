@@ -38,58 +38,7 @@ Random randomizer = new Random();
 static InventoryManager itemManager = new InventoryManager();
 
 //Generates inventory then name
-public String generateShop(ShopTypeEnum shopType, WealthEnum wealth)
-{
-	String output = (generateName(shopType)+" \n"
-			+"\n"
-			+"-Inventory-\n");
 	
-	ArrayList<String> inventory =  itemManager.getInventory(shopType, wealth);
-	ArrayList<String> outputinv = new ArrayList<String>();
-
-	if(inventory != null)
-	{
-		switch(wealth)
-		{
-		case BASE:
-		{
-		int randomNum = 1 + randomizer.nextInt(5);
-		for(int i = 0; i<randomNum;i++)
-			outputinv.add(inventory.get(randomizer.nextInt(inventory.size())));
-		}
-		break;
-		case LOW:
-		{
-			int randomNum = 6 + randomizer.nextInt(15);
-			for(int i = 0; i<randomNum;i++)
-				outputinv.add(inventory.get(randomizer.nextInt(inventory.size())));
-		}
-		break;
-		case MEDIUM:
-		{
-			int randomNum = 6 + randomizer.nextInt(20);
-			for(int i = 0; i<randomNum;i++)
-				outputinv.add(inventory.get(randomizer.nextInt(inventory.size())));
-		}
-		break;
-		case HIGH:
-		{
-			int randomNum = 11 + randomizer.nextInt(25);
-			for(int i = 0; i<randomNum;i++)
-				outputinv.add(inventory.get(randomizer.nextInt(inventory.size())));
-		}
-		break;
-		}
-		
-		for(int i = 0; i<outputinv.size();i++)
-		{
-			output = output.concat(outputinv.get(i)+"\n");
-		}
-	}
-	
-	return output;
-}
-
 //Generates Name
 public String generateName(ShopTypeEnum shopType)
 {

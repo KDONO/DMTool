@@ -220,21 +220,21 @@ public class ShopGenerateButtonHandler implements ActionListener
 	public void actionPerformed(ActionEvent e) 
 	{	
 		ShopTypeEnum currentShop = ShopTypeEnum.INN;
-		WealthEnum currentAvenue= WealthEnum.BASE;
+		WealthEnum currentWealth= WealthEnum.BASE;
 
 		switch(selectWealthLevel.getSelectedItem().toString())
 		{
 		case "Base":
-			currentAvenue = WealthEnum.BASE;
+			currentWealth = WealthEnum.BASE;
 			break;
 		case "Rural":
-			currentAvenue = WealthEnum.LOW;
+			currentWealth = WealthEnum.LOW;
 			break;
 		case "Urban":
-			currentAvenue = WealthEnum.MEDIUM;
+			currentWealth = WealthEnum.MEDIUM;
 			break;
 		case "Premium":
-			currentAvenue = WealthEnum.HIGH;
+			currentWealth = WealthEnum.HIGH;
 			break;
 		}
 
@@ -274,7 +274,7 @@ public class ShopGenerateButtonHandler implements ActionListener
 			currentShop = ShopTypeEnum.BOOKSELLER;
 			break;
 		}
-		shopResultField.setText(shopManager.generateShop(currentShop, currentAvenue));
+		shopResultField.setText(shopManager.generateName(currentShop));
 	}
 }
 
