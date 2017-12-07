@@ -13,6 +13,7 @@ import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
 
 import shopPackage.Item;
+import shopPackage.ItemManager;
 import shopPackage.WealthEnum;
 import shopPackage.InventoryManager;
 import shopPackage.ShopManager;
@@ -22,15 +23,9 @@ public class Test
 {
 public static void main(String args[]) throws FileNotFoundException, IOException, ParseException
 {
+ItemManager IM = new ItemManager();
 
-Gson gson = new Gson();
-JsonReader reader = new JsonReader(new FileReader("data/basicitems.json"));
-Item item[] = gson.fromJson(reader, Item[].class);
-
-System.out.println(item.length);
-
-
-System.out.println(item[50].toString());
+IM.parseJSON();
 
 }
 
