@@ -997,71 +997,7 @@
 			"source": "PHB",
 			"page": "154",
 			"entries": [
-				"{@italic Alchemist's supplies} enable a character to produce useful concoctions, such as acid or alchemist's fire.",
-				{
-					"type": "entries",
-					"name": "Components",
-					"entries": [
-						"{@italic Alchemist's supplies} include two glass beakers, a metal frame to hold a beaker in place over an open flame, a glass stirring rod, a small mortar and pestle, and a pouch of common alchemical ingredients, including salt, powdered iron, and purified water."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Arcana",
-					"entries": [
-						"Proficiency with alchemist's supplies allows you to unlock more information on Arcana checks involving potions and similar materials."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Investigation",
-					"entries": [
-						"When you inspect an area for clues, proficiency with alchemist's supplies grants additional insight into any chemicals or other substances that might have been used in the area."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Alchemical Crafting",
-					"entries": [
-						"You can use this tool proficiency to create alchemical items. A character can spend money to collect raw materials, which weigh 1 pound for every 50 gp spent. The DM can allow a character to make a check using the indicated skill with advantage."
-					]
-				},
-				"As part of a long rest, you can use alchemist's supplies to make one dose of acid, alchemist's fire, antitoxin, oil, perfume, or soap. Subtract half the value of the created item from the total gp worth of raw materials you are carrying.",
-				{
-					"type": "table",
-					"caption": "Alchemist's Supplies",
-					"colLabels": [
-						"Activity",
-						"DC"
-					],
-					"colStyles": [
-						"col-xs-5",
-						"col-xs-7"
-					],
-					"rows": [
-						[
-							"Create a puff of thick smoke",
-							"10"
-						],
-						[
-							"Identify a poison",
-							"10"
-						],
-						[
-							"Identify a substance",
-							"15"
-						],
-						[
-							"Start a fire",
-							"15"
-						],
-						[
-							"Neutralize acid",
-							"20"
-						]
-					]
-				}
-			]
+				"@italic Alchemist's supplies} enable a character to produce useful concoctions, such as acid or alchemist's fire."]
 		},
 		{
 			"name": "Alchemy Jug",
@@ -1074,61 +1010,7 @@
 			"entries": [
 				"This ceramic jug appears to be able to hold a gallon of liquid and weighs 12 pounds whether full or empty. Sloshing sounds can be heard from within the jug when it is shaken, even if the jug is empty.",
 				"You can use an action and name one liquid from the table below to cause the jug to produce the chosen liquid. Afterward, you can uncork the jug as an action and pour that liquid out, up to 2 gallons per minute. The maximum amount of liquid the jug can produce depends on the liquid you named.",
-				"Once the jug starts producing a liquid, it can't produce a different one, or more of one that has reached its maximum, until the next dawn.",
-				{
-					"type": "table",
-					"colLabels": [
-						"Liquid",
-						"Max Amount"
-					],
-					"colStyles": [
-						"col-xs-2",
-						"col-xs-10"
-					],
-					"rows": [
-						[
-							"Acid",
-							"8 ounces"
-						],
-						[
-							"Basic poison",
-							"\u00BD ounce"
-						],
-						[
-							"Beer",
-							"4 gallons"
-						],
-						[
-							"Honey",
-							"1 gallon"
-						],
-						[
-							"Mayonnaise",
-							"2 gallons"
-						],
-						[
-							"Oil",
-							"1 quart"
-						],
-						[
-							"Vinegar",
-							"2 gallons"
-						],
-						[
-							"Water, fresh",
-							"8 gallons"
-						],
-						[
-							"Water, salt",
-							"12 gallons"
-						],
-						[
-							"Wine",
-							"1 gallon"
-						]
-					]
-				}
-			]
+				"Once the jug starts producing a liquid, it can't produce a different one, or more of one that has reached its maximum, until the next dawn."]
 		},
 		{
 			"name": "Amulet of Health",
@@ -1203,80 +1085,7 @@
 			"source": "DMG",
 			"page": "151",
 			"entries": [
-				"This item first appears to be a Large sealed iron barrel weighing 500 pounds. The barrel has a hidden catch, which can be found with a successful DC 20 Intelligence ({@skill Investigation}) check. Releasing the catch unlocks a hatch at one end of the barrel, allowing two Medium or smaller creatures to crawl inside. Ten levers are set in a row at the far end, each in a neutral position, able to move either up or down. When certain levers are used, the apparatus transforms to resemble a giant lobster.",
-				"The apparatus of Kwalish is a Large object with the following statistics:",
-				"{@bold Armor Class:} 20",
-				"{@bold Hit Points:} 200",
-				"{@bold Speed:} 30 ft., swim 30 ft. (or 0 ft. for both if the legs and tail aren't extended)",
-				"{@bold Damage Immunities:} poison, psychic",
-				"To be used as a vehicle, the apparatus requires one pilot. While the apparatus's hatch is closed, the compartment is airtight and watertight. The compartment holds enough air for 10 hours of breathing, divided by the number of breathing creatures inside.",
-				" The apparatus floats on water. It can also go underwater to a depth of 900 feet. Below that, the vehicle takes 2d6 bludgeoning damage per minute from pressure.",
-				"A creature in the compartment can use an action to move as many as two of the apparatus's levers up or down. After each use, a lever goes back to its neutral position. Each lever, from left to right, functions as shown in the Apparatus of Kwalish Levers table.",
-				{
-					"type": "table",
-					"caption": "Apparatus of Kwalish Levers:",
-					"colLabels": [
-						"Lever",
-						"Up",
-						"Down"
-					],
-					"colStyles": [
-						"text-align-center"
-					],
-					"rows": [
-						[
-							"1",
-							"Legs and tail extend, allowing the apparatus to walk and swim.",
-							"Legs and tail retract, reducing the apparatus's speed to 0 and making it unable to benefit from bonuses to speed."
-						],
-						[
-							"2",
-							"Forward window shutter opens.",
-							"Forward window shutter closes."
-						],
-						[
-							"3",
-							"Side window shutters open (two per side).",
-							"Side window shutters close (two per side)."
-						],
-						[
-							"4",
-							"Two claws extend from the front sides of the apparatus.",
-							"The claws retract."
-						],
-						[
-							"5",
-							"Each extended claw makes the following melee weapon attack: +8 to hit, reach 5 ft., one target. {@italic Hit:} 7 (2d6) bludgeoning damage.",
-							"Each extended claw makes the following melee weapon attack: +8 to hit, reach 5 ft., one target. {@italic Hit:} The target is grappled (escape DC 15)."
-						],
-						[
-							"6",
-							"The apparatus walks or swims forward.",
-							"The apparatus walks or swims backward."
-						],
-						[
-							"7",
-							"The apparatus turns 90 degrees left.",
-							"The apparatus turns 90 degrees right."
-						],
-						[
-							"8",
-							"Eyelike fixtures emit bright light in a 30-foot radius and dim light for an additional 30 feet.",
-							"The light turns off."
-						],
-						[
-							"9",
-							"The apparatus sinks as much as 20 feet in liquid.",
-							"The apparatus rises up to 20 feet in liquid."
-						],
-						[
-							"10",
-							"The rear hatch unseals and opens.",
-							"The rear hatch closes and seals."
-						]
-					]
-				}
-			]
+				"This item first appears to be a Large sealed iron barrel weighing 500 pounds. The barrel has a hidden catch, which can be found with a successful DC 20 Intelligence ({@skill Investigation}) check. Releasing the catch unlocks a hatch at one end of the barrel, allowing two Medium or smaller creatures to crawl inside. Ten levers are set in a row at the far end, each in a neutral position, able to move either up or down. When certain levers are used, the apparatus transforms to resemble a giant lobster."]
 		},
 		{
 			"name": "Armor of Invulnerability",
@@ -1309,15 +1118,7 @@
 			"page": "152",
 			"reqAttune": "YES",
 			"entries": [
-				"While wearing this armor, you have resistance to bludgeoning damage.",
-				{
-					"type": "entries",
-					"name": "Curse",
-					"entries": [
-						"This armor is cursed, a fact that is revealed only when an {@spell identify|phb} spell is cast on the armor or you attune to it. Attuning to the armor curses you until you are targeted by the {@spell remove curse|phb} spell or similar magic; removing the armor fails to end the curse. While cursed you have vulnerability to piercing and slashing damage."
-					]
-				}
-			]
+				"While wearing this armor, you have resistance to bludgeoning damage."]
 		},
 		{
 			"name": "Armor of Vulnerability (Piercing)",
@@ -1333,15 +1134,7 @@
 			"page": "152",
 			"reqAttune": "YES",
 			"entries": [
-				"While wearing this armor, you have resistance to piercing damage.",
-				{
-					"type": "entries",
-					"name": "Curse",
-					"entries": [
-						"This armor is cursed, a fact that is revealed only when an {@spell identify|phb} spell is cast on the armor or you attune to it. Attuning to the armor curses you until you are targeted by the {@spell remove curse|phb} spell or similar magic; removing the armor fails to end the curse. While cursed you have vulnerability to bludgeoning and slashing damage."
-					]
-				}
-			]
+				"While wearing this armor, you have resistance to piercing damage."]
 		},
 		{
 			"name": "Armor of Vulnerability (Slashing)",
@@ -1411,82 +1204,7 @@
 				"Venturing deep under the mountains, deeper than any dwarf had ever delved, the young prince came to the blazing heart of a great volcano. With the aid of Moradin, the dwarven god of creation, he first crafted four great tools: the {@italic Brutal Pick}, the {@italic Earthheart Forge}, the {@italic Anvil of Songs}, and the {@italic Shaping Hammer}. With them, he forged the {@italic Axe of the Dwarvish Lords}.",
 				"Armed with the artifact, the prince returned to the dwarf clans and brought peace. His axe ended grudges and answered slights. The clans became allies, and they threw back their enemies and enjoyed an era of prosperity. This young dwarf is remembered as the First King. When he became old, he passed the weapon, which had become his badge of office, to his heir. The rightful inheritors passed the axe on for many generations.",
 				"Later, in a dark era marked by treachery and wickedness, the axe was lost in a bloody civil war fomented by greed for its power and the status it bestowed. Centuries later, the dwarves still search for the axe, and many adventurers have made careers of chasing after rumors and plundering old vaults to find it.",
-				"Magic Weapon. The {@italic Axe of the Dwarvish Lords} is a magic weapon that grants a +3 bonus to attack and damage rolls made with it. The axe also functions as a {@item belt of dwarvenkind|dmg}, a {@item dwarven thrower}, and a {@item sword of sharpness}.",
-				{
-					"type": "entries",
-					"name": "Random Properties",
-					"entries": [
-						"The axe has the following randomly determined properties:",
-						{
-							"type": "list",
-							"items": [
-								"2 minor beneficial properties",
-								"1 major beneficial property",
-								"2 minor detrimental properties"
-							]
-						}
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Blessings of Moradin",
-					"entries": [
-						"If you are a dwarf attuned to the axe, you gain the following benefits:",
-						{
-							"type": "list",
-							"items": [
-								"You have immunity to poison damage.",
-								"The range of your darkvision increases by 60 feet.",
-								"You gain proficiency with artisan's tools related to blacksmithing, brewing, and stonemasonry."
-							]
-						}
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Conjure Earth Elemental",
-					"entries": [
-						"If you are holding the axe, you can use your action to cast the {@spell conjure elemental|phb} spell from it, summoning an {@creature earth elemental|mm}. You can't use this property again until the next dawn."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Travel the Depths",
-					"entries": [
-						"You can use an action to touch the axe to a fixed piece of dwarven stonework and cast the {@spell teleport|phb} spell from the axe. If your intended destination is underground, there is no chance of a mishap or arriving somewhere unexpected. You can't use this property again until 3 days have passed."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Curse",
-					"entries": [
-						"The axe bears a curse that affects any non-dwarf that becomes attuned to it. Even if the attunement ends, the curse remains. With each passing day, the creature's physical appearance and stature become more dwarflike. After seven days, the creature looks like a typical dwarf, but the creature neither loses its racial traits nor gains the racial traits of a dwarf. The physical changes wrought by the axe aren't considered magical in nature (and therefore can't be dispelled), but they can be undone by any effect that removes a curse, such as a {@spell greater restoration|phb} or {@spell remove curse|phb} spell."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Destroying the Axe",
-					"entries": [
-						"The only way to destroy the axe is to melt it down in the {@italic Earthheart Forge}, where it was created. It must remain in the burning forge for fifty years before it finally succumbs to the fire and is consumed."
-					]
-				}
-			],
-			"modifier": [
-				{
-					"_category": "bonus",
-					"__text": "melee attacks +3",
-					"toString": [
-						null
-					]
-				},
-				{
-					"_category": "bonus",
-					"__text": "melee damage +3",
-					"toString": [
-						null
-					]
-				}
-			]
+				"Magic Weapon. The {@italic Axe of the Dwarvish Lords} is a magic weapon that grants a +3 bonus to attack and damage rolls made with it. The axe also functions as a {@item belt of dwarvenkind|dmg}, a {@item dwarven thrower}, and a {@item sword of sharpness}."]
 		},
 		{
 			"name": "Backpack",
@@ -1509,71 +1227,7 @@
 			"source": "DMG",
 			"page": "152",
 			"entries": [
-				"Inside this heavy cloth bag are 3d4 dry beans. The bag weighs \u00BD pound plus \u00BC pound for each bean it contains.",
-				"If you dump the bag's contents out on the ground, they explode in a 10-foot radius, extending from the beans. Each creature in the area, including you, must make a DC 15 Dexterity saving throw, taking 5d4 fire damage on a failed save, or half as much damage on a successful one. The fire ignites flammable objects in the area that aren't being worn or carried.",
-				"If you remove a bean from the bag, plant it in dirt or sand, and then water it, the bean produces an effect 1 minute later from the ground where it was planted. The DM can choose an effect from the following table, determine it randomly, or create an effect.",
-				{
-					"type": "table",
-					"colLabels": [
-						"d100",
-						"Effect"
-					],
-					"colStyles": [
-						"col-xs-1 text-align-center",
-						"col-xs-11"
-					],
-					"rows": [
-						[
-							"01",
-							"5d4 toadstools sprout. If a creature eats a toadstool, roll any die. On an odd roll, the eater must succeed on a DC 15 Constitution saving throw or take 5d6 poison damage and become poisoned for 1 hour. On an even roll, the eater gains 5d6 temporary hit points for 1 hour."
-						],
-						[
-							"02-10",
-							"A geyser erupts and spouts water, beer, berry juice, tea, vinegar, wine, or oil (DM's choice) 30 feet into the air for 1d12 rounds."
-						],
-						[
-							"11-20",
-							"A {@creature treant|mm} sprouts. There's a 50 percent chance that the treant is chaotic evil and attacks."
-						],
-						[
-							"21-30",
-							"An animate, immobile stone statue in your likeness rises. It makes verbal threats against you. If you leave it and others come near, it describes you as the most heinous of villains and directs the newcomers to find and attack you. If you are on the same plane of existence as the statue, it knows where you are. The statue becomes inanimate after 24 hours."
-						],
-						[
-							"31-40",
-							"A campfire with blue flames springs forth and burns for 24 hours (or until it is extinguished)."
-						],
-						[
-							"41-50",
-							"1d6+6 {@creature shrieker|mm|shriekers} sprout."
-						],
-						[
-							"51-60",
-							"1d4+8 bright pink toads crawl forth. Whenever a toad is touched, it transforms into a Large or smaller monster of the DM's choice. The monster remains for 1 minute, then disappears in a puff of bright pink smoke."
-						],
-						[
-							"61-70",
-							"A hungry {@creature bulette|mm} burrows up and attacks."
-						],
-						[
-							"71-80",
-							"A fruit tree grows. It has 1d10+20 fruit, 1d8 of which act as randomly determined magic potions, while one acts as an ingested poison of the DM's choice. The tree vanishes after 1 hour. Picked fruit remains, retaining any magic for 30 days."
-						],
-						[
-							"81-90",
-							"A nest of 1d4+3 eggs springs up. Any creature that eats an egg must make a DC 20 Constitution saving throw. On a successful save, a creature permanently increases its lowest ability score by 1, randomly choosing among equally low scores. On a failed save, the creature takes 10d6 force damage from an internal magical explosion."
-						],
-						[
-							"91-99",
-							"A pyramid with a 60-foot-square base bursts upward. Inside is a sarcophagus containing a {@creature mummy lord|mm}. The pyramid is treated as the {@creature mummy lord|mm|mummy lord's} lair, and its sarcophagus contains treasure of the DM's choice."
-						],
-						[
-							"00",
-							"A giant beanstalk sprouts, growing to a height of the DM's choice. The top leads where the DM chooses, such as to a great view, a {@creature cloud giant|mm|cloud giant's} castle, or a different plane of existence."
-						]
-					]
-				}
-			]
+				"Inside this heavy cloth bag are 3d4 dry beans. The bag weighs \u00BD pound plus \u00BC pound for each bean it contains.",]
 		},
 		{
 			"name": "Bag of Devouring",
@@ -1616,53 +1270,7 @@
 				"This ordinary bag, made from gray cloth, appears empty. Reaching inside the bag, however, reveals the presence of a small, fuzzy object.",
 				"You can use an action to pull the fuzzy object from the bag and throw it up to 20 feet. When the object lands, it transforms into a creature you determine by rolling a d8 and consulting the table. The creature vanishes at the next dawn or when it is reduced to 0 hit points.",
 				"The creature is friendly to you and your companions, and it acts on your turn. You can use a bonus action to command how the creature moves and what action it takes on its next turn, or to give it general orders, such as to attack your enemies. In the absence of such orders, the creature acts in a fashion appropriate to its nature.",
-				"Once three fuzzy objects have been pulled from the bag, the bag can't be used again until the next dawn.",
-				{
-					"type": "table",
-					"colLabels": [
-						"d8",
-						"Creature"
-					],
-					"colStyles": [
-						"col-xs-1 text-align-center",
-						"col-xs-11"
-					],
-					"rows": [
-						[
-							"1",
-							"{@creature Weasel|mm}"
-						],
-						[
-							"2",
-							"{@creature Giant rat|mm}"
-						],
-						[
-							"3",
-							"{@creature Badger|mm}"
-						],
-						[
-							"4",
-							"{@creature Boar|mm}"
-						],
-						[
-							"5",
-							"{@creature Panther|mm}"
-						],
-						[
-							"6",
-							"{@creature Giant badger|mm}"
-						],
-						[
-							"7",
-							"{@creature Dire wolf|mm}"
-						],
-						[
-							"8",
-							"{@creature Giant elk|mm}"
-						]
-					]
-				}
-			]
+				"Once three fuzzy objects have been pulled from the bag, the bag can't be used again until the next dawn."]
 		},
 		{
 			"name": "Bag of Tricks, Rust",
@@ -1676,53 +1284,7 @@
 				"This ordinary bag, made from rust cloth, appears empty. Reaching inside the bag, however, reveals the presence of a small, fuzzy object.",
 				"You can use an action to pull the fuzzy object from the bag and throw it up to 20 feet. When the object lands, it transforms into a creature you determine by rolling a d8 and consulting the table. The creature vanishes at the next dawn or when it is reduced to 0 hit points.",
 				"The creature is friendly to you and your companions, and it acts on your turn. You can use a bonus action to command how the creature moves and what action it takes on its next turn, or to give it general orders, such as to attack your enemies. In the absence of such orders, the creature acts in a fashion appropriate to its nature.",
-				"Once three fuzzy objects have been pulled from the bag, the bag can't be used again until the next dawn.",
-				{
-					"type": "table",
-					"colLabels": [
-						"d8",
-						"Creature"
-					],
-					"colStyles": [
-						"col-xs-1 text-align-center",
-						"col-xs-11"
-					],
-					"rows": [
-						[
-							"1",
-							"{@creature Rat|mm}"
-						],
-						[
-							"2",
-							"{@creature Owl|mm}"
-						],
-						[
-							"3",
-							"{@creature Mastiff|mm}"
-						],
-						[
-							"4",
-							"{@creature Goat|mm}"
-						],
-						[
-							"5",
-							"{@creature Giant goat|mm}"
-						],
-						[
-							"6",
-							"{@creature Giant boar|mm}"
-						],
-						[
-							"7",
-							"{@creature Lion|mm}"
-						],
-						[
-							"8",
-							"{@creature Brown bear|mm}"
-						]
-					]
-				}
-			]
+				"Once three fuzzy objects have been pulled from the bag, the bag can't be used again until the next dawn."]
 		},
 		{
 			"name": "Bag of Tricks, Tan",
@@ -1733,55 +1295,7 @@
 			"source": "DMG",
 			"page": "154",
 			"entries": [
-				"This ordinary bag, made from tan cloth, appears empty. Reaching inside the bag, however, reveals the presence of a small, fuzzy object.",
-				"You can use an action to pull the fuzzy object from the bag and throw it up to 20 feet. When the object lands, it transforms into a creature you determine by rolling a d8 and consulting the table. The creature vanishes at the next dawn or when it is reduced to 0 hit points.",
-				"The creature is friendly to you and your companions, and it acts on your turn. You can use a bonus action to command how the creature moves and what action it takes on its next turn, or to give it general orders, such as to attack your enemies. In the absence of such orders, the creature acts in a fashion appropriate to its nature.",
-				"Once three fuzzy objects have been pulled from the bag, the bag can't be used again until the next dawn.",
-				{
-					"type": "table",
-					"colLabels": [
-						"d8",
-						"Creature"
-					],
-					"colStyles": [
-						"col-xs-1 text-align-center",
-						"col-xs-11"
-					],
-					"rows": [
-						[
-							"1",
-							"{@creature Jackal|mm}"
-						],
-						[
-							"2",
-							"{@creature Ape|mm}"
-						],
-						[
-							"3",
-							"{@creature Baboon|mm}"
-						],
-						[
-							"4",
-							"{@creature Axe beak|mm}"
-						],
-						[
-							"5",
-							"{@creature Black bear|mm}"
-						],
-						[
-							"6",
-							"{@creature Giant weasel|mm}"
-						],
-						[
-							"7",
-							"{@creature Giant hyena|mm}"
-						],
-						[
-							"8",
-							"{@creature Tiger|mm}"
-						]
-					]
-				}
+				"This ordinary bag, made from tan cloth, appears empty. Reaching inside the bag, however, reveals the presence of a small, fuzzy object."
 			]
 		},
 		{
@@ -1812,9 +1326,7 @@
 			"source": "PotA",
 			"page": "222",
 			"entries": [
-				"This backpack contains the spirit of an {@spell air elemental|phb} and a compact leather balloon. While you're wearing the backpack, you can deploy the balloon as an action and gain the effect of the {@spell levitate|phb} spell for 10 minutes, targeting yourself and requiring no concentration. Alternatively, you can use a reaction to deploy the balloon when you're falling and gain the effect of the {@spell feather fall|phb} spell for yourself.",
-				"When either spell ends, the balloon slowly deflates as the elemental spirit escapes and returns to the Elemental Plane of Air. As the balloon deflates, you descend gently toward the ground for up to 60 feet. IF you are still in the air at the end of this distance, you fall if you have no other means of staying aloft.",
-				"After the spirit departs, the backpack's property is unusable unless the backpack is recharged for 1 hour in an elemental air node, which binds another spirit to the backpack."
+				"This backpack contains the spirit of an {@spell air elemental|phb} and a compact leather balloon. While you're wearing the backpack, you can deploy the balloon as an action and gain the effect of the {@spell levitate|phb} spell for 10 minutes, targeting yourself and requiring no concentration. Alternatively, you can use a reaction to deploy the balloon when you're falling and gain the effect of the {@spell feather fall|phb} spell for yourself."
 			]
 		},
 		{
@@ -1825,12 +1337,7 @@
 			"page": "233",
 			"reqAttune": "YES",
 			"entries": [
-				"Crafted from a thick, red fabric, this banner measures 5 feet high and 3 feet wide. The krig (war) rune is displayed on the fabric with round, metal plates sewn into it. It can be attached to a 10-foot pole to serve as a standard. Furling or unfurling the banner requires an action. The banner has the following properties.",
-				"Mark of Courage. As a bonus action, you can touch the unfurled banner and cause it to emanate courage. You and your allies are immune to the frightened condition while within 20 feet of it. This benefit lasts for 10 minutes or until the banner is furled. Once you use this property, you can't use it again until you finish a short or long rest.",
-				"Sentinel Standard. You can see invisible creatures while they are within 20 feet of the unfurled banner and within your line of sight.",
-				"Standard's Shield: As a bonus action, you can touch the unfurled banner and invoke this power. Any ranged attack roll that targets you or an ally of yours has disadvantage if the target is within 20 feet of the unfurled banner. This benefit lasts for 1 minute or until the banner is furled. Once you use this property, you can't use it again until you finish a short or long rest.",
-				"Gift of Battle. You can transfer the banner's magic to a place by tracing the krig rune on the ground with your finger The point where you trace it becomes the center of a spherical area of magic that has a 500-foot radius and that is fixed to the place. The transfer takes 8 hours of work that requires the banner to be within 5 feet of you and during which you choose creatures, creature types, or both that will benefit from the magic. At the end, the banner is destroyed, and the area gains the following property:",
-				"While in the 500-foot-radius sphere, the creatures you chose during the transfer process are immune to the frightened condition and gain a +1 bonus to attack rolls and AC."
+				"Crafted from a thick, red fabric, this banner measures 5 feet high and 3 feet wide. The krig (war) rune is displayed on the fabric with round, metal plates sewn into it. It can be attached to a 10-foot pole to serve as a standard. Furling or unfurling the banner requires an action."
 			]
 		},
 		{
@@ -1877,9 +1384,7 @@
 			"source": "DMG",
 			"page": "154",
 			"entries": [
-				"This small black sphere measures \u00BE of an inch in diameter and weighs an ounce. Typically, 1d4+4{@italic beads of force} are found together.",
-				"You can use an action to throw the bead up to 60 feet. The bead explodes on impact and is destroyed. Each creature within a 10-foot radius of where the bead landed must succeed on a DC 15 Dexterity saving throw or take 5d4 force damage. A sphere of transparent force then encloses the area for 1 minute. Any creature that failed the save and is completely within the area is trapped inside this sphere. Creatures that succeeded on the save, or are partially within the area, are pushed away from the center of the sphere until they are no longer inside it. Only breathable air can pass through the sphere's wall. No attack or other effect can.",
-				"An enclosed creature can use its action to push against the sphere's wall, moving the sphere up to half the creature's walking speed. The sphere can be picked up, and its magic causes it to weigh only 1 pound, regardless of the weight of creatures inside."
+				"This small black sphere measures \u00BE of an inch in diameter and weighs an ounce. Typically, 1d4+4{@italic beads of force} are found together."
 			]
 		},
 		{
@@ -1920,34 +1425,7 @@
 			"page": "155",
 			"reqAttune": "YES",
 			"entries": [
-				"While wearing this belt, you gain the following benefits:",
-				{
-					"type": "list",
-					"items": [
-						"Your Constitution score increases by 2, to a maximum of 20.",
-						"You have advantage on Charisma ({@skill Persuasion}) checks made to interact with dwarves."
-					]
-				},
-				"In addition, while attuned to the belt, you have a 50 percent chance each day at dawn of growing a full beard if you're capable of growing one, or a visibly thicker beard if you already have one.",
-				"If you aren't a dwarf, you gain the following additional benefits while wearing the belt:",
-				{
-					"type": "list",
-					"items": [
-						"You have advantage on saving throws against poison, and you have resistance against poison damage.",
-						"You have darkvision out to a range of 60 feet.",
-						"You can speak, read, and write Dwarvish."
-					]
-				}
-			],
-			"modifier": [
-				{
-					"_category": "ability score",
-					"__text": "constitution +2",
-					"toString": [
-						null
-					]
-				}
-			]
+				"While wearing this belt, you gain the following benefits:"]
 		},
 		{
 			"name": "Belt of Fire Giant Strength",
@@ -12790,16 +12268,7 @@
 			"page": "229",
 			"reqAttune": "YES",
 			"entries": [
-				"You gain a +2 bonus to attack and damage rolls made with this magic weapon. When you throw it, its normal and long ranges both increase by 30 feet. and it deals one extra die of damage on a hit. After you throw it and it hits or misses, it flies back co your hand immediately.",
-				{
-					"type": "entries",
-					"name": "Curse",
-					"entries": [
-						"This weapon is cursed, and becoming attuned to it extends the curse to you. Until the curse is broken with {@spell remove curse|phb} or similar magic, you are unwilling to part with the weapon, keeping it within reach at all times. In addition, you have disadvantage on attack rolls made with weapons other than this one."
-					]
-				},
-				"Whenever you roll a 1 on an attack roll using this weapon, the weapon bends or flies to hit you in the back. Make a new attack roll with advantage against your own AC. If the result is a hit, you take damage as if you had attacked yourself with the spear."
-			]
+				"You gain a +2 bonus to attack and damage rolls made with this magic weapon. When you throw it, its normal and long ranges both increase by 30 feet. and it deals one extra die of damage on a hit. After you throw it and it hits or misses, it flies back co your hand immediately."]
 		},
 		{
 			"name": "Javelin of Backbiting",
@@ -12815,16 +12284,7 @@
 			"page": "229",
 			"reqAttune": "YES",
 			"entries": [
-				"You gain a +2 bonus to attack and damage rolls made with this magic weapon. When you throw it, its normal and long ranges both increase by 30 feet. and it deals one extra die of damage on a hit. After you throw it and it hits or misses, it flies back co your hand immediately.",
-				{
-					"type": "entries",
-					"name": "Curse",
-					"entries": [
-						"This weapon is cursed, and becoming attuned to it extends the curse to you. Until the curse is broken with {@spell remove curse|phb} or similar magic, you are unwilling to part with the weapon, keeping it within reach at all times. In addition, you have disadvantage on attack rolls made with weapons other than this one."
-					]
-				},
-				"Whenever you roll a 1 on an attack roll using this weapon, the weapon bends or flies to hit you in the back. Make a new attack roll with advantage against your own AC. If the result is a hit, you take damage as if you had attacked yourself with the spear."
-			]
+				"You gain a +2 bonus to attack and damage rolls made with this magic weapon. When you throw it, its normal and long ranges both increase by 30 feet. and it deals one extra die of damage on a hit. After you throw it and it hits or misses, it flies back co your hand immediately."]
 		},
 		{
 			"name": "Stone of Ill Luck",
@@ -12835,15 +12295,7 @@
 			"page": "229",
 			"reqAttune": "YES",
 			"entries": [
-				"This polished agate appears to be a {@item stone of good luck|dmg} to anyone who tries to {@spell identify|phb} it, and it confers that item's property while on your person.",
-				{
-					"type": "entries",
-					"name": "Curse",
-					"entries": [
-						"This item is cursed. While it is on your person, you take a -2 penalty to ability checks and saving throws. Until the curse is discovered, the DM secretly applies this penalty, assuming you are adding the item's bonus. You are unwilling to part with the stone until the curse is broken with {@spell remove curse|phb} or similar magic."
-					]
-				}
-			]
+				"This polished agate appears to be a {@item stone of good luck|dmg} to anyone who tries to {@spell identify|phb} it, and it confers that item's property while on your person."]
 		},
 		{
 			"name": "Wand of Entangle",
@@ -12893,17 +12345,7 @@
 			"page": "206",
 			"reqAttune": "YES",
 			"entries": [
-				"This +3 dagger belongs to {@creature Artus Cimber|ToA}. While you have the dagger drawn, you can use a bonus action to activate one of the following properties:",
-				{
-					"type": "list",
-					"items": [
-						"Cause a blue gem set into the dagger's pommel to shed bright light in a 20-foot radius and dim light for an additional 20 feet, or make the gem go dark.",
-						"Turn the dagger into a compass that, while resting on your palm, points north.",
-						"Cast {@spell dimension door|phb} from the dagger. Once this property is used, it can't be used again until the next dawn.",
-						"Cast {@spell compulsion|phb} (save DC 15) from the dagger. The range of the spell increases to 90 feet but it targets only spiders that are beasts. Once this property is used, it can't be used again until the next dawn."
-					]
-				}
-			]
+				"This +3 dagger belongs to {@creature Artus Cimber|ToA}. While you have the dagger drawn, you can use a bonus action to activate one of the following properties:"]
 		},
 		{
 			"name": "Staff of the Forgotten One",
@@ -12920,21 +12362,7 @@
 			"page": "208",
 			"reqAttune": "YES",
 			"entries": [
-				"This crooked staff is carved from bone and topped with the skull of a forgotten {@creature archmage|ToA} whom {@creature Acererak|ToA} destroyed long ago. Etched into the skull's forehead is {@creature acererak|ToA|Acererak's} rune, which is known on many worlds as a sign of death.",
-				"Beneficial Properties. While the staff is on your person, you gain the following benefits:",
-				{
-					"type": "list",
-					"items": [
-						"Your proficiency bonus to Intelligence (Arcana) and Intelligence (History) checks is doubled.",
-						"You can't be blinded, charmed, deafened, frightened, petrified, or stunned.",
-						"Undead with a challenge rating of 2 or lower will neither threaten nor attack you unless you harm them.",
-						"You can wield the staff as a +3 quarterstaff that deals an extra 10 (3d6) necrotic damage on a hit."
-					]
-				},
-				"Invoke Curse. The Staff of the Forgotten One has 7 charges and regains 1 d4+3 expended charges daily at dawn. While holding the staff, you can use an action to expend 1 charge and target one creature you can see within 60 feet of you. The target must succeed on a Constitution saving throw (using your spell save DC) or be cursed. While cursed in this way, the target can't regain hit points and has vulnerability to necrotic damage. A {@spell greater restoration|phb}, {@spell remove curse|phb}, or similar spell ends the curse on the target.",
-				"The Forgotten One. The bodiless life force of a dead {@creature archmage|mm} empowers the staff and is imprisoned within it. The rune carved into the staff's skull protects {@creature Acererak|ToA} from th is spirit's vengeance. Each time a creature other than {@creature Acererak|ToA} expends any of the staff's charges, there is a 50 percent chance that the life force tries to possess the staff wielder. The wielder must succeed on a DC 20 Charisma saving throw or be possessed, becoming an NPC under the DM's control. If the intruding life force is targeted by magic such as a {@spells dispel evil and good|phb} spell, it becomes trapped in th e staff once more. Once it takes control of another creature, the insane spirit of the dead {@creature archmage|mm} attempts to destroy the staff.",
-				"Destroying the Staff. A creature in possession of the staff can use an action to break it over one knee or a solid surface. The staff is destroyed and releases its remaining magic in an explosion that expands to fill a 30-foot-radius sphere centered on it. Each creature in the area must make a DC 18 Dexterity saving throw, taking 132 (24d10) force damage on a failed save, or half as much damage on a successful one. When the staff is destroyed, the life force of the Forgotten One is released to the afterlife. Where it goes is anyone's guess."
-			]
+				"This crooked staff is carved from bone and topped with the skull of a forgotten {@creature archmage|ToA} whom {@creature Acererak|ToA} destroyed long ago. Etched into the skull's forehead is {@creature acererak|ToA|Acererak's} rune, which is known on many worlds as a sign of death."]
 		},
 		{
 			"name": "Amulet of the Black Skull",
@@ -12945,48 +12373,7 @@
 			"page": "206",
 			"reqAttune": "YES",
 			"entries": [
-				"This amulet is carved from obsidian and shaped like a screaming humanoid skull, with ruby eyes and emeralds for teeth. It hands from an iron chain necklace.",
-				"The amulet has 6 charges and regains 1d6 charges daily at dawn. While wearing the amulet, you can use an action to expend 1 of its charges to transport yourself and anything you are wearing or carrying to a location within 100 feet of you. The destination you choose doesn't need to be in your line of sight, but it must be familiar to you (in other words, a place you have seen or visited), and it must be on the same plane of existence as you. This effect isn't subject to the magic restrictions placed on the Tomb of the Nine Gods; thus, the amulet can be used to enter and exit the tomb.",
-				"If you aren't undead, you must make a DC 16 Constitution saving throw each time you use the amulet to teleport. On a failed saving throw, the black skull cackles as you are transformed in transit. The transformation takes effect as soon as you arrive at the destination, and is determined randomly by rolling percentile dice and consulting the Black Skull Transformation table.",
-				{
-					"type": "table",
-					"caption": "Black Skull Transformation",
-					"colLabels": [
-						"d100",
-						"Transformation"
-					],
-					"colStyles": [
-						"col-xs-1 text-align-center",
-						"col-xs-11"
-					],
-					"rows": [
-						[
-							"01-20",
-							"The symbol of {@creature Acererak|ToA} is burned into your flesh, a curse that can only be removed with a {@spell remove curse|phb} spell or similar magic. Until the curse ends, your hit points can't be restored by magic."
-						],
-						[
-							"21-35",
-							"You grow larger as if affected by an {@spell enlarge/reduce|phb} spell, except the effect lasts for 1 hour."
-						],
-						[
-							"36-50",
-							"You grow smaller as if affected by an {@spell enlarge/reduce|phb} spell, except the effect lasts for 1 hour."
-						],
-						[
-							"51-70",
-							"You arrive at the destination wearing nothing but the amulet of the black skull Everything else that you were wearing or carrying appears in a random unoccupied space within 100 feet of you."
-						],
-						[
-							"71-95",
-							"You are paralyzed for 1 minute or until this effect is ended with a {@spell lesser restoration|phb} spell or similar magic."
-						],
-						[
-							"96-00",
-							"You become petrified. This effect can be ended only with a {@spell greater restoration|phb} spell or similar magic."
-						]
-					]
-				}
-			]
+				"This amulet is carved from obsidian and shaped like a screaming humanoid skull, with ruby eyes and emeralds for teeth. It hands from an iron chain necklace."]
 		},
 		{
 			"name": "Ghost Lantern",
@@ -13024,24 +12411,7 @@
 			"page": "207",
 			"reqAttune": "YES",
 			"entries": [
-				"{@creature Artus Cimber|ToA} has kept this item in his possession for over a century. The Ring of Winter is a golden band that resizes to fit snugly on the finger of its wearer. A thin layer of frost coats the outside of the ring, which normal heat can't melt. The ring feels ice cold to the touch and initially numbs the hand that wears it, but this cold ceases to be felt by one who is attuned to this ring.",
-				"The Ring of Winter is sentient and tries to take control of any creature that wears it (see \"Sentient Magic Items\" chapter 7 of the Dungeon Master's Guide). If it succeeds, the ring compels its wearer to cause undue harm to everyone and everything around it, in a cold-hearted attempt to incur the wrath of enemies and bring the wearer's doom.",
-				"Sentience. The Ring of Winter is a sentient chaotic evil item with an Intelligence of 14, a Wisdom of 14, and a Charisma of 17. The ring communicates by transmitting emotion to the creature carrying or wielding it, and it has hearing and normal vision out to a range of 60 feet. The ring craves destruction, and it likes inflicting indiscriminate harm on others.",
-				"Nondetection. The Ring of Winter defies attempts to magically locate it. Neither the ring nor its wearer can be targeted by any {@spell divination|phb} magic or perceived through magical {@spell scrying|phb} sensors.",
-				"Frozen Time. As long as you wear the ring, you don't age naturally. This effect is similar to suspended animation, in that your age doesn't catch up to you once the ring is removed. The ring doesn't protect its wearer from magical or supernatural aging effects, such as the Horrifying Visage of a {@creature ghost|mm}.",
-				"Cold Immunity. While attuned to and wearing the ring, you have immunity to cold damage and don't suffer any ill effects from extreme cold (see chapter 5 of the Dungeon's Master Guide).",
-				"Magic. The Ring of Winter has 12 charges and regains all its expended charges daily at dawn. While wearing the ring, you can expend the necessary number of charges to activate one of the following properties:",
-				{
-					"type": "list",
-					"items": [
-						"You can expend 1 charge as an action and use the ring to lower the temperature in a 120-foot-radius sphere centered on a point you can see within 300 feet of you. The temperature in that area drops 20 degrees Per minute, to a minimum of -30 degrees Fahrenheit. Frost and ice begin to form on surfaces once the temperature drops below 32 degrees. This effect is permanent unless you use the ring to end it as an action, at which point the temperature in the area returns to normal at a rate of 10 degrees per minute.",
-						"You can cast one of the following spells from the ring (spell save DC 17) by expending the necessary number of charges: {@spell Bigby's hand|phb} (2 charges; the hand is made of ice, is immune to cold damage, and deals bludgeoning damage instead of force damage as a clenched fist), {@spell cone of cold|phb} (2 charges), flesh to ice (3 charges; as {@spell flesh to stone|phb} except that the target turns to solid ice with the density and durability of stone), {@spell ice storm|phb} (2 charges), {@spell Otiluke's freezing sphere|phb} (3 charges), {@spell sleet storm|phb} (1 charge), {@spell spike growth|phb} (1 charge; the spikes are made of ice), or {@spell wall of ice|phb} (2 charges).",
-						"You can expend the necessary number of charges as an action and use the ring to create either an inanimate ice object (2 charges) or an animated ice creature (4 charges). The ice object can't have any moving parts, must be able to fit inside a 10-foot cube, and has the density and durability of metal or stone (your choice). The ice creature must be modeled after a beast with a challenge rating of 2 or less. The ice creature has the same statistics as the beast it models, with the following changes: the creature is a construct with vulnerability to fire damage, immunity to cold and poison damage, and immunity to the following conditions: charmed, exhaustion, frightened, paralyzed, petrified, and poisoned. The ice creature obeys only its creator's commands. The ice object or creature appears in an unoccupied space within 60 feet of you. It melts into a pool of normal water after 24 hours or when it drops to 0 hit points. In extreme heat, it loses 5 (1d10) hit points per minute as it melts. Use the guidelines in chapter 8 of the Dungeon Master's Guide to determine the hit points of an inanimate object if they become necessary."
-					]
-				},
-				"Other Properties. The Ring of Winter is rumored to possess other properties that can be activated only by an evil being whose will the ring can't break. Frost giants have long believed that the ring can be used to freeze entire worlds, while a {@creature djinni|mm} in the service of a Calishite pasha once claimed that the ring could be used to summon and control white dragons, as well as the mighty ice primordial named Cryonax.",
-				"Destroying the Ring. The ring is nigh indestructible, resisting even the most intense magical heat. If it is placed on the finger of the powerful archfey known as the Summer Queen, the ring melts away and is destroyed forever."
-			]
+				"{@creature Artus Cimber|ToA} has kept this item in his possession for over a century. The Ring of Winter is a golden band that resizes to fit snugly on the finger of its wearer. A thin layer of frost coats the outside of the ring, which normal heat can't melt. The ring feels ice cold to the touch and initially numbs the hand that wears it, but this cold ceases to be felt by one who is attuned to this ring."]
 		},
 		{
 			"name": "Canoe",
@@ -13217,23 +12587,7 @@
 			"page": "208",
 			"reqAttune": "YES",
 			"entries": [
-				"This suit of plate armor is fashioned from {@creature giant scorpion|mm} chitin. While wearing this armor, you gain the following benefits:",
-				{
-					"type": "list",
-					"items": [
-						"The armor improves your combat readiness, granting you a +5 bonus to initiative as long as you aren't incapacitated.",
-						"The armor doesn't impose disadvantage on your Dexterity ({@skill Stealth}) checks.",
-						"The armor doesn't impose disadvantage on saving throws made to resist the effects of extreme heat (see chapter 5 of the Dungeon Master's Guide)."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Curse",
-					"entries": [
-						"This armor is cursed. Whenever you don or doff it, you must make a DC 15 Constitution saving throw, taking 100 (10d10+45) poison damage on a failed save, or half as much damage on a successful one. Only a {@spell wish|phb} spell can remove the armor's curse."
-					]
-				}
-			]
+				"This suit of plate armor is fashioned from {@creature giant scorpion|mm} chitin. While wearing this armor, you gain the following benefits:"]
 		},
 		{
 			"name": "Bead of Nourishment",

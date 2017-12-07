@@ -7,6 +7,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Random;
 
 import org.json.simple.JSONObject;
 import org.json.simple.JSONArray;
@@ -49,6 +50,8 @@ JButton shopGenerate;
 static NPCManager npcManager;
 static ShopManager shopManager;
 
+Random randomizer;
+
 public static void main(String[]args) throws FileNotFoundException, IOException, ParseException 
 {
 	//Make place to do stuff.
@@ -63,6 +66,8 @@ public Main() throws FileNotFoundException, IOException, ParseException
 	npcManager.parseJSON();
 	shopManager = new ShopManager();
 	shopManager.parseJSON();
+	
+	randomizer = new Random();
 	
 	JPanel windowPanel = new JPanel();
 	
@@ -166,7 +171,8 @@ public class NpcGenerateButtonHandler implements ActionListener
 		break;
 		case "Random":
 		{
-			int randomNum = 1 + (int)(Math.random() * 8);
+			int randomNum = 1 + randomizer.nextInt(8);
+			
 			if(randomNum == 1)
 				currentRace = RaceEnum.HUMAN;
 			if(randomNum == 2)
@@ -197,7 +203,7 @@ public class NpcGenerateButtonHandler implements ActionListener
 		break;
 		case "Random":
 		{
-			int randomNum = 1 + (int)(Math.random() * 2);
+			int randomNum = 1 + randomizer.nextInt(2);
 			if(randomNum == 1)
 				currentGender = GenderEnum.MALE;
 			if(randomNum == 2)

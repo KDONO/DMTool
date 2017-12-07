@@ -1,0 +1,47 @@
+Item Types:
+
+$ = Jewels, treasure
+
+G = General Good
+
+AT = Artisan Tools
+
+T = Tools
+
+RD = WAT (maybe rod?)
+
+R = Ranged
+
+RG = Ring
+
+S = Shield
+
+HA = Heavy Armor
+
+MA = Medium Armor
+
+LA = Light Armor
+
+P = Potion
+
+SCF = Spellcasting Focus
+
+GS = Game Set
+
+M = Melee Weapon
+
+INS = Instrument
+
+SC = Scrolls
+
+WD = Wand
+
+MNT = Mount
+
+TAH = Track and Harness
+
+VEH = Vehicle
+
+TG = Trade Goods
+
+A = Smmunition

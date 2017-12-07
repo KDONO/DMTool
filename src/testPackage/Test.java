@@ -1,6 +1,7 @@
 package testPackage;
 
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -8,6 +9,10 @@ import npcPackage.NPCManager;
 
 import org.json.simple.parser.ParseException;
 
+import com.google.gson.Gson;
+import com.google.gson.stream.JsonReader;
+
+import shopPackage.Item;
 import shopPackage.WealthEnum;
 import shopPackage.InventoryManager;
 import shopPackage.ShopManager;
@@ -17,22 +22,16 @@ public class Test
 {
 public static void main(String args[]) throws FileNotFoundException, IOException, ParseException
 {
-/*
-	ItemManager im = new ItemManager();
-	
-	im.parseJSON();
-	
-	ArrayList<String> array = im.getInventory(ShopTypeEnum.MAGICSHOP, AvenueEnum.PREMIUM);
-			
-	for(int i = 0; i<array.size();i++)
-		System.out.println(array.get(i));
-*/
-	
-NPCManager npc = new NPCManager();
 
-npc.parseJSON();
+Gson gson = new Gson();
+JsonReader reader = new JsonReader(new FileReader("data/basicitems.json"));
+Item item[] = gson.fromJson(reader, Item[].class);
+
+System.out.println(item.length);
 
 
-}	
+System.out.println(item[50].toString());
+
+}
 
 }

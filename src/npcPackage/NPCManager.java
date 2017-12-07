@@ -3,6 +3,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Random;
 
 import javax.swing.JOptionPane;
 
@@ -55,6 +56,9 @@ public class NPCManager
     JSONArray Ideal;
     JSONArray Bond;
     JSONArray Flaw;
+    
+    //Random
+    Random randomizer = new Random();
 	
 	public String generate(RaceEnum race, GenderEnum gender)
 	{
@@ -93,57 +97,57 @@ public class NPCManager
 		{
 			case HUMAN:
 			{
-			String name = MHumanNames.get((int) Math.floor((Math.random() * MHumanNames.size()))) 
-					+ " " + SHumanNames.get((int) Math.floor((Math.random() * SHumanNames.size()))); 
+			String name = MHumanNames.get(randomizer.nextInt(MHumanNames.size())) 
+					+ " " + SHumanNames.get(randomizer.nextInt(SHumanNames.size())); 
 			output = name;
 			}
 			break;
 			case ORC:
 			{
-			String name = MOrcNames.get((int) Math.floor((Math.random() * MOrcNames.size()))) 
-					+ " " + SOrcNames.get((int) Math.floor((Math.random() * SOrcNames.size()))); 	
+			String name = MOrcNames.get(randomizer.nextInt(MOrcNames.size())) 
+					+ " " + SOrcNames.get(randomizer.nextInt(SOrcNames.size())); 	
 			output = name;
 			}
 			break;
 			case ELF:
 			{
-			String name = MElfNames.get((int) Math.floor((Math.random() * MElfNames.size()))) 
-					+ " " + SElfNames.get((int) Math.floor((Math.random() * SElfNames.size()))); 	
+			String name = MElfNames.get(randomizer.nextInt(MElfNames.size())) 
+					+ " " + SElfNames.get(randomizer.nextInt(SElfNames.size())); 	
 			output = name;
 			}
 			break;
 			case DWARF:
 			{
-			String name = MDwarfNames.get((int) Math.floor((Math.random() * MDwarfNames.size()))) 
-					+ " " + SDwarfNames.get((int) Math.floor((Math.random() * SDwarfNames.size()))); 	
+			String name = MDwarfNames.get(randomizer.nextInt(MDwarfNames.size())) 
+					+ " " + SDwarfNames.get(randomizer.nextInt(SDwarfNames.size())); 	
 			output = name;
 			}
 			break;
 			case GNOME:
 			{
-			String name = MGnomeNames.get((int) Math.floor((Math.random() * MGnomeNames.size()))) 
-					+ " " + SGnomeNames.get((int) Math.floor((Math.random() * SGnomeNames.size()))); 	
+			String name = MGnomeNames.get(randomizer.nextInt(MGnomeNames.size())) 
+					+ " " + SGnomeNames.get(randomizer.nextInt(SGnomeNames.size())); 	
 			output = name;
 			}
 			break;
 			case HALFLING:
 			{
-			String name = MHalflingNames.get((int) Math.floor((Math.random() * MHalflingNames.size()))) 
-					+ " " + SHalflingNames.get((int) Math.floor((Math.random() * SHalflingNames.size()))); 	
+			String name = MHalflingNames.get(randomizer.nextInt(MHalflingNames.size())) 
+					+ " " + SHalflingNames.get(randomizer.nextInt(SHalflingNames.size())); 	
 			output = name;
 			}
 			break;
 			case DRAGONBORN:
 			{
-			String name = MDragonbornNames.get((int) Math.floor((Math.random() * MDragonbornNames.size()))) 
-					+ " " + SDragonbornNames.get((int) Math.floor((Math.random() * SDragonbornNames.size()))); 	
+			String name = MDragonbornNames.get(randomizer.nextInt(MDragonbornNames.size())) 
+					+ " " + SDragonbornNames.get(randomizer.nextInt(SDragonbornNames.size())); 	
 			output = name;
 			}
 			break;
 			case TIEFLING:
 			{
-			String name = "\""+VTieflingNames.get((int) Math.floor((Math.random() * VTieflingNames.size()))) 
-					+ "\" " + MTieflingNames.get((int) Math.floor((Math.random() * MTieflingNames.size()))); 	
+			String name = "\""+VTieflingNames.get(randomizer.nextInt(VTieflingNames.size())) 
+					+ "\" " + MTieflingNames.get(randomizer.nextInt(MTieflingNames.size())); 	
 			output = name;
 			}
 			break;
@@ -158,57 +162,57 @@ public class NPCManager
 		{
 			case HUMAN:
 			{
-			String name = FHumanNames.get((int) Math.floor((Math.random() * FHumanNames.size()))) 
-					+ " " + SHumanNames.get((int) Math.floor((Math.random() * SHumanNames.size()))); 
+			String name = FHumanNames.get(randomizer.nextInt(FHumanNames.size())) 
+					+ " " + SHumanNames.get(randomizer.nextInt(SHumanNames.size())); 
 			output = name;
 			}
 			break;
 			case ORC:
 			{
-			String name = FOrcNames.get((int) Math.floor((Math.random() * FOrcNames.size()))) 
-					+ " " + SOrcNames.get((int) Math.floor((Math.random() * SOrcNames.size()))); 	
+			String name = FOrcNames.get(randomizer.nextInt(FOrcNames.size())) 
+					+ " " + SOrcNames.get(randomizer.nextInt(SOrcNames.size())); 	
 			output = name;
 			}
 			break;
 			case ELF:
 			{
-			String name = FElfNames.get((int) Math.floor((Math.random() * FElfNames.size()))) 
-					+ " " + SElfNames.get((int) Math.floor((Math.random() * SElfNames.size()))); 	
+			String name = FElfNames.get(randomizer.nextInt(FElfNames.size())) 
+					+ " " + SElfNames.get(randomizer.nextInt(SElfNames.size())); 	
 			output = name;
 			}
 			break;
 			case DWARF:
 			{
-			String name = FDwarfNames.get((int) Math.floor((Math.random() * FDwarfNames.size()))) 
-					+ " " + SDwarfNames.get((int) Math.floor((Math.random() * SDwarfNames.size()))); 	
+			String name = FDwarfNames.get(randomizer.nextInt(FDwarfNames.size())) 
+					+ " " + SDwarfNames.get(randomizer.nextInt(SDwarfNames.size())); 	
 			output = name;
 			}
 			break;
 			case GNOME:
 			{
-			String name = FGnomeNames.get((int) Math.floor((Math.random() * FGnomeNames.size()))) 
-					+ " " + SGnomeNames.get((int) Math.floor((Math.random() * SGnomeNames.size()))); 	
+			String name = FGnomeNames.get(randomizer.nextInt(FGnomeNames.size())) 
+					+ " " + SGnomeNames.get(randomizer.nextInt(SGnomeNames.size())); 	
 			output = name;
 			}
 			break;
 			case HALFLING:
 			{
-			String name = FHalflingNames.get((int) Math.floor((Math.random() * FHalflingNames.size()))) 
-					+ " " + SHalflingNames.get((int) Math.floor((Math.random() * SHalflingNames.size()))); 	
+			String name = FHalflingNames.get(randomizer.nextInt(FHalflingNames.size())) 
+					+ " " + SHalflingNames.get(randomizer.nextInt(SHalflingNames.size())); 	
 			output = name;
 			}
 			break;
 			case DRAGONBORN:
 			{
-			String name = FDragonbornNames.get((int) Math.floor((Math.random() * FDragonbornNames.size()))) 
-					+ " " + SDragonbornNames.get((int) Math.floor((Math.random() * SDragonbornNames.size()))); 	
+			String name = FDragonbornNames.get(randomizer.nextInt(FDragonbornNames.size())) 
+					+ " " + SDragonbornNames.get(randomizer.nextInt(SDragonbornNames.size())); 	
 			output = name;
 			}
 			break;
 			case TIEFLING:
 			{
-			String name = "\""+VTieflingNames.get((int) Math.floor((Math.random() * VTieflingNames.size()))) 
-					+ "\" " + FTieflingNames.get((int) Math.floor((Math.random() * FTieflingNames.size()))); 	
+			String name = "\""+VTieflingNames.get(randomizer.nextInt(VTieflingNames.size())) 
+					+ "\" " + FTieflingNames.get(randomizer.nextInt(FTieflingNames.size())); 	
 			output = name;
 			}
 			break;
@@ -220,14 +224,14 @@ public class NPCManager
 	private ArrayList<String> generateTraits()
 	{
 		ArrayList<String> output = new ArrayList<String>();		
-		output.add("Appearance: "+Appearance.get((int) Math.floor((Math.random() * Appearance.size()))));
-		output.add("Ability: "+Ability.get((int) Math.floor((Math.random() * Ability.size()))));
-		output.add("Talent: "+Talent.get((int) Math.floor((Math.random() * Talent.size()))));
-		output.add("Interaction: "+Interaction.get((int) Math.floor((Math.random() * Interaction.size()))));
-		output.add("Mannerism: "+Mannerism.get((int) Math.floor((Math.random() * Mannerism.size()))));
-		output.add("Ideal: "+Ideal.get((int) Math.floor((Math.random() * Ideal.size()))));
-		output.add("Bond: "+Bond.get((int) Math.floor((Math.random() * Bond.size()))));
-		output.add("Flaw: "+Flaw.get((int) Math.floor((Math.random() * Flaw.size()))));	
+		output.add("Appearance: "+Appearance.get(randomizer.nextInt(Appearance.size())));
+		output.add("Ability: "+Ability.get(randomizer.nextInt(Ability.size())));
+		output.add("Talent: "+Talent.get(randomizer.nextInt(Talent.size())));
+		output.add("Interaction: "+Interaction.get(randomizer.nextInt(Interaction.size())));
+		output.add("Mannerism: "+Mannerism.get(randomizer.nextInt(Mannerism.size())));
+		output.add("Ideal: "+Ideal.get(randomizer.nextInt(Ideal.size())));
+		output.add("Bond: "+Bond.get(randomizer.nextInt(Bond.size())));
+		output.add("Flaw: "+Flaw.get(randomizer.nextInt(Flaw.size())));	
 		return output;
 	}
 
