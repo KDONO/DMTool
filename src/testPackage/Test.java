@@ -8,8 +8,8 @@ import npcPackage.NPCManager;
 
 import org.json.simple.parser.ParseException;
 
-import shopPackage.AvenueEnum;
-import shopPackage.ItemManager;
+import shopPackage.WealthEnum;
+import shopPackage.InventoryManager;
 import shopPackage.ShopManager;
 import shopPackage.ShopTypeEnum;
 

@@ -38,9 +38,9 @@ JButton npcGenerate;
 JLabel shopLabel;
 JComboBox<String> selectShopType;
 JLabel avenueLabel;
-JComboBox<String> selectAvenueType;
+JComboBox<String> selectWealthLevel;
 String[] shopTypes = {"Blacksmith", "Inn", "Bowyer", "Leatherworker", "Temple", "Tailor", "Potions", "Magic Shop", "Jeweler", "General Store", "Bookseller"};
-String[] avenueTypes = {"Base","Rural","Urban","Premium"};
+String[] wealthTypes = {"Base","Low","Medium","High"};
 JLabel shopResult;
 JTextArea shopResultField;
 JScrollPane shopScrollPane;
@@ -65,7 +65,7 @@ public Main() throws FileNotFoundException, IOException, ParseException
 	shopManager.parseJSON();
 	
 	JPanel windowPanel = new JPanel();
-		
+	
 	//NPC pane
 	JPanel npcPanel = new JPanel();
 	Border npcBorder = BorderFactory.createTitledBorder("NPC Generator");
@@ -97,8 +97,8 @@ public Main() throws FileNotFoundException, IOException, ParseException
 		npcPanel.setBorder(shopBorder);
 	shopLabel = new JLabel("Shop Type:");
 	selectShopType = new JComboBox<String>(shopTypes);
-	avenueLabel = new JLabel("Avenue Type:");
-	selectAvenueType = new JComboBox<String>(avenueTypes);
+	avenueLabel = new JLabel("Wealth Level:");
+	selectWealthLevel = new JComboBox<String>(wealthTypes);
 	shopResult = new JLabel("Result:");
 	shopResultField = new JTextArea(10, 10);
 	shopScrollPane = new JScrollPane(shopResultField);
@@ -110,7 +110,7 @@ public Main() throws FileNotFoundException, IOException, ParseException
 	shopPanel.add(shopLabel);
 	shopPanel.add(selectShopType);
 	shopPanel.add(avenueLabel);
-	shopPanel.add(selectAvenueType);
+	shopPanel.add(selectWealthLevel);
 	shopPanel.add(shopResult);
 	shopPanel.add(shopScrollPane);
 	shopPanel.add(shopGenerate);
@@ -214,21 +214,21 @@ public class ShopGenerateButtonHandler implements ActionListener
 	public void actionPerformed(ActionEvent e) 
 	{	
 		ShopTypeEnum currentShop = ShopTypeEnum.INN;
-		AvenueEnum currentAvenue= AvenueEnum.BASE;
+		WealthEnum currentAvenue= WealthEnum.BASE;
 
-		switch(selectAvenueType.getSelectedItem().toString())
+		switch(selectWealthLevel.getSelectedItem().toString())
 		{
 		case "Base":
-			currentAvenue = AvenueEnum.BASE;
+			currentAvenue = WealthEnum.BASE;
 			break;
 		case "Rural":
-			currentAvenue = AvenueEnum.RURAL;
+			currentAvenue = WealthEnum.LOW;
 			break;
 		case "Urban":
-			currentAvenue = AvenueEnum.URBAN;
+			currentAvenue = WealthEnum.MEDIUM;
 			break;
 		case "Premium":
-			currentAvenue = AvenueEnum.PREMIUM;
+			currentAvenue = WealthEnum.HIGH;
 			break;
 		}
 

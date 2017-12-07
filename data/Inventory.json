@@ -16,13 +16,13 @@
 	"Hammer",
 	"Whetsone",
 	"Smith's Tools"],
-"RuralBlacksmith":[
+"LowBlacksmith":[
 	"Ring Mail",
 	"Mace",
 	"Greataxe",
 	"Pike",
 	"Warhammer",
-	"Ball Bearings (1,000",
+	"Ball Bearings (1,000)",
 	"Bell",
 	"Sledgehammer",
 	"Hunting Trap",
@@ -32,7 +32,7 @@
 	"Piton",
 	"Iron Pot",
 	"Carpenter's Tools"],
-"UrbanBlacksmith":[
+"MedBlacksmith":[
 	"Scale Mail",
 	"Splint",
 	"Javelin",
@@ -51,7 +51,7 @@
 	"Hooded Lantern",
 	"Iron Spikes",
 	"Mason's Tools"],
-"PremiumBlacksmith":[
+"HighBlacksmith":[
 	"Studded Leather",
 	"Half Plate",
 	"Plate",
@@ -65,27 +65,27 @@
 	"Longbow",
 	"Arrows (20)",
 	"Quiver"],
-"RuralBowyer":[
+"LowBowyer":[
 	"Light Crossbow",
 	"Heavy Crossbow",
 	"Crossbow Bolts (20)",
 	"Crossbow Bag"],
-"UrbanBowyer":[
+"MedBowyer":[
 	"Hand Crossbow"],
-"PremiumBowyer":[],
+"HighBowyer":[],
 "BaseLeather":[
 	"Leather Armor",
 	"Hide Armor",
 	"Waterskin",
 	"Leatherworker's Tools"],
-"RuralLeather":[
+"LowLeather":[
 	"Studded Leather",
 	"Sling",
 	"Cobbler's Tools"],
-"UrbanLeather":[
+"MedLeather":[
 	"Shield",
 	"Drum"],
-"PremiumLeather":[],
+"HighLeather":[],
 "BaseTemple":[
 	"Scripture Book",
 	"Candle",
@@ -95,7 +95,7 @@
 	"Oil",
 	"Torch",
 	"Vial"],
-"RuralTemple":[
+"LowTemple":[
 	"Alms Box",
 	"Blanket",
 	"Censer",
@@ -104,7 +104,7 @@
 	"Lamp",
 	"Rations",
 	"Waterskin"],
-"UrbanTemple":[
+"MedTemple":[
 	"Bell",
 	"Map",
 	"Healer's Kit",
@@ -113,7 +113,7 @@
 	"Parchment",
 	"Calligrapher's Supplies",
 	"Herbalism Kit"],
-"PremiumTemple":[
+"HighTemple":[
 	"Hooded Lantern",
 	"Flute",
 	"Lyre",
@@ -131,7 +131,7 @@
 	"Carpenter's Tools",
 	"Cook's Utensil's",
 	"Woodcarver's Tools"],
-"RuralGeneral":[
+"LowGeneral":[
 	"Barrel",
 	"Glass Bottle",
 	"Bucket",
@@ -148,14 +148,14 @@
 	"Shovel",
 	"Mason's Tools",
 	"Weaver's Tools"],
-"UrbanGeneral":[
+"MedGeneral":[
 	"Abacus",
 	"Signet Ring",
 	"Soap",
 	"Vial",
 	"Paper",
 	"Leatherworker's Tools"],
-"PremiumGeneral":[
+"HighGeneral":[
 	"Rope (50-ft Silk)",
 	"Fine Clothes",
 	"Glassblower's Tools",
@@ -167,15 +167,15 @@
 	"Pouch",
 	"Sack",
 	"Weaver's Tools"],
-"RuralTailor":[
+"LowTailor":[
 	"Backpack",
 	"Bedroll",
 	"Traveler's Clothes",
 	"Robes"],
-"UrbanTailor":[
+"MedTailor":[
 	"Fine Clothes",
 	"Two-Person Tent"],
-"PremiumTailor":[
+"HighTailor":[
 	"Component Pouch",
 	"Costume Clothes"],
 "BaseJeweler":[
@@ -189,14 +189,14 @@
 	"Jewelery",
 	"10gp Gemstones",
 	"50gp Gemstones"],
-"RuralJeweler":[
+"LowJeweler":[
 	"Signet Ring",
 	"Jewler's Tools",
 	"100gp Gemstones"],
-"UrbanJeweler":[
+"MedJeweler":[
 	"Arcane Focus (Crystal)",
 	"500gp Gemstones"],
-"PremiumJeweler":[
+"HighJeweler":[
 	"Arcane Focus (Orb)",
 	"1000gp Gemstones",
 	"5000gp Gemstones"],
@@ -212,19 +212,19 @@
 	"Common Potion",
 	"Uncommon Potion",
 	"Spell Components"],
-"RuralPotion":[
+"LowPotion":[
 	"Acid Vial",
 	"Component Pouch",
 	"Oil Flask",
 	"Herbalism Kit",
 	"Poisoner's Kit"],
-"UrbanPotion":[
+"MedPotion":[
 	"Alchemist's Fire",
 	"Healer's Kit",
 	"Cook's Utensils",
 	"Alchemist's Supplies",
 	"Rare Potions"],
-"PremiumPotion":[
+"HighPotion":[
 	"Perfume",
 	"Ink"],
 "BaseMagic":[
@@ -238,7 +238,7 @@
 	"Druidic Focus (Wooden Staff)",
 	"Spell Scroll (Cantrip)",
 	"Spell Scroll (Level 1)"],
-"RuralMagic":[
+"LowMagic":[
 	"Arcane Focus (Rod)",
 	"Glass Bottle",
 	"Map",
@@ -252,14 +252,14 @@
 	"Vial",
 	"Alchemist's Supplies",
 	"Spell Components"],
-"UrbanMagic":[
+"MedMagic":[
 	"Druidic Focus (Totem)",
 	"Robes",
 	"Calligrapher's Supplies",
 	"Lute",
 	"Spell Scroll (Level 2)",
 	"Spell Scroll (Level 3)"],
-"PremiumMagic":[
+"HighMagic":[
 	"Hourglass",
 	"Lyre",
 	"Spell Scroll (Level 4)",

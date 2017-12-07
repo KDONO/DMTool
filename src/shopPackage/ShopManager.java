@@ -31,19 +31,22 @@ JSONArray Magicshops;
 JSONArray Jewelers;
 JSONArray Generalstores;
 
-static ItemManager itemManager = new ItemManager();
+//Generates a list of inventory items from JSON
+static InventoryManager itemManager = new InventoryManager();
 
-public String generateShop(ShopTypeEnum shopType, AvenueEnum avenue)
+//Generates inventory then name
+public String generateShop(ShopTypeEnum shopType, WealthEnum wealth)
 {
 	String output = (generateName(shopType)+" \n"
+			+"\n"
 			+"-Inventory-\n");
 	
-	ArrayList<String> inventory =  itemManager.getInventory(shopType, avenue);
+	ArrayList<String> inventory =  itemManager.getInventory(shopType, wealth);
 	ArrayList<String> outputinv = new ArrayList<String>();
-	
+
 	if(inventory != null)
 	{
-		switch(avenue)
+		switch(wealth)
 		{
 		case BASE:
 		{
@@ -52,23 +55,23 @@ public String generateShop(ShopTypeEnum shopType, AvenueEnum avenue)
 			outputinv.add(inventory.get((int) Math.floor((Math.random() * inventory.size()))));
 		}
 		break;
-		case RURAL:
+		case LOW:
 		{
-			int randomNum = 1 + (int)(Math.random() * 15);
+			int randomNum = 5 + (int)(Math.random() * 15);
 			for(int i = 0; i<randomNum;i++)
 				outputinv.add(inventory.get((int) Math.floor((Math.random() * inventory.size()))));
 		}
 		break;
-		case URBAN:
+		case MEDIUM:
 		{
-			int randomNum = 1 + (int)(Math.random() * 20);
+			int randomNum = 10 + (int)(Math.random() * 20);
 			for(int i = 0; i<randomNum;i++)
 				outputinv.add(inventory.get((int) Math.floor((Math.random() * inventory.size()))));
 		}
 		break;
-		case PREMIUM:
+		case HIGH:
 		{
-			int randomNum = 1 + (int)(Math.random() * 25);
+			int randomNum = 10 + (int)(Math.random() * 25);
 			for(int i = 0; i<randomNum;i++)
 				outputinv.add(inventory.get((int) Math.floor((Math.random() * inventory.size()))));
 		}
@@ -84,6 +87,7 @@ public String generateShop(ShopTypeEnum shopType, AvenueEnum avenue)
 	return output;
 }
 
+//Generates Name
 public String generateName(ShopTypeEnum shopType)
 {
 	String output = "";
