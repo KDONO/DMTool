@@ -35,7 +35,7 @@ JComboBox<String> selectShopType;
 JLabel avenueLabel;
 JComboBox<String> selectWealthLevel;
 String[] shopTypes = {"Blacksmith", "Inn", "Bowyer", "Leatherworker", "Temple", "Tailor", "Potions", "Magic Shop", "Jeweler", "General Store", "Bookseller"};
-String[] wealthTypes = {"Base","Low","Medium","High"};
+String[] wealthTypes = {"Low","Medium","High","Premium"};
 JLabel shopResult;
 JTextArea shopResultField;
 JScrollPane shopScrollPane;
@@ -218,13 +218,13 @@ public class ShopGenerateButtonHandler implements ActionListener
 
 		switch(selectWealthLevel.getSelectedItem().toString())
 		{
-		case "Base":
+		case "Low":
 			currentWealth = WealthEnum.LOW;
 			break;
-		case "Rural":
+		case "Medium":
 			currentWealth = WealthEnum.MEDIUM;
 			break;
-		case "Urban":
+		case "High":
 			currentWealth = WealthEnum.HIGH;
 			break;
 		case "Premium":

@@ -199,27 +199,13 @@
 {
 "name":"Jeweler",
 	"low":[
-		"Mundane Amulet/Necklace",
-		"Equisite Amulet/Necklace",
-		"Mundane Earrings",
-		"Equisite Earrings",
-		"Signet Ring",
-		"Equisite Ring",
-		"Mundane Ring",
-		"Jewelery",
-		"10gp Gemstones",
-		"50gp Gemstones"],
+		"Signet Ring"],
 	"medium":[
-		"Signet Ring",
-		"Jeweler's Tools",
-		"100gp Gemstones"],
+		"Jeweler's Tools"],
 	"high":[
-		"Crystal",
-		"500gp Gemstones"],
+		"Crystal"],
 	"premium":[
-		"Orb",
-		"1000gp Gemstones",
-		"5000gp Gemstones"]
+		"Orb"]
 },
 {
 "name":"Potion",

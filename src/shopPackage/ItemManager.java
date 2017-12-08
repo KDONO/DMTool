@@ -21,6 +21,9 @@ Shop jewelerInventory;
 Shop potionInventory;
 Shop magicInventory;
 
+ArrayList<Item> treasureList = new ArrayList<Item>();
+
+
 //All the items that go into the arraylists
 Item[] itemsArray;
 
@@ -157,55 +160,60 @@ public ArrayList<Item> generateInventory(ShopTypeEnum shop, WealthEnum wealth)
 		case BLACKSMITH:
 		{
 			String[] temp = blacksmithInventory.generateInventory(wealth);
-			output = parseInventory(temp);
+			output = parseInventory(10, temp);
 		}
 			break;
 		case BOWYER:
 		{
 			String[] temp = bowyerInventory.generateInventory(wealth);
-			output = parseInventory(temp);
+			output = parseInventory(5, temp);
 		}
 			break;		
 		case LEATHERWORKER:
 		{
 			String[] temp = leatherInventory.generateInventory(wealth);
-			output = parseInventory(temp);
+			output = parseInventory(5, temp);
 		}
 			break;
 		case TEMPLE:
 		{
 			String[] temp = templeInventory.generateInventory(wealth);
-			output = parseInventory(temp);
+			output = parseInventory(10, temp);
 		}
 			break;
 		case GENERALSTORE:
 		{
 			String[] temp = generalInventory.generateInventory(wealth);
-			output = parseInventory(temp);
+			output = parseInventory(10,temp);
 		}
 			break;
 		case TAILOR:
 		{
 			String[] temp = tailorInventory.generateInventory(wealth);
-			output = parseInventory(temp);
+			output = parseInventory(5,temp);
 		}
 			break;
 		case JEWELER:
 		{
 			String[] temp = jewelerInventory.generateInventory(wealth);
-			output = parseInventory(temp);
+			ArrayList<Item> tempTreasure = getTreasureList(wealth);
+			
+			output = parseInventory(2,temp);
+			
+			for(int i = 0; i<tempTreasure.size();i++)
+				output.add(tempTreasure.get(i));
 		}
 			break;
 		case POTIONS:
 		{
 			String[] temp = potionInventory.generateInventory(wealth);
-			output = parseInventory(temp);
+			output = parseInventory(5,temp);
 		}
 			break;
 		case MAGICSHOP:
 		{
 			String[] temp = magicInventory.generateInventory(wealth);
-			output = parseInventory(temp);
+			output = parseInventory(5,temp);
 		}
 			break;
 	}
@@ -266,11 +274,61 @@ public String determineSale(Item item)
 	return output;
 }
 
-public ArrayList<Item> parseInventory(String[] shopInventory)
+public ArrayList<Item> generateTreasure(int wealth, int min)
+{
+	ArrayList<Item> output = new ArrayList<Item>();
+
+	int total = 0;
+	int index = 0;
+	while(total < wealth)
+	{
+		index = randomizer.nextInt(treasureList.size());
+		char[] valueArray = treasureList.get(index).getValue().toCharArray();
+		String number = "";
+		for(int i = 0; i<valueArray.length;i++)
+		{
+			if(Character.isDigit(valueArray[i]))
+				number = number.concat(Character.toString(valueArray[i]));
+		}	
+		
+		if(Integer.parseInt(number) <= min)
+		{
+			output.add(treasureList.get(index));
+			total+=Integer.parseInt(number);
+		}
+	}
+	
+	return output;
+}
+
+//Generates an array of treasure 
+public ArrayList<Item> getTreasureList(WealthEnum wealth)
 {
 	ArrayList<Item> output = new ArrayList<Item>();
 	
-	for(int i = 0; i<10;i++)
+	switch(wealth)
+	{
+	case LOW: //Adds treasure elements to an array until the total cost of all items is over 500.
+		output = generateTreasure(500, 100);
+	break;
+	case MEDIUM:
+		output = generateTreasure(1000, 500);
+	break;
+	case HIGH:
+		output = generateTreasure(5000, 1000);
+	break;
+	case PREMIUM:
+		output = generateTreasure(10000, 10000);
+	break;
+	}
+	return output;
+}
+
+public ArrayList<Item> parseInventory(int total, String[] shopInventory)
+{
+	ArrayList<Item> output = new ArrayList<Item>();
+	
+	for(int i = 0; i<total;i++)
 	{
 		boolean found = false;
 		int randomnum = randomizer.nextInt(shopInventory.length); 
@@ -295,9 +353,17 @@ public void parseJSON() throws FileNotFoundException
 	
 	//READ ITEMS FROM JSON
 	JsonReader itemReader = new JsonReader(new FileReader("data/items.json"));
-	Item item[] = gson.fromJson(itemReader, Item[].class);
-	
-	itemsArray = item;
+	itemsArray = gson.fromJson(itemReader, Item[].class);
+		
+	for(int i = 0;i<itemsArray.length;i++)
+	{
+		if(itemsArray[i].getType() != null)
+		{
+		if(itemsArray[i].getType().equals("$"))
+			treasureList.add(itemsArray[i]);
+		}
+	}
+
 	
 	//READ INVENTORY FROM JSON
 	JsonReader inventoryReader = new JsonReader(new FileReader("data/Inventory.json"));
