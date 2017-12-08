@@ -1,18 +1,12 @@
 package mainPackage;
 import java.awt.Dimension;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Random;
 
-import org.json.simple.JSONObject;
-import org.json.simple.JSONArray;
 import org.json.simple.parser.ParseException;
-import org.json.simple.parser.JSONParser;
 
 import npcPackage.*;
 import shopPackage.*;
@@ -220,21 +214,21 @@ public class ShopGenerateButtonHandler implements ActionListener
 	public void actionPerformed(ActionEvent e) 
 	{	
 		ShopTypeEnum currentShop = ShopTypeEnum.INN;
-		WealthEnum currentWealth= WealthEnum.BASE;
+		WealthEnum currentWealth= WealthEnum.LOW;
 
 		switch(selectWealthLevel.getSelectedItem().toString())
 		{
 		case "Base":
-			currentWealth = WealthEnum.BASE;
-			break;
-		case "Rural":
 			currentWealth = WealthEnum.LOW;
 			break;
-		case "Urban":
+		case "Rural":
 			currentWealth = WealthEnum.MEDIUM;
 			break;
-		case "Premium":
+		case "Urban":
 			currentWealth = WealthEnum.HIGH;
+			break;
+		case "Premium":
+			currentWealth = WealthEnum.PREMIUM;
 			break;
 		}
 

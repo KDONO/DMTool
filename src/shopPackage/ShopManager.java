@@ -19,7 +19,6 @@ public class ShopManager
 JSONArray Names;
 JSONArray Adjectives;
 JSONArray Nouns;
-
 JSONArray Inns;
 JSONArray Booksellers;
 JSONArray Blacksmiths;
@@ -35,7 +34,7 @@ JSONArray Generalstores;
 Random randomizer = new Random();
 
 //Generates a list of inventory items from JSON
-static InventoryManager itemManager = new InventoryManager();
+static ItemManager itemManager = new ItemManager();
 
 //Generates inventory then name
 	

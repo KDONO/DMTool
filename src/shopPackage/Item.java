@@ -62,6 +62,7 @@ public class Item
 		this.tier = tier;
 	}
 
+	@Override
 	public String toString()
 	{
 		return "Name: "+name
