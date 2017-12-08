@@ -1,17 +1,12 @@
 package mainPackage;
 import java.awt.Dimension;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.Random;
 
-import org.json.simple.JSONObject;
-import org.json.simple.JSONArray;
 import org.json.simple.parser.ParseException;
-import org.json.simple.parser.JSONParser;
 
 import npcPackage.*;
 import shopPackage.*;
@@ -29,7 +24,7 @@ JLabel resultLabel;
 JComboBox<String> selectGenderBox;
 String[] genders = {"Random","Male","Female"};
 JComboBox<String> selectRaceBox;
-String[] races = {"Random","Human", "Orc", "Half-Orc", "Elf", "Half-Elf"};
+String[] races = {"Random","Human", "Elf", "Dwarf", "Gnome", "Halfling", "Orc", "Dragonborn","Tiefling"};
 JScrollPane npcScrollPane;
 JTextArea npcResultField;
 JButton npcGenerate;
@@ -38,9 +33,9 @@ JButton npcGenerate;
 JLabel shopLabel;
 JComboBox<String> selectShopType;
 JLabel avenueLabel;
-JComboBox<String> selectAvenueType;
+JComboBox<String> selectWealthLevel;
 String[] shopTypes = {"Blacksmith", "Inn", "Bowyer", "Leatherworker", "Temple", "Tailor", "Potions", "Magic Shop", "Jeweler", "General Store", "Bookseller"};
-String[] avenueTypes = {"Base","Rural","Urban","Premium"};
+String[] wealthTypes = {"Base","Low","Medium","High"};
 JLabel shopResult;
 JTextArea shopResultField;
 JScrollPane shopScrollPane;
@@ -48,6 +43,8 @@ JButton shopGenerate;
 
 static NPCManager npcManager;
 static ShopManager shopManager;
+
+Random randomizer;
 
 public static void main(String[]args) throws FileNotFoundException, IOException, ParseException 
 {
@@ -64,8 +61,10 @@ public Main() throws FileNotFoundException, IOException, ParseException
 	shopManager = new ShopManager();
 	shopManager.parseJSON();
 	
+	randomizer = new Random();
+	
 	JPanel windowPanel = new JPanel();
-		
+	
 	//NPC pane
 	JPanel npcPanel = new JPanel();
 	Border npcBorder = BorderFactory.createTitledBorder("NPC Generator");
@@ -97,8 +96,8 @@ public Main() throws FileNotFoundException, IOException, ParseException
 		npcPanel.setBorder(shopBorder);
 	shopLabel = new JLabel("Shop Type:");
 	selectShopType = new JComboBox<String>(shopTypes);
-	avenueLabel = new JLabel("Avenue Type:");
-	selectAvenueType = new JComboBox<String>(avenueTypes);
+	avenueLabel = new JLabel("Wealth Level:");
+	selectWealthLevel = new JComboBox<String>(wealthTypes);
 	shopResult = new JLabel("Result:");
 	shopResultField = new JTextArea(10, 10);
 	shopScrollPane = new JScrollPane(shopResultField);
@@ -110,7 +109,7 @@ public Main() throws FileNotFoundException, IOException, ParseException
 	shopPanel.add(shopLabel);
 	shopPanel.add(selectShopType);
 	shopPanel.add(avenueLabel);
-	shopPanel.add(selectAvenueType);
+	shopPanel.add(selectWealthLevel);
 	shopPanel.add(shopResult);
 	shopPanel.add(shopScrollPane);
 	shopPanel.add(shopGenerate);
@@ -146,28 +145,44 @@ public class NpcGenerateButtonHandler implements ActionListener
 		case "Elf":
 			currentRace = RaceEnum.ELF;
 		break;
-		case "Half-Elf":
-			currentRace = RaceEnum.HALFELF;
-		break;
 		case "Orc":
 			currentRace = RaceEnum.ORC;
 		break;
-		case "Half-Orc":
-			currentRace = RaceEnum.HALFORC;
+		case "Dwarf":
+			currentRace = RaceEnum.DWARF;
+		break;
+		case "Gnome":
+			currentRace = RaceEnum.GNOME;
+		break;
+		case "Halfling":
+			currentRace = RaceEnum.HALFLING;
+		break;
+		case "Dragonborn":
+			currentRace = RaceEnum.DRAGONBORN;
+		break;
+		case "Tiefling":
+			currentRace = RaceEnum.TIEFLING;
 		break;
 		case "Random":
 		{
-			int randomNum = 1 + (int)(Math.random() * 5);
+			int randomNum = 1 + randomizer.nextInt(8);
+			
 			if(randomNum == 1)
 				currentRace = RaceEnum.HUMAN;
 			if(randomNum == 2)
 				currentRace = RaceEnum.ELF;
 			if(randomNum == 3)
-				currentRace = RaceEnum.HALFELF;
-			if(randomNum == 4)
 				currentRace = RaceEnum.ORC;
+			if(randomNum == 4)
+				currentRace = RaceEnum.DWARF;
 			if(randomNum == 5)
-				currentRace = RaceEnum.HALFORC;
+				currentRace = RaceEnum.HALFLING;
+			if(randomNum == 6)
+				currentRace = RaceEnum.GNOME;
+			if(randomNum == 7)
+				currentRace = RaceEnum.TIEFLING;
+			if(randomNum == 8)
+				currentRace = RaceEnum.DRAGONBORN;
 		}
 		break;
 		}
@@ -182,7 +197,7 @@ public class NpcGenerateButtonHandler implements ActionListener
 		break;
 		case "Random":
 		{
-			int randomNum = 1 + (int)(Math.random() * 2);
+			int randomNum = 1 + randomizer.nextInt(2);
 			if(randomNum == 1)
 				currentGender = GenderEnum.MALE;
 			if(randomNum == 2)
@@ -199,21 +214,21 @@ public class ShopGenerateButtonHandler implements ActionListener
 	public void actionPerformed(ActionEvent e) 
 	{	
 		ShopTypeEnum currentShop = ShopTypeEnum.INN;
-		AvenueEnum currentAvenue= AvenueEnum.BASE;
+		WealthEnum currentWealth= WealthEnum.LOW;
 
-		switch(selectAvenueType.getSelectedItem().toString())
+		switch(selectWealthLevel.getSelectedItem().toString())
 		{
 		case "Base":
-			currentAvenue = AvenueEnum.BASE;
+			currentWealth = WealthEnum.LOW;
 			break;
 		case "Rural":
-			currentAvenue = AvenueEnum.RURAL;
+			currentWealth = WealthEnum.MEDIUM;
 			break;
 		case "Urban":
-			currentAvenue = AvenueEnum.URBAN;
+			currentWealth = WealthEnum.HIGH;
 			break;
 		case "Premium":
-			currentAvenue = AvenueEnum.PREMIUM;
+			currentWealth = WealthEnum.PREMIUM;
 			break;
 		}
 
@@ -253,7 +268,7 @@ public class ShopGenerateButtonHandler implements ActionListener
 			currentShop = ShopTypeEnum.BOOKSELLER;
 			break;
 		}
-		shopResultField.setText(shopManager.generateShop(currentShop, currentAvenue));
+		shopResultField.setText(shopManager.generateName(currentShop));
 	}
 }
 

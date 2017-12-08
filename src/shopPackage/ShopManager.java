@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Random;
 
 import javax.swing.JOptionPane;
 
@@ -18,7 +19,6 @@ public class ShopManager
 JSONArray Names;
 JSONArray Adjectives;
 JSONArray Nouns;
-
 JSONArray Inns;
 JSONArray Booksellers;
 JSONArray Blacksmiths;
@@ -31,64 +31,19 @@ JSONArray Magicshops;
 JSONArray Jewelers;
 JSONArray Generalstores;
 
+Random randomizer = new Random();
+
+//Generates a list of inventory items from JSON
 static ItemManager itemManager = new ItemManager();
 
-public String generateShop(ShopTypeEnum shopType, AvenueEnum avenue)
-{
-	String output = (generateName(shopType)+" \n"
-			+"-Inventory-\n");
+//Generates inventory then name
 	
-	ArrayList<String> inventory =  itemManager.getInventory(shopType, avenue);
-	ArrayList<String> outputinv = new ArrayList<String>();
-	
-	if(inventory != null)
-	{
-		switch(avenue)
-		{
-		case BASE:
-		{
-		int randomNum = 1 + (int)(Math.random() * 5);
-		for(int i = 0; i<randomNum;i++)
-			outputinv.add(inventory.get((int) Math.floor((Math.random() * inventory.size()))));
-		}
-		break;
-		case RURAL:
-		{
-			int randomNum = 1 + (int)(Math.random() * 15);
-			for(int i = 0; i<randomNum;i++)
-				outputinv.add(inventory.get((int) Math.floor((Math.random() * inventory.size()))));
-		}
-		break;
-		case URBAN:
-		{
-			int randomNum = 1 + (int)(Math.random() * 20);
-			for(int i = 0; i<randomNum;i++)
-				outputinv.add(inventory.get((int) Math.floor((Math.random() * inventory.size()))));
-		}
-		break;
-		case PREMIUM:
-		{
-			int randomNum = 1 + (int)(Math.random() * 25);
-			for(int i = 0; i<randomNum;i++)
-				outputinv.add(inventory.get((int) Math.floor((Math.random() * inventory.size()))));
-		}
-		break;
-		}
-		
-		for(int i = 0; i<outputinv.size();i++)
-		{
-			output = output.concat(outputinv.get(i)+"\n");
-		}
-	}
-	
-	return output;
-}
-
+//Generates Name
 public String generateName(ShopTypeEnum shopType)
 {
 	String output = "";
 	
-	int randomNum = 1 + (int)(Math.random() * 7);
+	int randomNum = 1 + randomizer.nextInt(7);
 
 	//Determines the format
 	switch(randomNum)
@@ -121,17 +76,17 @@ public String generateName(ShopTypeEnum shopType)
 //Generators
 private String getName()
 {
-	 return (String) Names.get((int) Math.floor((Math.random() * Names.size())));
+	 return (String) Names.get(randomizer.nextInt(Names.size()));
 }
 
 private String getNoun()
 {
-	 return (String) Nouns.get((int) Math.floor((Math.random() * Nouns.size())));
+	 return (String) Nouns.get(randomizer.nextInt(Nouns.size()));
 }
 
 private String getAdjective()
 {
-	 return (String) Adjectives.get((int) Math.floor((Math.random() * Adjectives.size())));
+	 return (String) Adjectives.get(randomizer.nextInt(Adjectives.size()));
 }
 
 private String getShop(ShopTypeEnum shopType)
@@ -141,37 +96,37 @@ private String getShop(ShopTypeEnum shopType)
 	switch(shopType)
 		{
 		case INN:
-		output = (String) Inns.get((int) Math.floor((Math.random() * Inns.size())));
+		output = (String) Inns.get(randomizer.nextInt(Inns.size()));
 		break;
 		case BLACKSMITH:
-		output = (String) Blacksmiths.get((int) Math.floor((Math.random() * Blacksmiths.size())));
+		output = (String) Blacksmiths.get(randomizer.nextInt(Blacksmiths.size()));
 		break;
 		case BOWYER:
-		output = (String) Bowyer.get((int) Math.floor((Math.random() * Bowyer.size())));
+		output = (String) Bowyer.get(randomizer.nextInt(Bowyer.size()));
 		break;
 		case LEATHERWORKER:
-		output = (String) Leatherworker.get((int) Math.floor((Math.random() * Leatherworker.size())));
+		output = (String) Leatherworker.get(randomizer.nextInt(Leatherworker.size()));
 		break;
 		case TEMPLE:
-		output = (String) Temple.get((int) Math.floor((Math.random() * Temple.size())));
+		output = (String) Temple.get(randomizer.nextInt(Temple.size()));
 		break;
 		case TAILOR:
-		output = (String) Tailor.get((int) Math.floor((Math.random() * Tailor.size())));
+		output = (String) Tailor.get(randomizer.nextInt(Tailor.size()));
 		break;
 		case POTIONS:
-		output = (String) Potions.get((int) Math.floor((Math.random() * Potions.size())));
+		output = (String) Potions.get(randomizer.nextInt(Potions.size()));
 		break;
 		case MAGICSHOP:
-		output = (String) Magicshops.get((int) Math.floor((Math.random() * Magicshops.size())));
+		output = (String) Magicshops.get(randomizer.nextInt(Magicshops.size()));
 		break;
 		case JEWELER:
-		output = (String) Jewelers.get((int) Math.floor((Math.random() * Jewelers.size())));
+		output = (String) Jewelers.get(randomizer.nextInt(Jewelers.size()));
 		break;
 		case GENERALSTORE:
-		output = (String) Generalstores.get((int) Math.floor((Math.random() * Generalstores.size())));
+		output = (String) Generalstores.get(randomizer.nextInt(Generalstores.size()));
 		break;
 		case BOOKSELLER:
-		output = (String) Booksellers.get((int) Math.floor((Math.random() * Booksellers.size())));
+		output = (String) Booksellers.get(randomizer.nextInt(Booksellers.size()));
 		break;
 		}
 	

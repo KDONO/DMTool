@@ -1,276 +1,178 @@
 package shopPackage;
+
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.JSONValue;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
+import java.util.Random;
+
+import com.google.gson.Gson;
+import com.google.gson.stream.JsonReader;
 
 public class ItemManager 
 {
-	JSONArray BaseBlacksmith;
-	JSONArray RuralBlacksmith;
-	JSONArray UrbanBlacksmith;
-	JSONArray PremiumBlacksmith;
-	
-	JSONArray BaseBowyer;
-	JSONArray RuralBowyer;
-	JSONArray UrbanBowyer;
-	JSONArray PremiumBowyer;
+//Inventory Objects that hold the total inventory
+Shop blacksmithInventory;
+Shop bowyerInventory;
+Shop leatherInventory;
+Shop templeInventory;
+Shop generalInventory;
+Shop tailorInventory;
+Shop jewelerInventory;
+Shop potionInventory;
+Shop magicInventory;
 
-	JSONArray BaseTemple;
-	JSONArray RuralTemple;
-	JSONArray UrbanTemple;
-	JSONArray PremiumTemple;
+//Hold the actual item objects
+ArrayList<Item> Jewels = new ArrayList<Item>(); // Jewels
+ArrayList<Item> Weapons = new ArrayList<Item>(); // Weapons and foci
+ArrayList<Item> Armor = new ArrayList<Item>(); // Armor and Shields
+ArrayList<Item> Potions = new ArrayList<Item>(); // All Potions
+ArrayList<Item> Scrolls = new ArrayList<Item>(); // All Scrolls
+ArrayList<Item> General = new ArrayList<Item>(); //General goods, game sets
+ArrayList<Item> Tools = new ArrayList<Item>(); // tools and artisan's tools
+ArrayList<Item> Magic = new ArrayList<Item>(); //Rings, Rods, Staves, anything with a tier :O
+Item[] alltheitems;
 
-	JSONArray BaseLeather;
-	JSONArray RuralLeather;
-	JSONArray UrbanLeather;
-	JSONArray PremiumLeather;
-	
-	JSONArray BaseGeneral;
-	JSONArray RuralGeneral;
-	JSONArray UrbanGeneral;
-	JSONArray PremiumGeneral;
-	
-	JSONArray BaseTailor;
-	JSONArray RuralTailor;
-	JSONArray UrbanTailor;
-	JSONArray PremiumTailor;
+// Generates random inventory
+public void test()
+{
+	String[] test = leatherInventory.generateInventory(WealthEnum.LOW);
+// PLEASE TEST THAT ALL STRINGS IN INVENTORY WILL MAP TO A ITEM IN THE ITEM ARRAYS HERE. USE ITEM[]
 
-	JSONArray BaseJeweler;
-	JSONArray RuralJeweler;
-	JSONArray UrbanJeweler;
-	JSONArray PremiumJeweler;
+	for(int i = 0; i<alltheitems.length;i++)
+	{
+		boolean pass = false;
+		int count = 0;
+		
+		while(pass == false)
+		{
+			if(alltheitems[i].getName().equals(test[count]));
+				pass = true;
+				
+			count++;
+		}
+		
+		if(pass == false)
+			System.out.println(alltheitems[i].getName()+" FAIL");
+		
+		else
+			System.out.println("Pass");
+		
+	}
+}
 
-	JSONArray BasePotion;
-	JSONArray RuralPotion;
-	JSONArray UrbanPotion;
-	JSONArray PremiumPotion;
-
-	JSONArray BaseMagic;
-	JSONArray RuralMagic;
-	JSONArray UrbanMagic;
-	JSONArray PremiumMagic;
-
-//Returns an arraylist of possible inventory based on the avenue
-public ArrayList<String> getInventory(ShopTypeEnum shop, AvenueEnum ave)
+public ArrayList<String> generateInventory(ShopTypeEnum shop, WealthEnum wealth)
 {
 	ArrayList<String> output = new ArrayList<String>();
-
-	JSONArray baseInventory = null;
-	JSONArray ruralInventory = null;
-	JSONArray urbanInventory = null;
-	JSONArray premiumInventory = null;
-
+	String[] temp = null;
+	
 	switch(shop)
 	{
-	case INN:
-	{
-		output = null;
+		case BLACKSMITH:
+			temp = blacksmithInventory.generateInventory(wealth); 
+		break;
+		case BOWYER:
+			temp = bowyerInventory.generateInventory(wealth);
+		break;		
+		case LEATHERWORKER:
+			temp = leatherInventory.generateInventory(wealth);
+		break;
+		case TEMPLE:
+			temp = leatherInventory.generateInventory(wealth);
+		break;
+		case GENERALSTORE:
+			temp = generalInventory.generateInventory(wealth);
+		break;
+		case TAILOR:
+			temp = tailorInventory.generateInventory(wealth);
+		break;
+		case JEWELER:
+			temp = jewelerInventory.generateInventory(wealth);
+		break;
+		case POTIONS:
+			temp = potionInventory.generateInventory(wealth);
+		break;
+		case MAGICSHOP:
+			temp = magicInventory.generateInventory(wealth);
+		break;
 	}
-	case BOOKSELLER:
-	{
-		output = null;
-	}
+			
+	return output;
+}
 
-	break;
-	case BLACKSMITH:
+public void parseJSON() throws FileNotFoundException
+{
+	Gson gson = new Gson();
+	
+	//READ ITEMS FROM JSON
+	JsonReader itemReader = new JsonReader(new FileReader("data/items.json"));
+	Item item[] = gson.fromJson(itemReader, Item[].class);
+	
+	alltheitems = item;
+	
+	for(int i = 0; i<item.length;i++)
 	{
-		baseInventory = BaseBlacksmith;
-		ruralInventory = RuralBlacksmith;
-		urbanInventory = UrbanBlacksmith;
-		premiumInventory = PremiumBlacksmith;
-	}
-	break;
-	case BOWYER:
-	{
-		baseInventory = BaseBowyer;
-		ruralInventory = RuralBowyer;
-		urbanInventory = UrbanBowyer;
-		premiumInventory = PremiumBowyer;
-	}
-	break;
-	case LEATHERWORKER:
-	{
-		baseInventory = BaseLeather;
-		ruralInventory = RuralLeather;
-		urbanInventory = UrbanLeather;
-		premiumInventory = PremiumLeather;
-	}
-	break;
+		String type = item[i].getType();
 
-	case TEMPLE:
-	{
-		baseInventory = BaseBowyer;
-		ruralInventory = RuralBowyer;
-		urbanInventory = UrbanBowyer;
-		premiumInventory = PremiumBowyer;
-	}
-	break;
-	case GENERALSTORE:
-	{
-		baseInventory = BaseGeneral;
-		ruralInventory = RuralGeneral;
-		urbanInventory = UrbanGeneral;
-		premiumInventory = PremiumGeneral;
-	}
-	break;
-	case TAILOR:
-	{
-		baseInventory = BaseTailor;
-		ruralInventory = RuralTailor;
-		urbanInventory = UrbanTailor;
-		premiumInventory = PremiumTailor;
-	}
-	break;
-	case JEWELER:
-	{
-		baseInventory = BaseJeweler;
-		ruralInventory = RuralJeweler;
-		urbanInventory = UrbanJeweler;
-		premiumInventory = PremiumJeweler;
-	}
-	break;
-	case POTIONS:
-	{
-		baseInventory = BasePotion;
-		ruralInventory = RuralPotion;
-		urbanInventory = UrbanPotion;
-		premiumInventory = PremiumPotion;
-	}
-	break;
-	case MAGICSHOP:
-	{
-		baseInventory = BaseMagic;
-		ruralInventory = RuralMagic;
-		urbanInventory = UrbanMagic;
-		premiumInventory = PremiumMagic;
-	}
-	break;
-
+		if(type != null)
+		{
+			if(type.equals("M") || type.equals("SCF") || type.equals("R") || type.equals("A"))
+				Weapons.add(item[i]);
+			else if(type.equals("LA") || type.equals("MA")|| type.equals("HA")|| type.equals("S"))
+				Armor.add(item[i]);
+			else if(type.equals("P"))
+				Potions.add(item[i]);
+			else if(type.equals("SC"))
+				Scrolls.add(item[i]);
+			else if(type.equals("G") || type.equals("GS") || type.equals("TG") || type.equals("INS"))
+				General.add(item[i]);
+			else if(type.equals("AT") || type.equals("T"))
+				Tools.add(item[i]);
+			else if(type.equals("RG") || type.equals("WD") || type.equals("RD"))
+				Magic.add(item[i]);
+			else if(type.equals("$"))
+				Jewels.add(item[i]);
+		}
+		else
+			Magic.add(item[i]);
 	}
 	
-	switch(ave)
+	//READ INVENTORY FROM JSON
+	JsonReader inventoryReader = new JsonReader(new FileReader("data/Inventory.json"));
+	Shop[] shop = gson.fromJson(inventoryReader, Shop[].class);
+	
+	for(int i = 0; i< shop.length; i++)
 	{
-		case BASE:
+		switch(shop[i].getName())
 		{
-			output = baseInventory;
+		case "Blacksmith":
+			blacksmithInventory = shop[i]; 
+			break;
+		case "Bowyer":
+			bowyerInventory = shop[i]; 
+			break;
+		case "Leather":
+			leatherInventory = shop[i]; 
+			break;
+		case "Temple":
+			templeInventory = shop[i]; 
+			break;
+		case "General":
+			generalInventory = shop[i]; 
+			break;
+		case "Tailor":
+			tailorInventory = shop[i]; 
+			break;
+		case "Jeweler":
+			jewelerInventory = shop[i]; 
+			break;
+		case "Potion":
+			potionInventory = shop[i]; 
+			break;
+		case "Magic":
+			magicInventory = shop[i]; 
+			break;
 		}
-		break;
-		case RURAL:
-		{
-			ArrayList<String> temp = new ArrayList<String>();
-			
-			for(int i = 0; i< baseInventory.size();i++)
-				temp.add((String) baseInventory.get(i));
-			for(int j = 0; j<ruralInventory.size();j++)
-				temp.add((String) ruralInventory.get(j));
-			
-			output = temp;
-		}
-		break;
-		case URBAN:
-		{
-			ArrayList<String> temp = new ArrayList<String>();
-			
-			for(int i = 0; i< baseInventory.size();i++)
-				temp.add((String) baseInventory.get(i));
-			for(int j = 0; j<ruralInventory.size();j++)
-				temp.add((String) ruralInventory.get(j));
-			for(int k = 0; k<urbanInventory.size();k++)
-				temp.add((String) urbanInventory.get(k));
-			
-			output = temp;
-		}
-		break;
-		case PREMIUM:
-		{
-			ArrayList<String> temp = new ArrayList<String>();
-			
-			for(int i = 0; i< baseInventory.size();i++)
-				temp.add((String) baseInventory.get(i));		
-			for(int j = 0; j<ruralInventory.size();j++)
-				temp.add((String) ruralInventory.get(j));	
-			for(int k = 0; k<urbanInventory.size();k++)
-				temp.add((String) urbanInventory.get(k));
-			for(int l = 0; l<premiumInventory.size();l++)
-				temp.add((String) premiumInventory.get(l));
-			output = temp;
-		}
-		break;
 	}
-	return output;
-}	
-public void parseJSON() throws FileNotFoundException, IOException, ParseException 
-{
-	//Get the JSON file as one JObject
-    JSONParser parser = new JSONParser();
 
-    try
-    {
-    JSONObject data = (JSONObject) parser.parse(new FileReader("data/Inventory.json"));
-
-    //Grab the Arrays from the JObject as JArrays
-    BaseBlacksmith  = (JSONArray) data.get("BaseBlacksmith");
-    RuralBlacksmith  = (JSONArray) data.get("RuralBlacksmith");
-    UrbanBlacksmith  = (JSONArray) data.get("UrbanBlacksmith");
-    PremiumBlacksmith  = (JSONArray) data.get("PremiumBlacksmith");
-    
-    BaseBowyer  = (JSONArray) data.get("BaseBowyer");
-    RuralBowyer  = (JSONArray) data.get("RuralBowyer");
-    UrbanBowyer  = (JSONArray) data.get("UrbanBowyer");
-    PremiumBowyer  = (JSONArray) data.get("PremiumBowyer");
-
-    BaseLeather = (JSONArray) data.get("BaseLeather");
-    RuralLeather = (JSONArray) data.get("RuralLeather");
-    UrbanLeather = (JSONArray) data.get("UrbanLeather");
-    PremiumLeather = (JSONArray) data.get("PremiumLeather");
-
-    BaseTemple = (JSONArray) data.get("BaseTemple");
-    RuralTemple = (JSONArray) data.get("RuralTemple");
-    UrbanTemple = (JSONArray) data.get("UrbanTemple");
-    PremiumTemple = (JSONArray) data.get("PremiumTemple");
-    
-    BaseGeneral= (JSONArray) data.get("BaseGeneral");
-    RuralGeneral= (JSONArray) data.get("RuralGeneral");
-    UrbanGeneral= (JSONArray) data.get("UrbanGeneral");
-    PremiumGeneral= (JSONArray) data.get("PremiumGeneral");
-
-    BaseTailor= (JSONArray) data.get("BaseTailor");
-    RuralTailor= (JSONArray) data.get("RuralTailor");
-    UrbanTailor= (JSONArray) data.get("UrbanTailor");
-    PremiumTailor= (JSONArray) data.get("PremiumTailor");
-
-    BaseJeweler= (JSONArray) data.get("BaseJeweler");
-    RuralJeweler= (JSONArray) data.get("RuralJeweler");
-    UrbanJeweler= (JSONArray) data.get("UrbanJeweler");
-    PremiumJeweler= (JSONArray) data.get("PremiumJeweler");
-    
-    BasePotion= (JSONArray) data.get("BasePotion");
-    RuralPotion= (JSONArray) data.get("RuralPotion");
-    UrbanPotion= (JSONArray) data.get("UrbanPotion");
-    PremiumPotion= (JSONArray) data.get("PremiumPotion");
-
-    BaseMagic= (JSONArray) data.get("BaseMagic");
-    RuralMagic= (JSONArray) data.get("RuralMagic");
-    UrbanMagic= (JSONArray) data.get("UrbanMagic");
-    PremiumMagic= (JSONArray) data.get("PremiumMagic");
-
-    }
-    catch(FileNotFoundException e)
-    {
-        JOptionPane.showMessageDialog(null, e.toString(), "File Not Found Exception. Please place Names.txt in the same directory as the executable JAR file.",
-                JOptionPane.ERROR_MESSAGE);
-    }
-    catch(Exception e)
-    {
-        JOptionPane.showMessageDialog(null, e.toString(), "Error",
-                JOptionPane.ERROR_MESSAGE);
-    }
 }
 }

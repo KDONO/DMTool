@@ -1,23 +1,52 @@
 {
-"Names":["Belmont","Chamberlain","Lambert","Baderon", "Boyle", "Fawkes", "Flambard", "Grimdbald", "Habreham", "Halstein", "Khellius", "Kurtz", "Lefwyne", "Lodwicke", "Lowell", "Radcliffe", "Randwulf", "Redwall", "Templetonne", 
-		"Thrydwulf", "Valentyne", "Wadard", "Wineburg", "Krauser", "Zerig", "Alainne", "Admiranda", "Charmaine", "Celestria", "Brangwine", "Crestian",  "Dorcas", "Florens", "Leofwynn", "Maerwynn", "Harcourt", "Yanova", "Grymbalde",
-		"Baelus", "Valefor", "Barbatos", "Labolas", "Beleth", "Eligos", "Naberius", "Gremory", "Archedios", "Bacchus", "Dwyvaer", "Molossos", "Rhadamanthys", "Theophane", "Osmaer", "Cheyne",
-		"Oakehurst", "Faylare", "Beresford", "Derrington", "Dencourt", "Baldwin", "Stokerton", "Aynesworth","Zulgeteb", "Wudugod", "Kurmbag", "Weghad", "Woghulghat", "Arok", "Argigoth", "Eichelberbog", "Zaghig", "Tot", "Mazhug", 
-		"Ulmrougha", "Zupaugh", "Spathu", "Omogulg","Dubok", "Bogugh", "Bahgigath", "Nughilug", "Zurbag", "Bugdurash", "Rogmesh", "Porgarag", "Loravyre", "Traphyra", "Sadithas", "Umerel", "Vensalor", "Iarrieth", "Sylviere", "Illyandriel", 
-		"Iarnieros", "Glynlynn", "Valfaren", "Vawenys", "Thepeiros", "Yllaphine","Ylladros", "Yllandriel", "Yllensalor", "Faeleth", "Romys", "Faven", "Loramys", "Glyndark", "Adhorn", "Fargwyn", "Aevaris", "Ravejeon", "Keyrel", "Persandoral", "Erzeiros", "Balbanise", "Ulamyar", "Yllafir"],
+"Names":["Belmont","Chamberlain","Lambert","Baderon", "Boyle", 
+		"Fawkes", "Flambard", "Grimdbald", "Habreham", "Halstein", 
+		"Khellius", "Kurtz", "Lefwyne", "Lodwicke", "Lowell", 
+		"Radcliffe", "Randwulf", "Redwall", "Templetonne", "Thrydwulf", 
+		"Valentyne", "Wadard", "Wineburg", "Krauser", "Zerig", 
+		"Alainne", "Admiranda", "Charmaine", "Celestria", "Brangwine", 
+		"Crestian",  "Dorcas", "Florens", "Leofwynn", "Maerwynn", 
+		"Harcourt", "Yanova", "Grymbalde", "Baelus", "Valefor", 
+		"Barbatos", "Labolas", "Beleth", "Eligos", "Naberius", 
+		"Gremory", "Archedios", "Bacchus", "Dwyvaer", "Molossos", 
+		"Rhadamanthys", "Theophane", "Osmaer", "Cheyne","Oakehurst", 
+		"Faylare", "Beresford", "Derrington", "Dencourt", "Baldwin", 
+		"Stokerton", "Aynesworth","Zulgeteb", "Wudugod", "Kurmbag", 
+		"Weghad", "Woghulghat", "Arok", "Argigoth", "Eichelberbog", 
+		"Zaghig", "Tot", "Mazhug", "Ulmrougha", "Zupaugh", 
+		"Spathu", "Omogulg","Dubok", "Bogugh", "Bahgigath", 
+		"Nughilug", "Zurbag", "Bugdurash", "Rogmesh", "Porgarag", 
+		"Loravyre", "Traphyra", "Sadithas", "Umerel", "Vensalor", 
+		"Iarrieth", "Sylviere", "Illyandriel", "Iarnieros", "Glynlynn", 
+		"Valfaren", "Vawenys", "Thepeiros", "Yllaphine","Ylladros", 
+		"Yllandriel", "Yllensalor", "Faeleth", "Romys", "Faven", 
+		"Loramys", "Glyndark", "Adhorn", "Fargwyn", "Aevaris", 
+		"Ravejeon", "Keyrel", "Persandoral", "Erzeiros", "Balbanise", 
+		"Ulamyar", "Yllafir"],
 
-"Adjectives":["Busy","Angry", "Black", "Gruesome", "Violet", "Deranged", "Merciful", "Lucky", "Quaint", "Quick", "Sudden", "Skinny", "Dire",
-		"Fantastic", "Jaded", "Gold", "Sleeping", "Outrageous", "Burnt", "Elated", "Blue", "Virtuous", "Red", "Common", "Mad",
-		"Young", "Zestful", "Keen", "Needy", "Holy", "Righteous", "Divine"],
+"Adjectives":["Busy","Angry", "Black", "Gruesome", "Violet", 
+		"Deranged", "Merciful", "Lucky", "Quaint", "Quick", 
+		"Sudden", "Skinny", "Dire","Fantastic", "Jaded", 
+		"Gold", "Sleeping", "Outrageous", "Burnt", "Elated", 
+		"Blue", "Virtuous", "Red", "Common", "Mad",
+		"Young", "Zestful", "Keen", "Needy", "Holy", 
+		"Righteous", "Divine"],
 
 
-"Nouns":["Dragon","Blossom", "Bear", "Snapdragon", "Goat", "Chainmail", "Tiger", "Well", "Pumpkin", "Octopus", "Cavern", "Flower", "Jester",
-	"Wineskin", "Amulet", "Seaman", "Harpy", "Imp", "Jackal", "Raven", "Angel", "Warrior", "Robber", "Talisman", "Sword", "Spear",
-	"Dagger", "Shield", "Heart", "Paladin", "Knight", "Phoenix", "Ogre", "Troll"],
-	
-"Inns":["Inn", "Tavern", "Pub", "Keep", "Lodge", "Saloon", "Lounge", "Roadhouse", "Alehouse", "Taproom", "Brewery"],
+"Nouns":["Dragon","Blossom", "Bear", "Snapdragon", "Goat", 
+		"Chainmail", "Tiger", "Well", "Pumpkin", "Octopus", 
+		"Cavern", "Flower", "Jester","Wineskin", "Amulet", 
+		"Seaman", "Harpy", "Imp", "Jackal", "Raven", 
+		"Angel", "Warrior", "Robber", "Talisman", "Sword", 
+		"Spear","Dagger", "Shield", "Heart", "Paladin", 
+		"Knight", "Phoenix", "Ogre", "Troll"],
+			
+"Inns":["Inn", "Tavern", "Pub", "Keep", "Lodge", 
+		"Saloon", "Lounge", "Roadhouse", "Alehouse", "Taproom", 
+		"Brewery"],
 
-"Blacksmiths":["Smith", "Blacksmith", "Metals", "Forge", "Irons", "Ironworks", "Steelworks", "Armory"],
+"Blacksmiths":["Smith", "Blacksmith", "Metals", "Forge", "Irons", 
+		"Ironworks", "Steelworks", "Armory"],
 
 "Bowyer":["Fletcher", "Bowyer", "Hunting Essentials", "Fletchery"], 
 
@@ -27,13 +56,17 @@
 
 "Tailor":["Tailor", "Textiles", "Cloths"],
 
-"Potions":["Potion Shop", "Alchemical Supplies", "Alchemics", "Alchemyworks", "Potions", "Cauldron"],
+"Potions":["Potion Shop", "Alchemical Supplies", "Alchemics", "Alchemyworks", "Potions",
+		"Cauldron"],
 
-"Magicshops":["Magic Shop", "Wizardworks", "Arcana", "Arcanaworks", "Supplies", "Shop", "Codex", "Academia", "Magic Supplies"],
+"Magicshops":["Magic Shop", "Wizardworks", "Arcana", "Arcanaworks", "Supplies", 
+		"Shop", "Codex", "Academia", "Magic Supplies"],
 
-"Jewelers":["Jewels", "Gems", "Jewelry", "Goldsmith", "Gemsmith", "Silversmith", "Goldworks", "Silverworks"],
+"Jewelers":["Jewels", "Gems", "Jewelry", "Goldsmith", "Gemsmith", 
+		"Silversmith", "Goldworks", "Silverworks"],
 
-"Generalstores":["General", "Shop", "Market", "Emporium", "Outlet", "Stand", "Supplies"],
+"Generalstores":["General", "Shop", "Market", "Emporium", "Outlet", 
+		"Stand", "Supplies"],
 
 "Booksellers":["Libary", "Books", "Study", "Book Store", "Shelf"]
 	
