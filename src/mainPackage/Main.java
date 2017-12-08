@@ -268,7 +268,7 @@ public class ShopGenerateButtonHandler implements ActionListener
 			currentShop = ShopTypeEnum.BOOKSELLER;
 			break;
 		}
-		shopResultField.setText(shopManager.generateName(currentShop));
+		shopResultField.setText(shopManager.generateShop(currentShop, currentWealth));
 	}
 }
 

@@ -10,7 +10,7 @@ public static void main(String args[]) throws FileNotFoundException, IOException
 {
 ItemManager item = new ItemManager();
 item.parseJSON();
-item.test();
+item.confirmData();
 }
 
 }

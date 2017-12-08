@@ -1,5 +1,7 @@
 package shopPackage;
 
+import java.util.Random;
+
 public class Item 
 {
 	
@@ -26,42 +28,23 @@ public class Item
 		return name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
-
 	public String getType() {
 		return type;
 	}
 
-	public void setType(String type) {
-		this.type = type;
-	}
-
-	public String getValue() {
+	public String getValue() 
+	{
 		return value;
-	}
-
-	public void setValue(String value) {
-		this.value = value;
 	}
 
 	public String getRarity() {
 		return rarity;
 	}
 
-	public void setRarity(String rarity) {
-		this.rarity = rarity;
-	}
-
 	public String getTier() {
 		return tier;
 	}
-
-	public void setTier(String tier) {
-		this.tier = tier;
-	}
-
+		
 	@Override
 	public String toString()
 	{

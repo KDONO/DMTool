@@ -21,81 +21,271 @@ Shop jewelerInventory;
 Shop potionInventory;
 Shop magicInventory;
 
-//Hold the actual item objects
-ArrayList<Item> Jewels = new ArrayList<Item>(); // Jewels
-ArrayList<Item> Weapons = new ArrayList<Item>(); // Weapons and foci
-ArrayList<Item> Armor = new ArrayList<Item>(); // Armor and Shields
-ArrayList<Item> Potions = new ArrayList<Item>(); // All Potions
-ArrayList<Item> Scrolls = new ArrayList<Item>(); // All Scrolls
-ArrayList<Item> General = new ArrayList<Item>(); //General goods, game sets
-ArrayList<Item> Tools = new ArrayList<Item>(); // tools and artisan's tools
-ArrayList<Item> Magic = new ArrayList<Item>(); //Rings, Rods, Staves, anything with a tier :O
-Item[] alltheitems;
+//All the items that go into the arraylists
+Item[] itemsArray;
 
-// Generates random inventory
-public void test()
+//Randomizer
+Random randomizer = new Random();
+
+public String displayInventory(ShopTypeEnum shop, WealthEnum wealth)
 {
-	String[] test = leatherInventory.generateInventory(WealthEnum.LOW);
-// PLEASE TEST THAT ALL STRINGS IN INVENTORY WILL MAP TO A ITEM IN THE ITEM ARRAYS HERE. USE ITEM[]
+	ArrayList<Item> input = generateInventory(shop, wealth);
+	
+	ArrayList<Item> weapons = new ArrayList<Item>();
+	ArrayList<Item> armor = new ArrayList<Item>();
+	ArrayList<Item> general = new ArrayList<Item>();
+	ArrayList<Item> tools = new ArrayList<Item>();
+	ArrayList<Item> jewelery = new ArrayList<Item>();
+	ArrayList<Item> potions = new ArrayList<Item>();
+	ArrayList<Item> scrolls = new ArrayList<Item>();
+	ArrayList<Item> magic = new ArrayList<Item>();
 
-	for(int i = 0; i<alltheitems.length;i++)
+	for(int i = 0; i<input.size();i++)
 	{
-		boolean pass = false;
-		int count = 0;
-		
-		while(pass == false)
+		if(input.get(i).getType() != null)
+			{
+				if(input.get(i).getType().equals("M") 
+						|| input.get(i).getType().equals("SCF") 
+						|| input.get(i).getType().equals("R") 
+						|| input.get(i).getType().equals("A"))
+				{
+					weapons.add(input.get(i));
+				}
+				else if(input.get(i).getType().equals("LA") 
+						|| input.get(i).getType().equals("MA")
+						|| input.get(i).getType().equals("HA")
+						|| input.get(i).getType().equals("S"))
+				{
+					armor.add(input.get(i));
+				}
+				else if(input.get(i).getType().equals("P"))
+				{
+					potions.add(input.get(i));
+				}
+				else if(input.get(i).getType().equals("SC"))
+				{
+					scrolls.add(input.get(i));
+				}
+				else if(input.get(i).getType().equals("G") 
+						|| input.get(i).getType().equals("GS") 
+						|| input.get(i).getType().equals("TG") 
+						|| input.get(i).getType().equals("INS"))
+				{
+					general.add(input.get(i));
+				}
+				else if(input.get(i).getType().equals("AT") 
+						|| input.get(i).getType().equals("T"))
+				{
+					tools.add(input.get(i));
+				}
+				else if(input.get(i).getType().equals("RG") 
+						|| input.get(i).getType().equals("WD") 
+						|| input.get(i).getType().equals("RD"))
+				{
+					magic.add(input.get(i));
+				}
+				else if(input.get(i).getType().equals("$"))
+				{
+					jewelery.add(input.get(i));
+				}
+			}
+			else
+				{
+					magic.add(input.get(i));
+				}
+			}
+	
+	String output = "";
+	
+	if(weapons.size() != 0)
 		{
-			if(alltheitems[i].getName().equals(test[count]));
-				pass = true;
-				
-			count++;
+		output = output.concat("\n--Weapons--");
+		for(Item item:weapons)
+			output = output.concat("\n"+item.getName()+", "+determineSale(item));
 		}
-		
-		if(pass == false)
-			System.out.println(alltheitems[i].getName()+" FAIL");
-		
-		else
-			System.out.println("Pass");
-		
-	}
+	if(armor.size() != 0)
+		{
+		output = output.concat("\n--Armor--");
+		for(Item item:armor)
+			output = output.concat("\n"+item.getName()+", "+determineSale(item));
+		}
+	if(potions.size() != 0)
+		{
+		output = output.concat("\n--Potions--");
+		for(Item item:potions)
+			output = output.concat("\n"+item.getName()+", "+determineSale(item));
+		}
+	if(jewelery.size() != 0)
+		{
+		output = output.concat("\n--Treasure--");
+		for(Item item:jewelery)
+			output = output.concat("\n"+item.getName()+", "+determineSale(item));
+		}
+	if(general.size() != 0)
+		{
+		output = output.concat("\n--General Items--");
+		for(Item item:general)
+			output = output.concat("\n"+item.getName()+", "+determineSale(item));
+		}
+	if(tools.size() != 0)
+		{
+		output = output.concat("\n--Tools--");
+		for(Item item:tools)
+			output = output.concat("\n"+item.getName()+", "+determineSale(item));
+		}
+	if(scrolls.size() != 0)
+		{
+		output = output.concat("\n--Scrolls--");
+		for(Item item:scrolls)
+			output = output.concat("\n"+item.getName()+", "+determineSale(item));
+		}
+	if(magic.size() != 0)
+		{
+		output = output.concat("\n--Magic Items--");
+		for(Item item:magic)
+			output = output.concat("\n"+item.getName()+", "+determineSale(item));
+		}
+	return output;
 }
 
-public ArrayList<String> generateInventory(ShopTypeEnum shop, WealthEnum wealth)
+public ArrayList<Item> generateInventory(ShopTypeEnum shop, WealthEnum wealth)
 {
-	ArrayList<String> output = new ArrayList<String>();
-	String[] temp = null;
+	ArrayList<Item> output = new ArrayList<Item>();
 	
 	switch(shop)
 	{
 		case BLACKSMITH:
-			temp = blacksmithInventory.generateInventory(wealth); 
-		break;
+		{
+			String[] temp = blacksmithInventory.generateInventory(wealth);
+			output = parseInventory(temp);
+		}
+			break;
 		case BOWYER:
-			temp = bowyerInventory.generateInventory(wealth);
-		break;		
+		{
+			String[] temp = bowyerInventory.generateInventory(wealth);
+			output = parseInventory(temp);
+		}
+			break;		
 		case LEATHERWORKER:
-			temp = leatherInventory.generateInventory(wealth);
-		break;
+		{
+			String[] temp = leatherInventory.generateInventory(wealth);
+			output = parseInventory(temp);
+		}
+			break;
 		case TEMPLE:
-			temp = leatherInventory.generateInventory(wealth);
-		break;
+		{
+			String[] temp = templeInventory.generateInventory(wealth);
+			output = parseInventory(temp);
+		}
+			break;
 		case GENERALSTORE:
-			temp = generalInventory.generateInventory(wealth);
-		break;
+		{
+			String[] temp = generalInventory.generateInventory(wealth);
+			output = parseInventory(temp);
+		}
+			break;
 		case TAILOR:
-			temp = tailorInventory.generateInventory(wealth);
-		break;
+		{
+			String[] temp = tailorInventory.generateInventory(wealth);
+			output = parseInventory(temp);
+		}
+			break;
 		case JEWELER:
-			temp = jewelerInventory.generateInventory(wealth);
-		break;
+		{
+			String[] temp = jewelerInventory.generateInventory(wealth);
+			output = parseInventory(temp);
+		}
+			break;
 		case POTIONS:
-			temp = potionInventory.generateInventory(wealth);
-		break;
+		{
+			String[] temp = potionInventory.generateInventory(wealth);
+			output = parseInventory(temp);
+		}
+			break;
 		case MAGICSHOP:
-			temp = magicInventory.generateInventory(wealth);
-		break;
+		{
+			String[] temp = magicInventory.generateInventory(wealth);
+			output = parseInventory(temp);
+		}
+			break;
 	}
 			
+	return output;
+}
+
+public String determineSale(Item item)
+{
+	int num = randomizer.nextInt(10);
+	String output = "";
+	
+	if(num<2)
+	{
+		// 25% off (Sale)
+		char[] valueArray = item.getValue().toCharArray();
+		String number = "";
+		String letter = "";
+		
+		for(int i = 0; i<valueArray.length;i++)
+		{
+			if(Character.isDigit(valueArray[i]))
+				number = number.concat(Character.toString(valueArray[i]));
+			else if(Character.isLetter(valueArray[i]))
+				letter = letter.concat(Character.toString(valueArray[i]));
+		}
+		int finalCost = (int) Math.ceil(Integer.parseInt(number)*(.75));
+		
+		if(finalCost == Integer.parseInt(number))	
+			output = item.getValue();
+		else 
+			output = finalCost + letter + " (Sale)";
+	}
+	else if(num>=8)
+	{
+		//50% markup (Marksup)
+		char[] valueArray = item.getValue().toCharArray();
+		String number = "";
+		String letter = "";
+		
+		for(int i = 0; i<valueArray.length;i++)
+		{
+			if(Character.isDigit(valueArray[i]))
+				number = number.concat(Character.toString(valueArray[i]));
+			else if(Character.isLetter(valueArray[i]))
+				letter = letter.concat(Character.toString(valueArray[i]));
+		}
+		int finalCost = (int) Math.ceil(Integer.parseInt(number)*(1.5));
+		
+		if(finalCost == Integer.parseInt(number))	
+			output = item.getValue();
+		else 
+			output = finalCost + letter + " (Markup)";
+	}
+	else
+		output = item.getValue();
+	
+	return output;
+}
+
+public ArrayList<Item> parseInventory(String[] shopInventory)
+{
+	ArrayList<Item> output = new ArrayList<Item>();
+	
+	for(int i = 0; i<10;i++)
+	{
+		boolean found = false;
+		int randomnum = randomizer.nextInt(shopInventory.length); 
+		int count = 0;
+		
+		while(found == false && count<itemsArray.length)
+		{
+			if(shopInventory[randomnum].equals(itemsArray[count].getName()))
+				output.add(itemsArray[count]);
+			
+			count++;
+		}
+		//Handle Scrolls, Potions, Magic Items, and Treasure here
+	}
+	
 	return output;
 }
 
@@ -107,34 +297,7 @@ public void parseJSON() throws FileNotFoundException
 	JsonReader itemReader = new JsonReader(new FileReader("data/items.json"));
 	Item item[] = gson.fromJson(itemReader, Item[].class);
 	
-	alltheitems = item;
-	
-	for(int i = 0; i<item.length;i++)
-	{
-		String type = item[i].getType();
-
-		if(type != null)
-		{
-			if(type.equals("M") || type.equals("SCF") || type.equals("R") || type.equals("A"))
-				Weapons.add(item[i]);
-			else if(type.equals("LA") || type.equals("MA")|| type.equals("HA")|| type.equals("S"))
-				Armor.add(item[i]);
-			else if(type.equals("P"))
-				Potions.add(item[i]);
-			else if(type.equals("SC"))
-				Scrolls.add(item[i]);
-			else if(type.equals("G") || type.equals("GS") || type.equals("TG") || type.equals("INS"))
-				General.add(item[i]);
-			else if(type.equals("AT") || type.equals("T"))
-				Tools.add(item[i]);
-			else if(type.equals("RG") || type.equals("WD") || type.equals("RD"))
-				Magic.add(item[i]);
-			else if(type.equals("$"))
-				Jewels.add(item[i]);
-		}
-		else
-			Magic.add(item[i]);
-	}
+	itemsArray = item;
 	
 	//READ INVENTORY FROM JSON
 	JsonReader inventoryReader = new JsonReader(new FileReader("data/Inventory.json"));
@@ -175,4 +338,34 @@ public void parseJSON() throws FileNotFoundException
 	}
 
 }
+
+//USE THIS TO CONFIRM IF A SHOP OBJECT'S INVENTORY MAPS CORRECTLY TO ITEMS IN THE ITEMS ARRAY.
+public void confirmData()
+{
+	String[] confirmData = magicInventory.generateInventory(WealthEnum.PREMIUM);
+
+	for(int i = 0; i<confirmData.length;i++)
+	{
+		boolean pass = false;
+		int count = 0;
+		
+		while(pass == false && count<itemsArray.length)
+		{
+			if(confirmData[i].equals(itemsArray[count].getName()))
+			{
+				pass = true;
+			}
+				
+			count++;
+		}
+		
+		if(pass == false)
+			System.out.println(confirmData[i]+" FAIL");
+		else
+			System.out.println(confirmData[i]+" Pass");
+		
+	}
+
+}
+
 }

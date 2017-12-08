@@ -33,11 +33,19 @@ JSONArray Generalstores;
 
 Random randomizer = new Random();
 
-//Generates a list of inventory items from JSON
 static ItemManager itemManager = new ItemManager();
 
-//Generates inventory then name
+//Generate Shop
+public String generateShop(ShopTypeEnum shopType, WealthEnum wealth)
+{	
+	String name = generateName(shopType);
+	String inventory = itemManager.displayInventory(shopType, wealth);
 	
+	String output = name+"\n"+inventory;
+	
+	return output;
+}
+
 //Generates Name
 public String generateName(ShopTypeEnum shopType)
 {
