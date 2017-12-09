@@ -21,27 +21,29 @@ Shop jewelerInventory;
 Shop potionInventory;
 Shop magicInventory;
 
-ArrayList<Item> treasureList = new ArrayList<Item>();
-
-
 //All the items that go into the arraylists
 Item[] itemsArray;
+Scroll[] spellArray;
+ArrayList<Item> treasureList = new ArrayList<Item>();
+ArrayList<Item> potionList = new ArrayList<Item>();
 
 //Randomizer
 Random randomizer = new Random();
 
+//The method used when printing to the UI
 public String displayInventory(ShopTypeEnum shop, WealthEnum wealth)
 {
 	ArrayList<Item> input = generateInventory(shop, wealth);
 	
+	//For sorting the items in the display box
 	ArrayList<Item> weapons = new ArrayList<Item>();
 	ArrayList<Item> armor = new ArrayList<Item>();
 	ArrayList<Item> general = new ArrayList<Item>();
 	ArrayList<Item> tools = new ArrayList<Item>();
-	ArrayList<Item> jewelery = new ArrayList<Item>();
-	ArrayList<Item> potions = new ArrayList<Item>();
 	ArrayList<Item> scrolls = new ArrayList<Item>();
 	ArrayList<Item> magic = new ArrayList<Item>();
+	ArrayList<Item> potions = new ArrayList<Item>();
+	ArrayList<Item> jewelery = new ArrayList<Item>();
 
 	for(int i = 0; i<input.size();i++)
 	{
@@ -60,10 +62,6 @@ public String displayInventory(ShopTypeEnum shop, WealthEnum wealth)
 						|| input.get(i).getType().equals("S"))
 				{
 					armor.add(input.get(i));
-				}
-				else if(input.get(i).getType().equals("P"))
-				{
-					potions.add(input.get(i));
 				}
 				else if(input.get(i).getType().equals("SC"))
 				{
@@ -92,10 +90,6 @@ public String displayInventory(ShopTypeEnum shop, WealthEnum wealth)
 					jewelery.add(input.get(i));
 				}
 			}
-			else
-				{
-					magic.add(input.get(i));
-				}
 			}
 	
 	String output = "";
@@ -144,6 +138,7 @@ public String displayInventory(ShopTypeEnum shop, WealthEnum wealth)
 		}
 	if(magic.size() != 0)
 		{
+		System.out.println(magic.size());
 		output = output.concat("\n--Magic Items--");
 		for(Item item:magic)
 			output = output.concat("\n"+item.getName()+", "+determineSale(item));
@@ -151,6 +146,7 @@ public String displayInventory(ShopTypeEnum shop, WealthEnum wealth)
 	return output;
 }
 
+//Returns the final array that is used in displayInventory
 public ArrayList<Item> generateInventory(ShopTypeEnum shop, WealthEnum wealth)
 {
 	ArrayList<Item> output = new ArrayList<Item>();
@@ -160,46 +156,45 @@ public ArrayList<Item> generateInventory(ShopTypeEnum shop, WealthEnum wealth)
 		case BLACKSMITH:
 		{
 			String[] temp = blacksmithInventory.generateInventory(wealth);
-			output = parseInventory(10, temp);
+			output = generateBasicInventory(10, temp);
 		}
 			break;
 		case BOWYER:
 		{
 			String[] temp = bowyerInventory.generateInventory(wealth);
-			output = parseInventory(5, temp);
+			output = generateBasicInventory(5, temp);
 		}
 			break;		
 		case LEATHERWORKER:
 		{
 			String[] temp = leatherInventory.generateInventory(wealth);
-			output = parseInventory(5, temp);
+			output = generateBasicInventory(5, temp);
 		}
 			break;
 		case TEMPLE:
 		{
 			String[] temp = templeInventory.generateInventory(wealth);
-			output = parseInventory(10, temp);
+			output = generateBasicInventory(10, temp);
 		}
 			break;
 		case GENERALSTORE:
 		{
 			String[] temp = generalInventory.generateInventory(wealth);
-			output = parseInventory(10,temp);
+			output = generateBasicInventory(10,temp);
 		}
 			break;
 		case TAILOR:
 		{
 			String[] temp = tailorInventory.generateInventory(wealth);
-			output = parseInventory(5,temp);
+			output = generateBasicInventory(5,temp);
 		}
 			break;
 		case JEWELER:
 		{
 			String[] temp = jewelerInventory.generateInventory(wealth);
-			ArrayList<Item> tempTreasure = getTreasureList(wealth);
+			ArrayList<Item> tempTreasure = generateTreasure(wealth);
 			
-			output = parseInventory(2,temp);
-			
+			output = generateBasicInventory(2,temp);		
 			for(int i = 0; i<tempTreasure.size();i++)
 				output.add(tempTreasure.get(i));
 		}
@@ -207,13 +202,17 @@ public ArrayList<Item> generateInventory(ShopTypeEnum shop, WealthEnum wealth)
 		case POTIONS:
 		{
 			String[] temp = potionInventory.generateInventory(wealth);
-			output = parseInventory(5,temp);
+			output = generateBasicInventory(5,temp);
 		}
 			break;
 		case MAGICSHOP:
 		{
 			String[] temp = magicInventory.generateInventory(wealth);
-			output = parseInventory(5,temp);
+			ArrayList<Scroll> tempScrolls = generateScroll(wealth); 
+			
+			output = generateBasicInventory(5,temp);
+			for(int i = 0; i<tempScrolls.size();i++)
+				output.add(tempScrolls.get(i));
 		}
 			break;
 	}
@@ -221,18 +220,19 @@ public ArrayList<Item> generateInventory(ShopTypeEnum shop, WealthEnum wealth)
 	return output;
 }
 
+//Returns the value of an object as a string, with a 20% chance for it to be on sale (-25%) or marked up (+50%)
 public String determineSale(Item item)
 {
 	int num = randomizer.nextInt(10);
 	String output = "";
+	String number = "";
+	String letter = "";
+	
+	char[] valueArray = item.getValue().toCharArray();
 	
 	if(num<2)
 	{
 		// 25% off (Sale)
-		char[] valueArray = item.getValue().toCharArray();
-		String number = "";
-		String letter = "";
-		
 		for(int i = 0; i<valueArray.length;i++)
 		{
 			if(Character.isDigit(valueArray[i]))
@@ -249,11 +249,7 @@ public String determineSale(Item item)
 	}
 	else if(num>=8)
 	{
-		//50% markup (Marksup)
-		char[] valueArray = item.getValue().toCharArray();
-		String number = "";
-		String letter = "";
-		
+		//50% markup (Marksup)		
 		for(int i = 0; i<valueArray.length;i++)
 		{
 			if(Character.isDigit(valueArray[i]))
@@ -274,7 +270,131 @@ public String determineSale(Item item)
 	return output;
 }
 
-public ArrayList<Item> generateTreasure(int wealth, int min)
+
+//Gets a random magic scroll with the spell level as a parameter
+public ArrayList<Scroll> generateScroll(WealthEnum wealth)
+{
+	ArrayList<Scroll> selection = new ArrayList<Scroll>();
+	ArrayList<Scroll> output = new ArrayList<Scroll>();
+
+	//Generate the selection based on wealth
+	switch(wealth)
+	{
+		case LOW: 
+		{
+			for(int i = 0; i<spellArray.length;i++)
+			{
+				if(spellArray[i].getLevel() == 0 || spellArray[i].getLevel() == 1)
+					selection.add(spellArray[i]);
+				
+			}
+			for(int i = 0; i<randomizer.nextInt(3)+1;i++)
+				output.add(selection.get(randomizer.nextInt(selection.size())));
+		}
+		break;
+		case MEDIUM:
+			for(int i = 0; i<spellArray.length;i++)
+			{
+				if(spellArray[i].getLevel() == 0 || spellArray[i].getLevel() == 1 
+						|| spellArray[i].getLevel() == 2)
+					selection.add(spellArray[i]);
+			}
+			for(int i = 0; i<randomizer.nextInt(10)+1;i++)
+				output.add(selection.get(randomizer.nextInt(selection.size())));
+		break;
+		case HIGH:
+			for(int i = 0; i<spellArray.length;i++)
+			{
+				if(spellArray[i].getLevel() == 0 || spellArray[i].getLevel() == 1 
+						|| spellArray[i].getLevel() == 2 || spellArray[i].getLevel() == 3)
+					selection.add(spellArray[i]);
+			}
+			for(int i = 0; i<randomizer.nextInt(10)+1;i++)
+				output.add(selection.get(randomizer.nextInt(selection.size())));
+		break;
+		case PREMIUM:
+			{
+			for(int i = 0; i<spellArray.length;i++)
+			{
+				if(spellArray[i].getLevel() == 0 || spellArray[i].getLevel() == 1 
+				|| spellArray[i].getLevel() == 2 || spellArray[i].getLevel() == 3
+				|| spellArray[i].getLevel() == 4 || spellArray[i].getLevel() == 5)
+					selection.add(spellArray[i]);
+			}
+			for(int i = 0; i<randomizer.nextInt(20)+1;i++)
+				output.add(selection.get(randomizer.nextInt(selection.size())));
+			}
+		break;
+		}
+	
+		//sets type and cost
+		for(int i = 0; i<output.size();i++)
+			output.get(i).init();
+		
+	return output;
+}
+
+//Generates a random magic item + Price according to Xanathar's
+public void getMagicItem(String Rarity)
+{
+	//TODO
+}
+
+//Generate Inn stuff
+public void getInnInventory()
+{
+	//NOT EVEN SURE I NEED THIS? LOL
+}
+
+//Used in generateInventory to compare items from the catalog to the actual inventory
+public ArrayList<Item> generateBasicInventory(int total, String[] shopInventory)
+{
+	ArrayList<Item> output = new ArrayList<Item>();
+	
+	for(int i = 0; i<total;i++)
+	{
+		boolean found = false;
+		int randomnum = randomizer.nextInt(shopInventory.length); 
+		int count = 0;
+		
+		while(found == false && count<itemsArray.length)
+		{
+			if(shopInventory[randomnum].equals(itemsArray[count].getName()))
+				output.add(itemsArray[count]);
+			
+			count++;
+		}
+		//Maybe handle Scrolls, Potions, Magic Items, and Treasure here
+	}
+	
+	return output;
+}
+
+//Used in generate inventory to generate the inventory of a jewelry store 
+public ArrayList<Item> generateTreasure(WealthEnum wealth)
+{
+	ArrayList<Item> output = new ArrayList<Item>();
+	
+	switch(wealth)
+	{
+	case LOW: //Adds treasure elements to an array until the total cost of all items is over 500.
+		output = getTreasureArray(500, 100);
+	break;
+	case MEDIUM:
+		output = getTreasureArray(1000, 500);
+	break;
+	case HIGH:
+		output = getTreasureArray(5000, 1000);
+	break;
+	case PREMIUM:
+		output = getTreasureArray(10000, 10000);
+	break;
+	}
+	return output;
+}
+
+//Used by generateTreasure to generate the arraylist of inventory items.
+public ArrayList<Item> getTreasureArray(int wealth, int min)
 {
 	ArrayList<Item> output = new ArrayList<Item>();
 
@@ -300,53 +420,7 @@ public ArrayList<Item> generateTreasure(int wealth, int min)
 	
 	return output;
 }
-
-//Generates an array of treasure 
-public ArrayList<Item> getTreasureList(WealthEnum wealth)
-{
-	ArrayList<Item> output = new ArrayList<Item>();
-	
-	switch(wealth)
-	{
-	case LOW: //Adds treasure elements to an array until the total cost of all items is over 500.
-		output = generateTreasure(500, 100);
-	break;
-	case MEDIUM:
-		output = generateTreasure(1000, 500);
-	break;
-	case HIGH:
-		output = generateTreasure(5000, 1000);
-	break;
-	case PREMIUM:
-		output = generateTreasure(10000, 10000);
-	break;
-	}
-	return output;
-}
-
-public ArrayList<Item> parseInventory(int total, String[] shopInventory)
-{
-	ArrayList<Item> output = new ArrayList<Item>();
-	
-	for(int i = 0; i<total;i++)
-	{
-		boolean found = false;
-		int randomnum = randomizer.nextInt(shopInventory.length); 
-		int count = 0;
-		
-		while(found == false && count<itemsArray.length)
-		{
-			if(shopInventory[randomnum].equals(itemsArray[count].getName()))
-				output.add(itemsArray[count]);
-			
-			count++;
-		}
-		//Handle Scrolls, Potions, Magic Items, and Treasure here
-	}
-	
-	return output;
-}
-
+//BAM, JSON
 public void parseJSON() throws FileNotFoundException
 {
 	Gson gson = new Gson();
@@ -361,9 +435,14 @@ public void parseJSON() throws FileNotFoundException
 		{
 		if(itemsArray[i].getType().equals("$"))
 			treasureList.add(itemsArray[i]);
+		else if(itemsArray[i].getType().equals("P"))
+			potionList.add(itemsArray[i]);
 		}
 	}
 
+	//READ SPELLS FROM JSON
+	JsonReader spellReader = new JsonReader(new FileReader("data/spells.json"));
+	spellArray = gson.fromJson(spellReader, Scroll[].class);
 	
 	//READ INVENTORY FROM JSON
 	JsonReader inventoryReader = new JsonReader(new FileReader("data/Inventory.json"));

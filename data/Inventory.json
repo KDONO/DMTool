@@ -247,9 +247,7 @@
 	"Component Pouch",
 	"Candle",
 	"Sprig of Mistletoe",
-	"Wooden Staff",
-	"Spell Scroll (Cantrip)",
-	"Spell Scroll (1st Level)"],
+	"Wooden Staff"],
 "medium":[
 	"Rod",
 	"Glass Bottle",
@@ -268,13 +266,9 @@
 	"Totem",
 	"Robes",
 	"Calligrapher's Supplies",
-	"Lute",
-	"Spell Scroll (2nd Level)",
-	"Spell Scroll (3rd Level)"],
+	"Lute"],
 "premium":[
 	"Hourglass",
-	"Lyre",
-	"Spell Scroll (4th Level)",
-	"Spell Scroll (5th Level)"]
+	"Lyre"]
 	}
 ]

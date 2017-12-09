@@ -4,12 +4,13 @@ import java.util.Random;
 
 public class Item 
 {
-	
-	private String name;
-	private String type;
-	private String value;
-	private String rarity;
-	private String tier;
+	static Random randomizer = new Random();
+
+	protected String name;
+	protected String type;
+	protected String value;
+	protected String rarity;
+	protected String tier;
 	
 	public Item(String name, 
 			String type, 
@@ -23,6 +24,8 @@ public class Item
 		this.rarity = rarity;
 		this.tier = tier;
 	}
+	
+	public Item() {}
 
 	public String getName() {
 		return name;
