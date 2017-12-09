@@ -156,31 +156,40 @@ public String displayInventory(ShopTypeEnum shop, WealthEnum wealth)
 public ArrayList<Item> generateInventory(ShopTypeEnum shop, WealthEnum wealth)
 {
 	ArrayList<Item> output = new ArrayList<Item>();
+	int mod = 0;
+	
+	switch(wealth)
+	{
+		case LOW:mod=0;break;
+		case MEDIUM:mod=5;break;
+		case HIGH:mod=10;break;
+		case PREMIUM:mod=15;break;
+	}
 	
 	switch(shop)
 	{
 		case BLACKSMITH:
 		{
 			String[] temp = blacksmithInventory.generateInventory(wealth);
-			output = generateBasicInventory(10, temp);
+			output = generateBasicInventory(5+mod, temp);
 		}
 			break;
 		case BOWYER:
 		{
 			String[] temp = bowyerInventory.generateInventory(wealth);
-			output = generateBasicInventory(5, temp);
+			output = generateBasicInventory(5+mod, temp);
 		}
 			break;		
 		case LEATHERWORKER:
 		{
 			String[] temp = leatherInventory.generateInventory(wealth);
-			output = generateBasicInventory(5, temp);
+			output = generateBasicInventory(5+mod, temp);
 		}
 			break;
 		case TEMPLE:
 		{
 			String[] temp = templeInventory.generateInventory(wealth);
-			output = generateBasicInventory(10, temp);
+			output = generateBasicInventory(5+mod, temp);
 		}
 			break;
 		case GENERALSTORE:
@@ -190,7 +199,7 @@ public ArrayList<Item> generateInventory(ShopTypeEnum shop, WealthEnum wealth)
 			ArrayList<Item> tempPotions = generatePotions(wealth, 2);
 			ArrayList<Item> tempMagic = generateMagicItems(wealth,1);
 
-			output = generateBasicInventory(10,temp);
+			output = generateBasicInventory(5+mod,temp);
 			for(int i = 0; i<tempScrolls.size();i++)
 				output.add(tempScrolls.get(i));
 			for(int i = 0; i<tempPotions.size();i++)
@@ -202,7 +211,7 @@ public ArrayList<Item> generateInventory(ShopTypeEnum shop, WealthEnum wealth)
 		case TAILOR:
 		{
 			String[] temp = tailorInventory.generateInventory(wealth);
-			output = generateBasicInventory(5,temp);
+			output = generateBasicInventory(5+mod,temp);
 		}
 			break;
 		case JEWELER:
@@ -210,7 +219,7 @@ public ArrayList<Item> generateInventory(ShopTypeEnum shop, WealthEnum wealth)
 			String[] temp = jewelerInventory.generateInventory(wealth);
 			ArrayList<Item> tempTreasure = generateTreasure(wealth);
 			
-			output = generateBasicInventory(2,temp);		
+			output = generateBasicInventory(5+mod,temp);		
 			for(int i = 0; i<tempTreasure.size();i++)
 				output.add(tempTreasure.get(i));
 		}
@@ -220,7 +229,7 @@ public ArrayList<Item> generateInventory(ShopTypeEnum shop, WealthEnum wealth)
 			String[] temp = potionInventory.generateInventory(wealth);
 			ArrayList<Item> tempPotions = generatePotions(wealth, 5);
 
-			output = generateBasicInventory(5,temp);
+			output = generateBasicInventory(5+mod, temp);
 			for(int i = 0; i<tempPotions.size();i++)
 				output.add(tempPotions.get(i));
 		}
@@ -232,7 +241,7 @@ public ArrayList<Item> generateInventory(ShopTypeEnum shop, WealthEnum wealth)
 			ArrayList<Item> tempPotions = generatePotions(wealth, 3);
 			ArrayList<Item> tempMagic = generateMagicItems(wealth,3);
 			
-			output = generateBasicInventory(5,temp);
+			output = generateBasicInventory(5+mod,temp);
 			for(int i = 0; i<tempScrolls.size();i++)
 				output.add(tempScrolls.get(i));
 			for(int i = 0; i<tempPotions.size();i++)
