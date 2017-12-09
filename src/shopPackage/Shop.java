@@ -44,36 +44,37 @@ public String[] getPremium() {
 public String[] generateInventory(WealthEnum wealth)
 {
 	String[]output = null;
+	
 	switch(wealth)
 	{
-	case LOW:
-	{
-		output = low;
-	}
-	break;
-	case MEDIUM:
-	{
-		String []temp  = combine(low, medium);
-		output = temp;
-	}
-	break;
-	case HIGH:
-	{
-		String []temp1  = combine(low, medium);
-		String[] temp2 = combine(temp1,high);
-		
-		output = temp2;
-	}
-	break;
-	case PREMIUM:
-	{		
-		String []temp1  = combine(low, medium);
-		String[] temp2 = combine(temp1,high);
-		String[] temp3 = combine(temp2,premium);
-
-		output = temp3;
-	}
-	break;
+		case LOW:
+		{
+			output = low;
+		}
+		break;
+		case MEDIUM:
+		{
+			String []temp  = combine(low, medium);
+			output = temp;
+		}
+		break;
+		case HIGH:
+		{
+			String []temp1  = combine(low, medium);
+			String[] temp2 = combine(temp1,high);
+			
+			output = temp2;
+		}
+		break;
+		case PREMIUM:
+		{		
+			String []temp1  = combine(low, medium);
+			String[] temp2 = combine(temp1,high);
+			String[] temp3 = combine(temp2,premium);
+	
+			output = temp3;
+		}
+		break;
 	}
 	return output;
 }

@@ -19,6 +19,11 @@ public class ShopManager
 JSONArray Names;
 JSONArray Adjectives;
 JSONArray Nouns;
+JSONArray shopType;
+JSONArray shopCondition;
+JSONArray shopTraffic;
+JSONArray shopTidbit;
+
 JSONArray Inns;
 JSONArray Booksellers;
 JSONArray Blacksmiths;
@@ -31,13 +36,25 @@ JSONArray Magicshops;
 JSONArray Jewelers;
 JSONArray Generalstores;
 
+
+
 Random randomizer = new Random();
 
-//Generates a list of inventory items from JSON
 static ItemManager itemManager = new ItemManager();
 
-//Generates inventory then name
+//Generate Shop
+public String generateShop(ShopTypeEnum shopType, WealthEnum wealth)
+{	
+	String name = generateName(shopType);
+	String inventory = itemManager.displayInventory(shopType, wealth);
 	
+	String output = name+"\n"+"\n"+inventory;
+	
+	return generateName(shopType)
+			+"\n"+generateTraits()
+			+"\n"+itemManager.displayInventory(shopType, wealth);
+}
+
 //Generates Name
 public String generateName(ShopTypeEnum shopType)
 {
@@ -49,44 +66,42 @@ public String generateName(ShopTypeEnum shopType)
 	switch(randomNum)
 	{
 	case 1: //Name's Shop
-		output = (getName()+"'s "+getShop(shopType));
+		output = (generate(Names)+"'s "+getShop(shopType));
 		break;
 	case 2: //Name & Name's Shop
-		output = (getName() + " & " + getName()+"'s "+getShop(shopType));
+		output = (generate(Names) + " & " + generate(Names)+"'s "+getShop(shopType));
 		break;
 	case 3: //The Adjective Noun
-		output = ("The "+getAdjective() + " " + getName()+" "+getShop(shopType));
+		output = ("The "+generate(Adjectives) + " " + generate(Names)+" "+getShop(shopType));
 		break;
 	case 4: //The Noun & Noun
-		output = ("The "+getNoun() + " & " + getNoun()+" "+getShop(shopType));
+		output = ("The "+generate(Nouns) + " & " + generate(Nouns)+" "+getShop(shopType));
 		break;
 	case 5: //The Noun's
-		output = ("The "+getNoun()+" "+getShop(shopType));
+		output = ("The "+generate(Nouns)+" "+getShop(shopType));
 		break;
 	case 6: //Name's Adjective Noun
-		output = (getName()+"'s "+getAdjective()+" "+getNoun()+" "+getShop(shopType));
+		output = (generate(Names)+"'s "+generate(Adjectives)+" "+generate(Nouns)+" "+getShop(shopType));
 		break;
 	case 7: //Adjective Name's
-		output = (getAdjective()+" "+getName()+"'s "+getShop(shopType));
+		output = (generate(Adjectives)+" "+generate(Names)+"'s "+getShop(shopType));
 		break;
 	}
 	return output;
 }
 
-//Generators
-private String getName()
+//Generates traits
+public String generateTraits()
 {
-	 return (String) Names.get(randomizer.nextInt(Names.size()));
+	return ("This shop is a "+generate(shopType)
+		+".\nThe shop is "+generate(shopCondition)
+		+".\n"+generate(shopTraffic)
+		+".\n"+generate(shopTidbit));
 }
 
-private String getNoun()
+private String generate(JSONArray array)
 {
-	 return (String) Nouns.get(randomizer.nextInt(Nouns.size()));
-}
-
-private String getAdjective()
-{
-	 return (String) Adjectives.get(randomizer.nextInt(Adjectives.size()));
+	 return (String) array.get(randomizer.nextInt(array.size()));
 }
 
 private String getShop(ShopTypeEnum shopType)
@@ -144,23 +159,30 @@ public void parseJSON() throws FileNotFoundException, IOException, ParseExceptio
     
     try
     {
-    JSONObject data = (JSONObject) parser.parse(new FileReader("data/ShopNames.json"));
+    JSONObject nameData = (JSONObject) parser.parse(new FileReader("data/ShopNames.json"));
+    JSONObject shopData = (JSONObject) parser.parse(new FileReader("data/ShopTraits.json"));
 
     //Grab the Arrays from the JObject as JArrays
-    Names  = (JSONArray) data.get("Names");
-    Adjectives = (JSONArray) data.get("Adjectives");
-    Nouns = (JSONArray) data.get("Nouns");
-    Inns = (JSONArray) data.get("Inns");
-    Blacksmiths = (JSONArray) data.get("Blacksmiths");
-    Bowyer = (JSONArray) data.get("Bowyer");
-    Leatherworker = (JSONArray) data.get("Leatherworker");
-    Temple = (JSONArray) data.get("Temple");
-    Tailor= (JSONArray) data.get("Tailor");
-    Potions = (JSONArray) data.get("Potions");
-    Magicshops = (JSONArray) data.get("Magicshops");
-    Jewelers = (JSONArray) data.get("Jewelers");
-    Generalstores = (JSONArray) data.get("Generalstores");
-    Booksellers = (JSONArray) data.get("Booksellers");
+    Names  = (JSONArray) nameData.get("Names");
+    Adjectives = (JSONArray) nameData.get("Adjectives");
+    Nouns = (JSONArray) nameData.get("Nouns");
+    Inns = (JSONArray) nameData.get("Inns");
+    Blacksmiths = (JSONArray) nameData.get("Blacksmiths");
+    Bowyer = (JSONArray) nameData.get("Bowyer");
+    Leatherworker = (JSONArray) nameData.get("Leatherworker");
+    Temple = (JSONArray) nameData.get("Temple");
+    Tailor= (JSONArray) nameData.get("Tailor");
+    Potions = (JSONArray) nameData.get("Potions");
+    Magicshops = (JSONArray) nameData.get("Magicshops");
+    Jewelers = (JSONArray) nameData.get("Jewelers");
+    Generalstores = (JSONArray) nameData.get("Generalstores");
+    Booksellers = (JSONArray) nameData.get("Booksellers");
+    
+    shopType = (JSONArray) shopData.get("Type");
+    shopCondition = (JSONArray) shopData.get("Condition");
+    shopTraffic = (JSONArray) shopData.get("Busy");
+    shopTidbit = (JSONArray) shopData.get("Tidbit");
+
     }
     catch(FileNotFoundException e)
     {
