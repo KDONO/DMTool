@@ -19,6 +19,7 @@ Random randomizer = new Random();
 ItemManager item = new ItemManager();
 item.parseJSON();
 
+//item.test();
 //ArrayList<Item> test = item.getTreasureList(WealthEnum.HIGH);
 
 //for(int i = 0; i<test.size();i++)
