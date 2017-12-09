@@ -19,11 +19,6 @@ Random randomizer = new Random();
 ItemManager item = new ItemManager();
 item.parseJSON();
 
-Item spell = new Scroll("Test", 5);
-
-System.out.println(spell.getValue());
-
-
 //ArrayList<Item> test = item.getTreasureList(WealthEnum.HIGH);
 
 //for(int i = 0; i<test.size();i++)

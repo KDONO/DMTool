@@ -47,6 +47,23 @@ public class Item
 	public String getTier() {
 		return tier;
 	}
+	
+	//For potions
+	public void setValue()
+	{		
+		if(this.rarity.equals("Common"))
+			value = (50+randomizer.nextInt(100))+"gp"; 
+		else if(this.rarity.equals("Uncommon"))
+			value = (100+randomizer.nextInt(250))+"gp"; 
+		else if(this.rarity.equals("Rare"))
+			value = (250+randomizer.nextInt(500))+"gp"; 
+		else if(this.rarity.equals("Very Rare"))
+			value = (500+randomizer.nextInt(1000))+"gp"; 
+		else if(this.rarity.equals("Legendary"))
+			value = (100+randomizer.nextInt(5000))+"gp"; 
+		else
+			value = (50+randomizer.nextInt(100))+"gp"; 
+	}
 		
 	@Override
 	public String toString()

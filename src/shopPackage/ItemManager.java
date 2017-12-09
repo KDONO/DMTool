@@ -89,6 +89,10 @@ public String displayInventory(ShopTypeEnum shop, WealthEnum wealth)
 				{
 					jewelery.add(input.get(i));
 				}
+				else if(input.get(i).getType().equals("P"))
+				{
+					potions.add(input.get(i));
+				}
 			}
 			}
 	
@@ -104,12 +108,6 @@ public String displayInventory(ShopTypeEnum shop, WealthEnum wealth)
 		{
 		output = output.concat("\n--Armor--");
 		for(Item item:armor)
-			output = output.concat("\n"+item.getName()+", "+determineSale(item));
-		}
-	if(potions.size() != 0)
-		{
-		output = output.concat("\n--Potions--");
-		for(Item item:potions)
 			output = output.concat("\n"+item.getName()+", "+determineSale(item));
 		}
 	if(jewelery.size() != 0)
@@ -128,6 +126,12 @@ public String displayInventory(ShopTypeEnum shop, WealthEnum wealth)
 		{
 		output = output.concat("\n--Tools--");
 		for(Item item:tools)
+			output = output.concat("\n"+item.getName()+", "+determineSale(item));
+		}
+	if(potions.size() != 0)
+		{
+		output = output.concat("\n--Potions--");
+		for(Item item:potions)
 			output = output.concat("\n"+item.getName()+", "+determineSale(item));
 		}
 	if(scrolls.size() != 0)
@@ -202,15 +206,29 @@ public ArrayList<Item> generateInventory(ShopTypeEnum shop, WealthEnum wealth)
 		case POTIONS:
 		{
 			String[] temp = potionInventory.generateInventory(wealth);
+			ArrayList<Item> tempPotions = generatePotions(wealth, 5);
+
 			output = generateBasicInventory(5,temp);
+			for(int i = 0; i<tempPotions.size();i++)
+				output.add(tempPotions.get(i));
 		}
 			break;
 		case MAGICSHOP:
 		{
 			String[] temp = magicInventory.generateInventory(wealth);
-			ArrayList<Scroll> tempScrolls = generateScroll(wealth); 
+			ArrayList<Scroll> tempScrolls = generateScrolls(wealth); 
+			ArrayList<Item> tempPotions = generatePotions(wealth, 1);
 			
 			output = generateBasicInventory(5,temp);
+			for(int i = 0; i<tempScrolls.size();i++)
+				output.add(tempScrolls.get(i));
+			for(int i = 0; i<tempPotions.size();i++)
+				output.add(tempPotions.get(i));
+
+		}
+		case BOOKSELLER:
+		{
+			ArrayList<Scroll> tempScrolls = generateScrolls(wealth); 
 			for(int i = 0; i<tempScrolls.size();i++)
 				output.add(tempScrolls.get(i));
 		}
@@ -228,7 +246,17 @@ public String determineSale(Item item)
 	String number = "";
 	String letter = "";
 	
-	char[] valueArray = item.getValue().toCharArray();
+	char[] valueArray;
+	
+	try
+	{
+	valueArray = item.getValue().toCharArray();
+	}
+	catch(Exception NullPointerException)
+	{
+		item.setValue();
+		valueArray = item.getValue().toCharArray();
+	}
 	
 	if(num<2)
 	{
@@ -270,77 +298,13 @@ public String determineSale(Item item)
 	return output;
 }
 
-
-//Gets a random magic scroll with the spell level as a parameter
-public ArrayList<Scroll> generateScroll(WealthEnum wealth)
-{
-	ArrayList<Scroll> selection = new ArrayList<Scroll>();
-	ArrayList<Scroll> output = new ArrayList<Scroll>();
-
-	//Generate the selection based on wealth
-	switch(wealth)
-	{
-		case LOW: 
-		{
-			for(int i = 0; i<spellArray.length;i++)
-			{
-				if(spellArray[i].getLevel() == 0 || spellArray[i].getLevel() == 1)
-					selection.add(spellArray[i]);
-				
-			}
-			for(int i = 0; i<randomizer.nextInt(3)+1;i++)
-				output.add(selection.get(randomizer.nextInt(selection.size())));
-		}
-		break;
-		case MEDIUM:
-			for(int i = 0; i<spellArray.length;i++)
-			{
-				if(spellArray[i].getLevel() == 0 || spellArray[i].getLevel() == 1 
-						|| spellArray[i].getLevel() == 2)
-					selection.add(spellArray[i]);
-			}
-			for(int i = 0; i<randomizer.nextInt(10)+1;i++)
-				output.add(selection.get(randomizer.nextInt(selection.size())));
-		break;
-		case HIGH:
-			for(int i = 0; i<spellArray.length;i++)
-			{
-				if(spellArray[i].getLevel() == 0 || spellArray[i].getLevel() == 1 
-						|| spellArray[i].getLevel() == 2 || spellArray[i].getLevel() == 3)
-					selection.add(spellArray[i]);
-			}
-			for(int i = 0; i<randomizer.nextInt(10)+1;i++)
-				output.add(selection.get(randomizer.nextInt(selection.size())));
-		break;
-		case PREMIUM:
-			{
-			for(int i = 0; i<spellArray.length;i++)
-			{
-				if(spellArray[i].getLevel() == 0 || spellArray[i].getLevel() == 1 
-				|| spellArray[i].getLevel() == 2 || spellArray[i].getLevel() == 3
-				|| spellArray[i].getLevel() == 4 || spellArray[i].getLevel() == 5)
-					selection.add(spellArray[i]);
-			}
-			for(int i = 0; i<randomizer.nextInt(20)+1;i++)
-				output.add(selection.get(randomizer.nextInt(selection.size())));
-			}
-		break;
-		}
-	
-		//sets type and cost
-		for(int i = 0; i<output.size();i++)
-			output.get(i).init();
-		
-	return output;
-}
-
 //Generates a random magic item + Price according to Xanathar's
 public void getMagicItem(String Rarity)
 {
 	//TODO
 }
 
-//Generate Inn stuff
+//Generate Inn stuff MAJOR TODO... MAY ALSO NEED ONE FOR BOOKS :[
 public void getInnInventory()
 {
 	//NOT EVEN SURE I NEED THIS? LOL
@@ -420,6 +384,120 @@ public ArrayList<Item> getTreasureArray(int wealth, int min)
 	
 	return output;
 }
+
+//Gets a list of random magic scrolls
+public ArrayList<Scroll> generateScrolls(WealthEnum wealth)
+{
+	ArrayList<Scroll> selection = new ArrayList<Scroll>();
+	ArrayList<Scroll> output = new ArrayList<Scroll>();
+
+	//Generate the selection based on wealth
+	switch(wealth)
+	{
+		case LOW: 
+		{
+			for(int i = 0; i<spellArray.length;i++)
+			{
+				if(spellArray[i].getLevel() == 0 || spellArray[i].getLevel() == 1)
+					selection.add(spellArray[i]);
+				
+			}
+			for(int i = 0; i<randomizer.nextInt(3)+1;i++)
+				output.add(selection.get(randomizer.nextInt(selection.size())));
+		}
+		break;
+		case MEDIUM:
+			for(int i = 0; i<spellArray.length;i++)
+			{
+				if(spellArray[i].getLevel() == 0 || spellArray[i].getLevel() == 1 
+						|| spellArray[i].getLevel() == 2)
+					selection.add(spellArray[i]);
+			}
+			for(int i = 0; i<randomizer.nextInt(10)+1;i++)
+				output.add(selection.get(randomizer.nextInt(selection.size())));
+		break;
+		case HIGH:
+			for(int i = 0; i<spellArray.length;i++)
+			{
+				if(spellArray[i].getLevel() == 0 || spellArray[i].getLevel() == 1 
+						|| spellArray[i].getLevel() == 2 || spellArray[i].getLevel() == 3)
+					selection.add(spellArray[i]);
+			}
+			for(int i = 0; i<randomizer.nextInt(10)+1;i++)
+				output.add(selection.get(randomizer.nextInt(selection.size())));
+		break;
+		case PREMIUM:
+			{
+			for(int i = 0; i<spellArray.length;i++)
+			{
+				if(spellArray[i].getLevel() == 0 || spellArray[i].getLevel() == 1 
+				|| spellArray[i].getLevel() == 2 || spellArray[i].getLevel() == 3
+				|| spellArray[i].getLevel() == 4 || spellArray[i].getLevel() == 5)
+					selection.add(spellArray[i]);
+			}
+			for(int i = 0; i<randomizer.nextInt(20)+1;i++)
+				output.add(selection.get(randomizer.nextInt(selection.size())));
+			}
+		break;
+		}
+	
+		//sets type and cost
+		for(int i = 0; i<output.size();i++)
+			output.get(i).init();
+		
+	return output;
+}
+
+public ArrayList<Item> generatePotions(WealthEnum wealth, int mod)
+{
+	ArrayList<Item> output = new ArrayList<Item>();
+	ArrayList<Item> temp = new ArrayList<Item>();
+
+	switch(wealth)
+	{
+	case LOW:
+	{
+		for(int i = 0; i<potionList.size();i++)
+		{
+			if(potionList.get(i).getRarity().equals("Common")
+					|| potionList.get(i).getRarity().equals("Uncommon"))
+				temp.add(potionList.get(i));
+		}
+		for(int i = 0; i<randomizer.nextInt(mod);i++)
+			output.add(temp.get(randomizer.nextInt(temp.size())));
+	}
+		break;
+	case MEDIUM:
+		for(int i = 0; i<potionList.size();i++)
+		{
+			if(potionList.get(i).getRarity().equals("Common")
+					|| potionList.get(i).getRarity().equals("Uncommon")
+					|| potionList.get(i).getRarity().equals("Rare"))
+				temp.add(potionList.get(i));
+		}
+		for(int i = 0; i<randomizer.nextInt(2+mod);i++)
+			output.add(temp.get(randomizer.nextInt(temp.size())));
+		break;
+	case HIGH:
+		for(int i = 0; i<potionList.size();i++)
+		{
+			if(potionList.get(i).getRarity().equals("Common")
+					|| potionList.get(i).getRarity().equals("Uncommon")
+					|| potionList.get(i).getRarity().equals("Rare")
+					|| potionList.get(i).getRarity().equals("Very Rare"))
+				temp.add(potionList.get(i));
+		}
+		for(int i = 0; i<randomizer.nextInt(5+mod);i++)
+			output.add(temp.get(randomizer.nextInt(temp.size())));
+		break;
+	case PREMIUM:
+		for(int i = 0; i<randomizer.nextInt(10+mod);i++)
+			output.add(potionList.get(randomizer.nextInt(potionList.size())));
+		break;
+	}
+	return output;
+}
+
 //BAM, JSON
 public void parseJSON() throws FileNotFoundException
 {
