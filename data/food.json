@@ -1,0 +1,271 @@
+[
+	{
+	"name":"Porridge",
+	"value": "1sp",
+	"type":"food",
+	"rarity": "low"
+	},
+	{
+	"name":"Mushroom stew with corn bread",
+	"value": "2sp",
+	"type":"food",
+	"rarity": "low"
+	},
+	{
+	"name":"Leg of mutton and goose eggs",
+	"value": "2sp",
+	"type":"food",
+	"rarity": "low"
+	},
+	{
+	"name":"Beef stew and sourdough",
+	"value": "2sp",
+	"type":"food",
+	"rarity": "low"
+	},	
+	{
+	"name":"Squash and fish soup",
+	"value": "1sp",
+	"type":"food",
+	"rarity": "low"
+	},	
+	{
+	"name":"Mutton meatloaf",
+	"value": "2sp",
+	"type":"food",
+	"rarity": "low"
+	},	
+	{
+	"name":"Rabbit and baked pumpkin",
+	"value": "2sp",
+	"type":"food",
+	"rarity": "low"
+	},
+	{
+	"name":"Bread-bowl stew ",
+	"value": "1sp",
+	"type":"food",
+	"rarity": "low"
+	},
+	{
+	"name":"Hot beet soup and fresh bread",
+	"value": "2sp",
+	"type":"food",
+	"rarity": "low"
+	},	
+	{
+	"name":"Wayfarers' cake",
+	"value": "1sp",
+	"type":"food",
+	"rarity": "low"
+	},
+	{
+	"name":"Cooked wolf steak",
+	"value": "2sp",
+	"type":"food",
+	"rarity": "low"
+	},	{
+	"name":"Thistle salad with roasted grubs",
+	"value": "1sp",
+	"type":"food",
+	"rarity": "low"
+	},	
+	{
+	"name":"Grilled wild boar chops",
+	"value": "1gp",
+	"type":"food",
+	"rarity": "medium"
+	},	
+	{
+	"name":"Broiled salmon and potatoes",
+	"value": "1gp",
+	"type":"food",
+	"rarity": "medium"
+	},
+	{
+	"name":"Smoked sausage, goose eggs and dates",
+	"value": "4sp",
+	"type":"food",
+	"rarity": "medium"
+	},
+	{
+	"name":"Cheese pie and onion soup",
+	"value": "4sp",
+	"type":"food",
+	"rarity": "medium"
+	},
+	{
+	"name":"Baked boar and greens",
+	"value": "1gp",
+	"type":"food",
+	"rarity": "medium"
+	},
+	{
+	"name":"Minted pea soup",
+	"value": "4sp",
+	"type":"food",
+	"rarity": "medium"
+	},
+	{
+	"name":"Baked goat flank",
+	"value": "1gp",
+	"type":"food",
+	"rarity": "medium"
+	},
+	{
+	"name":"Rabbit stew and willow crackers",
+	"value": "4sp",
+	"type":"food",
+	"rarity": "medium"
+	},
+	{
+	"name":"Lemming and berry soup",
+	"value": "4sp",
+	"type":"food",
+	"rarity": "medium"
+	},
+	{
+	"name":"Honey braised boar ribs",
+	"value": "4gp",
+	"type":"food",
+	"rarity": "high"
+	},
+	{
+	"name":"Venison and bean stew",
+	"value": "4gp",
+	"type":"food",
+	"rarity": "high"
+	},	
+	{
+	"name":"Buffaloaf and honeyed corn",
+	"value": "2gp",
+	"type":"food",
+	"rarity": "high"
+	},	
+	{
+	"name":"Rack of lamb platter",
+	"value": "2gp",
+	"type":"food",
+	"rarity": "high"
+	},	
+	{
+	"name":"Pork chop & curds",
+	"value": "2gp",
+	"type":"food",
+	"rarity": "high"
+	},	
+	{
+	"name":"Elven bread",
+	"value": "2gp",
+	"type":"food",
+	"rarity": "high"
+	},	
+	{
+	"name":"Baked loin of pork with gravy",
+	"value": "4gp",
+	"type":"food",
+	"rarity": "high"
+	},	
+	{
+	"name":"Roasted cod and mashed potatoes",
+	"value": "2gp",
+	"type":"food",
+	"rarity": "high"
+	},	
+	{
+	"name":"Beef steak and kidney pie",
+	"value": "4gp",
+	"type":"food",
+	"rarity": "high"
+	},	
+	{
+	"name":"Clams and garlic",
+	"value": "4gp",
+	"type":"food",
+	"rarity": "high"
+	},
+	{
+	"name":"Toasted delfarnbread with spiced snail-butter",
+	"value": "2gp",
+	"type":"food",
+	"rarity": "high"
+	},
+	{
+	"name":"Grayling prawns poached with plovers’ eggs in garlic butter",
+	"value": "4gp",
+	"type":"food",
+	"rarity": "high"
+	},
+	{
+	"name":"Baked pheasant with leeks",
+	"value": "10gp",
+	"type":"food",
+	"rarity": "premium"
+	},
+	{
+	"name":"Smoked salmon and wild berries",
+	"value": "10gp",
+	"type":"food",
+	"rarity": "premium"
+	},
+	{
+	"name":"Barbecued tiger fish and papaya",
+	"value": "5gp",
+	"type":"food",
+	"rarity": "premium"
+	},
+	{
+	"name":"Roast chicken with thyme",
+	"value": "5gp",
+	"type":"food",
+	"rarity": "premium"
+	},
+	{
+	"name":"Stuffed trout, cabbage, succotash and plum pudding",
+	"value": "5gp",
+	"type":"food",
+	"rarity": "premium"
+	},
+	{
+	"name":"Braised beef and pears with ginger",
+	"value": "5gp",
+	"type":"food",
+	"rarity": "premium"
+	},
+	{
+	"name":"Meerkat dumplings with sage",
+	"value": "5gp",
+	"type":"food",
+	"rarity": "premium"
+	},
+	{
+	"name":"Roast stag in antler sauce",
+	"value": "10gp",
+	"type":"food",
+	"rarity": "premium"
+	},
+	{
+	"name":"Poached and peppered quail eggs",
+	"value": "5gp",
+	"type":"food",
+	"rarity": "premium"
+	},
+	{
+	"name":"Roast heron and chopped sundew",
+	"value": "10gp",
+	"type":"food",
+	"rarity": "premium"
+	},
+	{
+	"name":"Lobster in tomato cream sauce",
+	"value": "10gp",
+	"type":"food",
+	"rarity": "premium"
+	},
+	{
+	"name":"Crab-stuffed lobster tail",
+	"value": "10gp",
+	"type":"food",
+	"rarity": "premium"
+	}
+]

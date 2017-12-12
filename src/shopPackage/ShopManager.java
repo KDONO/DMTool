@@ -36,6 +36,8 @@ JSONArray Magicshops;
 JSONArray Jewelers;
 JSONArray Generalstores;
 
+JSONArray foodArray;
+
 
 
 Random randomizer = new Random();
