@@ -23,6 +23,7 @@ Shop magicInventory;
 
 //All the items that go into the arraylists
 Item[] itemsArray;
+Item[] foodArray;
 Scroll[] spellArray;
 ArrayList<Item> treasureList = new ArrayList<Item>();
 ArrayList<Item> potionList = new ArrayList<Item>();
@@ -45,6 +46,7 @@ public String displayInventory(ShopTypeEnum shop, WealthEnum wealth)
 	ArrayList<Item> magic = new ArrayList<Item>();
 	ArrayList<Item> potions = new ArrayList<Item>();
 	ArrayList<Item> jewelery = new ArrayList<Item>();
+	ArrayList<Item> food = new ArrayList<Item>();
 
 	for(int i = 0; i<input.size();i++)
 	{
@@ -67,6 +69,10 @@ public String displayInventory(ShopTypeEnum shop, WealthEnum wealth)
 				else if(input.get(i).getType().equals("SC"))
 				{
 					scrolls.add(input.get(i));
+				}
+				else if(input.get(i).getType().equals("food"))
+				{
+					food.add(input.get(i));
 				}
 				else if(input.get(i).getType().equals("G") 
 						|| input.get(i).getType().equals("GS") 
@@ -100,6 +106,12 @@ public String displayInventory(ShopTypeEnum shop, WealthEnum wealth)
 	
 	String output = "";
 	
+	if(food.size() != 0)
+		{
+		output = output.concat("\n--Food--");
+		for(Item item:food)
+			output = output.concat("\n"+item.getName()+", "+determineSale(item));
+		}
 	if(weapons.size() != 0)
 		{
 		output = output.concat("\n--Weapons--");
@@ -168,6 +180,13 @@ public ArrayList<Item> generateInventory(ShopTypeEnum shop, WealthEnum wealth)
 	
 	switch(shop)
 	{
+		case INN:
+		{
+			ArrayList<Item> tempfood = generateFood(wealth);
+			for(Item item:tempfood)
+				output.add(item);
+		}
+			break;
 		case BLACKSMITH:
 		{
 			String[] temp = blacksmithInventory.generateInventory(wealth);
@@ -200,12 +219,12 @@ public ArrayList<Item> generateInventory(ShopTypeEnum shop, WealthEnum wealth)
 			ArrayList<Item> tempMagic = generateMagicItems(wealth,1);
 
 			output = generateBasicInventory(5+mod,temp);
-			for(int i = 0; i<tempScrolls.size();i++)
-				output.add(tempScrolls.get(i));
-			for(int i = 0; i<tempPotions.size();i++)
-				output.add(tempPotions.get(i));
-			for(int i = 0; i<tempMagic.size();i++)
-				output.add(tempMagic.get(i));
+			for(Scroll scroll:tempScrolls)
+				output.add(scroll);
+			for(Item potion:tempPotions)
+				output.add(potion);
+			for(Item magic:tempMagic)
+				output.add(magic);
 		}
 			break;
 		case TAILOR:
@@ -220,8 +239,8 @@ public ArrayList<Item> generateInventory(ShopTypeEnum shop, WealthEnum wealth)
 			ArrayList<Item> tempTreasure = generateTreasure(wealth);
 			
 			output = generateBasicInventory(5+mod,temp);		
-			for(int i = 0; i<tempTreasure.size();i++)
-				output.add(tempTreasure.get(i));
+			for(Item treasure:tempTreasure)
+				output.add(treasure);
 		}
 			break;
 		case POTIONS:
@@ -230,8 +249,8 @@ public ArrayList<Item> generateInventory(ShopTypeEnum shop, WealthEnum wealth)
 			ArrayList<Item> tempPotions = generatePotions(wealth, 5);
 
 			output = generateBasicInventory(5+mod, temp);
-			for(int i = 0; i<tempPotions.size();i++)
-				output.add(tempPotions.get(i));
+			for(Item potion:tempPotions)
+				output.add(potion);
 		}
 			break;
 		case MAGICSHOP:
@@ -242,18 +261,18 @@ public ArrayList<Item> generateInventory(ShopTypeEnum shop, WealthEnum wealth)
 			ArrayList<Item> tempMagic = generateMagicItems(wealth,3);
 			
 			output = generateBasicInventory(5+mod,temp);
-			for(int i = 0; i<tempScrolls.size();i++)
-				output.add(tempScrolls.get(i));
-			for(int i = 0; i<tempPotions.size();i++)
-				output.add(tempPotions.get(i));
-			for(int i = 0; i<tempMagic.size();i++)
-				output.add(tempMagic.get(i));
+			for(Scroll scroll:tempScrolls)
+				output.add(scroll);
+			for(Item potion:tempPotions)
+				output.add(potion);
+			for(Item magic:tempMagic)
+				output.add(magic);
 		}
 		case BOOKSELLER:
 		{
 			ArrayList<Scroll> tempScrolls = generateScrolls(wealth, 2); 
-			for(int i = 0; i<tempScrolls.size();i++)
-				output.add(tempScrolls.get(i));
+			for(Scroll scroll:tempScrolls)
+				output.add(scroll);
 		}
 			break;
 	}
@@ -327,9 +346,39 @@ public void getMagicItem(String Rarity)
 }
 
 //Generate Inn stuff MAJOR TODO... MAY ALSO NEED ONE FOR BOOKS :[
-public void getInnInventory()
+public ArrayList<Item> generateFood(WealthEnum wealth)
 {
-	//NOT EVEN SURE I NEED THIS? LOL
+	ArrayList<Item> output = new ArrayList<Item>();
+	ArrayList<Item> food = new ArrayList<Item>();
+	String rarity = "";
+	
+	switch(wealth)
+	{
+	case LOW:
+		rarity = "low";
+		break;
+	case MEDIUM:
+		rarity = "medium";
+		break;
+	case HIGH:
+		rarity = "high";
+		break;
+	case PREMIUM:
+		rarity = "premium";
+		break;
+	}
+	
+	for(int i = 0; i<foodArray.length;i++)
+	{
+		if(foodArray[i].getRarity().equals(rarity))
+			food.add(foodArray[i]);
+	}
+	
+	//populates the output
+	for(int i = 0; i<3;i++)
+		output.add(food.get(randomizer.nextInt(food.size())));
+	
+	return output;
 }
 
 //Used in generateInventory to compare items from the catalog to the actual inventory
@@ -603,6 +652,10 @@ public void parseJSON() throws FileNotFoundException
 	JsonReader spellReader = new JsonReader(new FileReader("data/spells.json"));
 	spellArray = gson.fromJson(spellReader, Scroll[].class);
 	
+	//READ FOOD FROM JSON
+	JsonReader foodReader = new JsonReader(new FileReader("data/food.json"));
+	foodArray = gson.fromJson(foodReader, Item[].class);
+
 	//READ INVENTORY FROM JSON
 	JsonReader inventoryReader = new JsonReader(new FileReader("data/Inventory.json"));
 	Shop[] shop = gson.fromJson(inventoryReader, Shop[].class);

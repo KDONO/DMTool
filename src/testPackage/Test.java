@@ -18,6 +18,7 @@ public static void main(String args[]) throws FileNotFoundException, IOException
 Random randomizer = new Random();
 ItemManager item = new ItemManager();
 item.parseJSON();
+item.generateFood(WealthEnum.LOW);
 
 //item.test();
 //ArrayList<Item> test = item.getTreasureList(WealthEnum.HIGH);
