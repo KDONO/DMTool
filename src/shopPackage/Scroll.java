@@ -25,11 +25,11 @@ public class Scroll extends Item
 	public void setValue()
 	{		
 		if(this.level == 0 || this.level == 1)
-			value = (50+randomizer.nextInt(100))+"gp"; 
+			value = ((randomizer.nextInt(6)+2)*10) + "gp";
 		else if(this.level == 2 || this.level == 3)
-			value = (100+randomizer.nextInt(500))+"gp"; 
+			value = ((randomizer.nextInt(6)+1)*100) + "gp";
 		else if(this.level == 4 || this.level == 5)
-			value = (500+randomizer.nextInt(5000))+"gp"; 
+			value = ((randomizer.nextInt(10)+randomizer.nextInt(10)+2)*1000) + "gp";
 	}
 	
 	@Override

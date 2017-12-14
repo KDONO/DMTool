@@ -221,6 +221,55 @@ public class NPCManager
 		return output;
 	}
 	
+	public String getAnyName()
+	{
+		RaceEnum tempRace = RaceEnum.HUMAN;
+		int raceInt = randomizer.nextInt(8);
+		GenderEnum tempGender = GenderEnum.FEMALE;
+		int genderInt = randomizer.nextInt(2);
+		String output = "";
+		
+		switch(raceInt)
+		{
+		case 0:
+			tempRace = RaceEnum.HUMAN;
+			break;
+		case 1:
+			tempRace = RaceEnum.DRAGONBORN;
+			break;
+		case 2:
+			tempRace = RaceEnum.DWARF;
+			break;
+		case 3:
+			tempRace = RaceEnum.ELF;
+			break;
+		case 4:
+			tempRace = RaceEnum.GNOME;
+			break;
+		case 5:
+			tempRace = RaceEnum.HALFLING;
+			break;
+		case 6:
+			tempRace = RaceEnum.ORC;
+			break;
+		case 7:
+			tempRace = RaceEnum.TIEFLING;
+			break;
+		}
+		
+		switch(genderInt)
+		{
+		case 0:
+			output = generateMaleName(tempRace);
+			break;
+		case 1:
+			output = generateFemaleName(tempRace);
+			break;
+		}
+		
+		return output;
+	}
+	
 	private ArrayList<String> generateTraits()
 	{
 		ArrayList<String> output = new ArrayList<String>();		

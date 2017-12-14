@@ -34,7 +34,8 @@ JLabel shopLabel;
 JComboBox<String> selectShopType;
 JLabel avenueLabel;
 JComboBox<String> selectWealthLevel;
-String[] shopTypes = {"Blacksmith", "Inn", "Bowyer", "Leatherworker", "Temple", "Tailor", "Potions", "Magic Shop", "Jeweler", "General Store", "Bookseller"};
+//Note, removing Bookseller for now. The  code still exists so can just add it back in here.
+String[] shopTypes = {"Inn/Tavern","Blacksmith", "Bowyer", "Leatherworker", "Temple", "Tailor", "Potions", "Magic Shop", "Jeweler", "General Store"};
 String[] wealthTypes = {"Low","Medium","High","Premium"};
 JLabel shopResult;
 JTextArea shopResultField;
@@ -58,7 +59,7 @@ public Main() throws FileNotFoundException, IOException, ParseException
 	//Parse the JSONs
 	npcManager = new NPCManager();
 	npcManager.parseJSON();
-	shopManager = new ShopManager();
+	shopManager = new ShopManager(npcManager);
 	shopManager.parseJSON();
 	
 	randomizer = new Random();
