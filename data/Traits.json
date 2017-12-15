@@ -38,7 +38,8 @@
 		"Incredible white teeth",
 		"Crooked teeth",
 		"Fair skinned",
-		"Big nose"],
+		"Big nose",
+		],
 			
 "Ability":["Big, muscular, strong", 
 		"Lean, fast, graceful", 
@@ -157,7 +158,9 @@
 		"Speaks an uncommon language",
 		"Sneezes frequently",
 		"Voice cracks occasionally",
-		"Walks with a limp"],
+		"Walks with a limp",
+		"Has no tolerance for spicy food",
+		"Is a pepper-fiend"],
 
 "Ideal":["Beauty", 
 		"Domination", 
