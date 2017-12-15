@@ -190,7 +190,7 @@ public ArrayList<Item> generateInventory(ShopTypeEnum shop, WealthEnum wealth)
 		case BLACKSMITH:
 		{
 			String[] temp = blacksmithInventory.generateInventory(wealth);
-			output = generateBasicInventory(5+mod, temp);
+			output = generateBasicInventory(10+mod, temp);
 		}
 			break;
 		case BOWYER:
@@ -208,7 +208,7 @@ public ArrayList<Item> generateInventory(ShopTypeEnum shop, WealthEnum wealth)
 		case TEMPLE:
 		{
 			String[] temp = templeInventory.generateInventory(wealth);
-			output = generateBasicInventory(5+mod, temp);
+			output = generateBasicInventory(10+mod, temp);
 		}
 			break;
 		case GENERALSTORE:
@@ -218,7 +218,7 @@ public ArrayList<Item> generateInventory(ShopTypeEnum shop, WealthEnum wealth)
 			ArrayList<Item> tempPotions = generatePotions(wealth, 2);
 			ArrayList<Item> tempMagic = generateMagicItems(wealth,1);
 
-			output = generateBasicInventory(5+mod,temp);
+			output = generateBasicInventory(10+mod,temp);
 			for(Scroll scroll:tempScrolls)
 				output.add(scroll);
 			for(Item potion:tempPotions)
@@ -623,6 +623,161 @@ public ArrayList<Item> generateMagicItems(WealthEnum wealth, int mod)
 	
 	return output;
 }
+
+public Item getItemByRarity(ArrayList<Item> input, String rarity)
+{
+	ArrayList<Item> temp = new ArrayList<Item>();
+	
+	switch(rarity)
+	{
+	case "Common":
+	{
+		for(int i = 0; i<input.size();i++)
+		{
+			if(input.get(i).getRarity().equals("Common"))
+				temp.add(input.get(i));
+		}
+	}
+	break;
+	case "Uncommon":
+	{
+		for(int i = 0; i<input.size();i++)
+		{
+			if(input.get(i).getRarity().equals("Uncommon"))
+				temp.add(input.get(i));
+		}
+	}
+	break;
+	case "Rare":
+	{
+		for(int i = 0; i<input.size();i++)
+		{
+			if(input.get(i).getRarity().equals("Rare"))
+				temp.add(input.get(i));
+		}
+	}
+	break;
+	case "Very Rare":
+	{
+		for(int i = 0; i<input.size();i++)
+		{
+			if(input.get(i).getRarity().equals("Very Rare"))
+				temp.add(input.get(i));
+		}
+	}
+	break;
+	case "Legendary":
+	{
+		for(int i = 0; i<input.size();i++)
+		{
+			if(input.get(i).getRarity().equals("Legendary"))
+				temp.add(input.get(i));
+		}
+	}
+	break;
+	case "Artifact":
+	{
+		for(int i = 0; i<input.size();i++)
+		{
+			if(input.get(i).getRarity().equals("Artifact"))
+				temp.add(input.get(i));
+		}
+		if(temp.size() == 0) //For potions :]
+		{
+			for(int i = 0; i<input.size();i++)
+			{
+				if(input.get(i).getRarity().equals("Legendary"))
+					temp.add(input.get(i));
+			}
+		}
+	}
+	break;
+	}
+
+	return temp.get(randomizer.nextInt(temp.size()));
+}
+
+public Item getScrollByRarity(String rarity)
+{
+	ArrayList<Scroll> temp = new ArrayList<Scroll>();
+	
+	switch(rarity)
+	{
+	case "Common":
+	{
+		for(int i = 0; i<spellArray.length;i++)
+		{
+			if(spellArray[i].getLevel() == 0 ||spellArray[i].getLevel() == 1)
+				temp.add(spellArray[i]);
+		}
+	}
+	break;
+	case "Uncommon":
+	{
+		for(int i = 0; i<spellArray.length;i++)
+		{
+			if(spellArray[i].getLevel() == 2 ||spellArray[i].getLevel() == 3)
+				temp.add(spellArray[i]);
+		}
+	}
+	break;
+	case "Rare":
+	{
+		for(int i = 0; i<spellArray.length;i++)
+		{
+			if(spellArray[i].getLevel() == 4 ||spellArray[i].getLevel() == 5)
+				temp.add(spellArray[i]);
+		}
+	}
+	break;
+	case "Very Rare":
+	{
+		for(int i = 0; i<spellArray.length;i++)
+		{
+			if(spellArray[i].getLevel() == 6 ||spellArray[i].getLevel() == 7)
+				temp.add(spellArray[i]);
+		}
+	}
+	break;
+	case "Legendary":
+	{
+		for(int i = 0; i<spellArray.length;i++)
+		{
+			if(spellArray[i].getLevel() == 8||spellArray[i].getLevel() == 9)
+				temp.add(spellArray[i]);
+		}
+	}
+	break;
+	case "Artifact":
+	{
+		for(int i = 0; i<spellArray.length;i++)
+		{
+			if(spellArray[i].getLevel() == 8 ||spellArray[i].getLevel() == 9)
+				temp.add(spellArray[i]);
+		}
+	}
+	break;
+	}
+
+	Scroll item = temp.get(randomizer.nextInt(temp.size()));
+	item.init();
+	return item;
+}
+
+public Item generateSingleMagicItem(String type, String rarity)
+{
+	Item item = new Item();
+
+	if(type.equals("Potion"))
+		item = getItemByRarity(potionList, rarity);
+	else if(type.equals("Scroll"))
+		item = getScrollByRarity(rarity);
+	else
+		item = getItemByRarity(magicList, rarity);
+	
+	return item;
+}
+
 //BAM, JSON
 public void parseJSON() throws FileNotFoundException
 {
@@ -646,6 +801,8 @@ public void parseJSON() throws FileNotFoundException
 			if(itemsArray[i].getTier().equals("Minor") || itemsArray[i].getTier().equals("Major"))
 				magicList.add(itemsArray[i]);
 			}
+		if(itemsArray[i].getRarity().equals("Artifact"))
+				magicList.add(itemsArray[i]);
 	}
 
 	//READ SPELLS FROM JSON

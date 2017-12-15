@@ -8,6 +8,8 @@ import java.util.Random;
 
 import javax.swing.JOptionPane;
 
+import npcPackage.NPCManager;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -38,9 +40,15 @@ JSONArray Generalstores;
 
 JSONArray foodArray;
 
-
+static NPCManager npcManager;
 
 Random randomizer = new Random();
+
+
+public ShopManager(NPCManager npcManager)
+{
+	this.npcManager = npcManager;
+}
 
 static ItemManager itemManager = new ItemManager();
 
@@ -62,31 +70,34 @@ public String generateName(ShopTypeEnum shopType)
 {
 	String output = "";
 	
-	int randomNum = 1 + randomizer.nextInt(7);
+	int randomNum = randomizer.nextInt(7);
 
 	//Determines the format
 	switch(randomNum)
 	{
-	case 1: //Name's Shop
-		output = (generate(Names)+"'s "+getShop(shopType));
+	case 0: //Name's Shop
+		output = (npcManager.getAnyName()+"'s "+getShop(shopType));
 		break;
-	case 2: //Name & Name's Shop
-		output = (generate(Names) + " & " + generate(Names)+"'s "+getShop(shopType));
+	case 1: //Name & Name's Shop
+		output = (npcManager.getAnyName() + " & " + npcManager.getAnyName()+"'s "+getShop(shopType));
 		break;
-	case 3: //The Adjective Noun
-		output = ("The "+generate(Adjectives) + " " + generate(Names)+" "+getShop(shopType));
+	case 2: //The Adjective Noun
+		output = ("The "+generate(Adjectives) + " " + npcManager.getAnyName()+" "+getShop(shopType));
 		break;
-	case 4: //The Noun & Noun
+	case 3: //The Noun & Noun
 		output = ("The "+generate(Nouns) + " & " + generate(Nouns)+" "+getShop(shopType));
 		break;
-	case 5: //The Noun's
+	case 4: //The Noun's
 		output = ("The "+generate(Nouns)+" "+getShop(shopType));
 		break;
-	case 6: //Name's Adjective Noun
-		output = (generate(Names)+"'s "+generate(Adjectives)+" "+generate(Nouns)+" "+getShop(shopType));
+	case 5: //Name's Adjective Noun
+		output = (npcManager.getAnyName()+"'s "+generate(Adjectives)+" "+generate(Nouns)+" "+getShop(shopType));
 		break;
-	case 7: //Adjective Name's
-		output = (generate(Adjectives)+" "+generate(Names)+"'s "+getShop(shopType));
+	case 6: //Adjective Name's
+		output = (generate(Adjectives)+" "+npcManager.getAnyName()+"'s "+getShop(shopType));
+		break;
+	case 7: //The Noun of Nouns
+		output = "The "+(generate(Nouns)+" of "+generate(Nouns)+"s "+getShop(shopType));
 		break;
 	}
 	return output;
@@ -95,12 +106,12 @@ public String generateName(ShopTypeEnum shopType)
 //Generates traits
 public String generateTraits()
 {
-	return ("This shop is a "+generate(shopType)
-		+".\nThe shop is "+generate(shopCondition)
+	return (generate(shopCondition)
 		+".\n"+generate(shopTraffic)
 		+".\n"+generate(shopTidbit));
 }
 
+//Take in a JSONArray and return a random element
 private String generate(JSONArray array)
 {
 	 return (String) array.get(randomizer.nextInt(array.size()));
@@ -147,6 +158,19 @@ private String getShop(ShopTypeEnum shopType)
 		break;
 		}
 	
+	return output;
+}
+
+public String getMagicItem(String type, String rarity)
+{
+	Item item = itemManager.generateSingleMagicItem(type, rarity);
+	String output = "";
+		
+	if(item.getRarity() != null && item.getRarity().equals("Artifact"))
+		output = item.getName()+", Priceless Artifact";
+	else 
+		output = item.getName()+", "+itemManager.determineSale(item);
+
 	return output;
 }
 

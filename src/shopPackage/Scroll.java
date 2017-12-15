@@ -24,12 +24,20 @@ public class Scroll extends Item
 		
 	public void setValue()
 	{		
+		int temp = 0;
+
 		if(this.level == 0 || this.level == 1)
-			value = (50+randomizer.nextInt(100))+"gp"; 
+			temp = ((randomizer.nextInt(6)+2)*10);
 		else if(this.level == 2 || this.level == 3)
-			value = (100+randomizer.nextInt(500))+"gp"; 
+			temp = ((randomizer.nextInt(6)+1)*100);
 		else if(this.level == 4 || this.level == 5)
-			value = (500+randomizer.nextInt(5000))+"gp"; 
+			temp = ((randomizer.nextInt(10)+randomizer.nextInt(10)+2)*1000);
+		else if(this.level == 6 || this.level == 7)
+			temp = ((randomizer.nextInt(4)+2)*10000);
+		else if(this.level == 8 || this.level == 9)
+			temp = (randomizer.nextInt(6)+randomizer.nextInt(6)+2)*25000;
+		
+		value = String.valueOf(temp/2)+"gp";
 	}
 	
 	@Override

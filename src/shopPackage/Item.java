@@ -55,18 +55,25 @@ public class Item
 	//For potions
 	public void setValue()
 	{		
+		int temp = 0;
+
 		if(this.rarity.equals("Common"))
-			value = (50+randomizer.nextInt(100))+"gp"; 
+			temp = ((randomizer.nextInt(6)+2)*10);
 		else if(this.rarity.equals("Uncommon"))
-			value = (100+randomizer.nextInt(250))+"gp"; 
+			temp = ((randomizer.nextInt(6)+1)*100);
 		else if(this.rarity.equals("Rare"))
-			value = (250+randomizer.nextInt(500))+"gp"; 
+			temp = ((randomizer.nextInt(10)+randomizer.nextInt(10)+2)*1000);
 		else if(this.rarity.equals("Very Rare"))
-			value = (500+randomizer.nextInt(1000))+"gp"; 
+			temp = ((randomizer.nextInt(4)+2)*10000);
 		else if(this.rarity.equals("Legendary"))
-			value = (100+randomizer.nextInt(5000))+"gp"; 
+			temp = (randomizer.nextInt(6)+randomizer.nextInt(6)+2)*25000;
+				
+		if(type != null && this.type.equals("P") )
+		{
+			value = String.valueOf(temp/2)+"gp";
+		}
 		else
-			value = (50+randomizer.nextInt(100))+"gp"; 
+			value = String.valueOf(temp)+"gp";
 	}
 		
 	@Override
