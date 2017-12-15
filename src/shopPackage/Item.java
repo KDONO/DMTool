@@ -67,8 +67,8 @@ public class Item
 			temp = ((randomizer.nextInt(4)+2)*10000);
 		else if(this.rarity.equals("Legendary"))
 			temp = (randomizer.nextInt(6)+randomizer.nextInt(6)+2)*25000;
-		
-		if(this.type.equals("P"))
+				
+		if(type != null && this.type.equals("P") )
 		{
 			value = String.valueOf(temp/2)+"gp";
 		}

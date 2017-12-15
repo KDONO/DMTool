@@ -111,6 +111,7 @@ public String generateTraits()
 		+".\n"+generate(shopTidbit));
 }
 
+//Take in a JSONArray and return a random element
 private String generate(JSONArray array)
 {
 	 return (String) array.get(randomizer.nextInt(array.size()));
@@ -157,6 +158,19 @@ private String getShop(ShopTypeEnum shopType)
 		break;
 		}
 	
+	return output;
+}
+
+public String getMagicItem(String type, String rarity)
+{
+	Item item = itemManager.generateSingleMagicItem(type, rarity);
+	String output = "";
+		
+	if(item.getRarity() != null && item.getRarity().equals("Artifact"))
+		output = item.getName()+", Priceless Artifact";
+	else 
+		output = item.getName()+", "+itemManager.determineSale(item);
+
 	return output;
 }
 

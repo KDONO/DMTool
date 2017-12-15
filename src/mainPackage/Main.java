@@ -42,6 +42,18 @@ JTextArea shopResultField;
 JScrollPane shopScrollPane;
 JButton shopGenerate;
 
+//Magic Item Stuff
+JLabel rarityLabel;
+JComboBox<String> selectRarity;
+JLabel typeLabel;
+JComboBox<String> selectMagicType;
+String[] magicTypes = {"Item", "Scroll", "Potion"};
+String[] rarityTypes = {"Common", "Uncommon", "Rare", "Very Rare", "Legendary", "Artifact"};
+JLabel magicResult;
+JTextArea magicResultField;
+JScrollPane magicScrollPane;
+JButton magicGenerate;
+
 static NPCManager npcManager;
 static ShopManager shopManager;
 
@@ -94,7 +106,7 @@ public Main() throws FileNotFoundException, IOException, ParseException
 	//SHOP STUFF
 	JPanel shopPanel = new JPanel();
 	Border shopBorder = BorderFactory.createTitledBorder("Shop Generator");
-		npcPanel.setBorder(shopBorder);
+		shopPanel.setBorder(shopBorder);
 	shopLabel = new JLabel("Shop Type:");
 	selectShopType = new JComboBox<String>(shopTypes);
 	avenueLabel = new JLabel("Wealth Level:");
@@ -115,16 +127,43 @@ public Main() throws FileNotFoundException, IOException, ParseException
 	shopPanel.add(shopScrollPane);
 	shopPanel.add(shopGenerate);
 	shopPanel.setPreferredSize(new Dimension(350,350));
+	
+	//Magic Item Stuff
+	JPanel magicPanel = new JPanel();
+	Border magicBorder = BorderFactory.createTitledBorder("Shop Generator");
+		magicPanel.setBorder(magicBorder);
+
+	rarityLabel = new JLabel("Rarity:");
+	selectRarity = new JComboBox<String>(rarityTypes);
+	typeLabel = new JLabel("Type:");
+	selectMagicType = new JComboBox<String>(magicTypes);
+	magicResult = new JLabel("Result:");
+	magicResultField = new JTextArea(10,10);
+	magicScrollPane = new JScrollPane(magicResultField);
+	MagicGenerateButtonHandler magicGenerateButtonHandler = new MagicGenerateButtonHandler();
+	magicGenerate = new JButton("Generate");
+	magicGenerate.addActionListener(magicGenerateButtonHandler);
+
+	magicPanel.setLayout(new BoxLayout(magicPanel, BoxLayout.PAGE_AXIS));
+	magicPanel.add(rarityLabel);
+	magicPanel.add(selectRarity);
+	magicPanel.add(typeLabel);
+	magicPanel.add(selectMagicType);
+	magicPanel.add(magicResult);
+	magicPanel.add(magicScrollPane);
+	magicPanel.add(magicGenerate);
+	magicPanel.setPreferredSize(new Dimension(350,350));
 
 	//WINDOW STUFF
 	JTabbedPane tabbedPane = new JTabbedPane(); 
 	windowPanel.add(tabbedPane);
 	tabbedPane.setVisible(true);
-	tabbedPane.addTab("NPC Generator", npcPanel);
-	tabbedPane.addTab("Shop Generator", shopPanel);
+	tabbedPane.addTab("NPC", npcPanel);
+	tabbedPane.addTab("Shops", shopPanel);
+	tabbedPane.addTab("Magic Items", magicPanel);
 
 	this.setSize(400,450);
-	this.setTitle("Name Generator");
+	this.setTitle("DM Tool");
 	this.setResizable(true);
 	this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 	this.add(windowPanel);
@@ -270,6 +309,18 @@ public class ShopGenerateButtonHandler implements ActionListener
 			break;
 		}
 		shopResultField.setText(shopManager.generateShop(currentShop, currentWealth));
+	}
+}
+
+public class MagicGenerateButtonHandler implements ActionListener
+{
+	public void actionPerformed(ActionEvent e) 
+	{	
+	String output = "";
+	
+	output = shopManager.getMagicItem(selectMagicType.getSelectedItem().toString(), selectRarity.getSelectedItem().toString());
+	
+	magicResultField.setText(output);
 	}
 }
 
