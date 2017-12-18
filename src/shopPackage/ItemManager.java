@@ -350,21 +350,34 @@ public ArrayList<Item> generateFood(WealthEnum wealth)
 {
 	ArrayList<Item> output = new ArrayList<Item>();
 	ArrayList<Item> food = new ArrayList<Item>();
+	Item room = new Item();
 	String rarity = "";
 	
 	switch(wealth)
 	{
 	case LOW:
+	{
 		rarity = "low";
+		room = new Item("Daily room rental", "food", "1sp", null, null);
+	}
 		break;
 	case MEDIUM:
+	{
 		rarity = "medium";
+		room = new Item("Daily room rental", "food", "5sp", null, null);
+	}
 		break;
 	case HIGH:
+	{
 		rarity = "high";
+		room = new Item("Daily room rental", "food", "2gp", null, null);
+	}
 		break;
 	case PREMIUM:
+	{
 		rarity = "premium";
+		room = new Item("Daily room rental", "food", "4gp", null, null);
+	}
 		break;
 	}
 	
@@ -377,6 +390,8 @@ public ArrayList<Item> generateFood(WealthEnum wealth)
 	//populates the output
 	for(int i = 0; i<3;i++)
 		output.add(food.get(randomizer.nextInt(food.size())));
+	
+	output.add(room);
 	
 	return output;
 }
