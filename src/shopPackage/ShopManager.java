@@ -21,8 +21,7 @@ public class ShopManager
 JSONArray Names;
 JSONArray Adjectives;
 JSONArray Nouns;
-JSONArray shopType;
-JSONArray shopCondition;
+JSONArray shopAppearance;
 JSONArray shopTraffic;
 JSONArray shopTidbit;
 
@@ -106,8 +105,10 @@ public String generateName(ShopTypeEnum shopType)
 //Generates traits
 public String generateTraits()
 {
-	return (generate(shopCondition)
+	return (generate(shopAppearance)
 		+".\n"+generate(shopTraffic)
+		+".\n"+generate(shopTidbit)
+		+".\n"+generate(shopTidbit)
 		+".\n"+generate(shopTidbit));
 }
 
@@ -204,8 +205,7 @@ public void parseJSON() throws FileNotFoundException, IOException, ParseExceptio
     Generalstores = (JSONArray) nameData.get("Generalstores");
     Booksellers = (JSONArray) nameData.get("Booksellers");
     
-    shopType = (JSONArray) shopData.get("Type");
-    shopCondition = (JSONArray) shopData.get("Condition");
+    shopAppearance = (JSONArray) shopData.get("Appearance");
     shopTraffic = (JSONArray) shopData.get("Busy");
     shopTidbit = (JSONArray) shopData.get("Tidbit");
 
